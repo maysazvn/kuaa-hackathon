@@ -2,6 +2,8 @@
 </script>
 
 <template>
-  <main>
-  </main>
+  Login
 </template>
+
+<style scoped>
+</style>

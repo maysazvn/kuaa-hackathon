@@ -2,6 +2,8 @@
 </script>
 
 <template>
-  <main>
-  </main>
+  Explorar
 </template>
+
+<style scoped>
+</style>
