@@ -2,6 +2,8 @@
 </script>
 
 <template>
-  <main>
-  </main>
+Cadastro
 </template>
+
+<style scoped>
+</style>

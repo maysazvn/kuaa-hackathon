@@ -2,6 +2,8 @@
 </script>
 
 <template>
-  <main>
-  </main>
+  Sobre
 </template>
+
+<style scoped>
+</style>
