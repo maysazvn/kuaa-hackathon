@@ -13,6 +13,7 @@
       <router-link to="/profile">
         <font-awesome-icon icon="user"/> Perfil
       </router-link>
+      <router-link to="/postagens"> POstagens </router-link> <!-- isso é um teste, apagar depois!-->
     </nav>
 
     <hr>

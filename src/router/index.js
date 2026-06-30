@@ -7,6 +7,7 @@ import ProfileView from '@/views/user/ProfileView.vue'
 import ExploreView from '@/views/rooms/ExploreView.vue'
 import AboutView from '@/views/suporte/AboutView.vue'
 import HelpView from '@/views/suporte/HelpView.vue'
+import Postagens from '@/components/layout/Postagens.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/profile',
       name: 'Perfil',
       component: ProfileView,
+    }, 
+     {
+      path: '/postagens',
+      name: 'Postagens',
+      component: Postagens,
     },
   ],
 })
