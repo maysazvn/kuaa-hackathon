@@ -1,6 +1,23 @@
 <!-- read salas/comunidades -->
 <script setup>
 
+import { useRouter } from 'vue-router';
+import { salas } from '@/data/salas';
+import { ref } from 'vue';
+const router = useRouter();
+const nome = ref('');
+const descricao = ref('');
+function cancelar() {
+  router.push('/')
+}
+function criar() {
+  salas.push.value ({
+    nome: nome.value,
+    descricao: descricao.value
+  })
+  console.log('shkjdafaa')
+}
+
 </script>
 
 <template>
@@ -9,13 +26,13 @@
   <p>
     Nome da Sala
   </p>
-  <input type="text" placeholder="blablabla">
+  <input v-model="nome" type="text" placeholder="blablabla">
   <p>
     Descrição
   </p>
-  <input type="text" placeholder="clallka">
+  <input v-model="descricao" type="text" placeholder="clallka">
 
-  <button>Criar</button> <button>Cancelar</button>
+  <button @click="criar">Criar</button> <button @click="cancelar" >Cancelar</button>
 </template>
 
 <style scoped>

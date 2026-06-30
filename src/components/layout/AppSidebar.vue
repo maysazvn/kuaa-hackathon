@@ -2,6 +2,7 @@
 
 import { useRouter } from 'vue-router';
 const router = useRouter()
+import { salas } from '@/data/salas';
 
 function irCriarSala() {
   router.push('/room')
@@ -31,6 +32,10 @@ function irCriarSala() {
         <button @click="irCriarSala"> <font-awesome-icon icon="plus"/> </button>
 
         <div> <!-- quem for criar as salas, já cria lá na pasta data um dataset de salas padrão pfv, pra deixar um v-for aqui. -->
+
+          <div v-for="sala in salas" :key="sala.nome">
+            <h2>{{ sala.nome }}</h2>
+          </div>
 
         </div>
       </div>
