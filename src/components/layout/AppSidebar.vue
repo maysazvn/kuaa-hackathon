@@ -1,4 +1,12 @@
 <script setup>
+
+import { useRouter } from 'vue-router';
+const router = useRouter()
+
+function irCriarSala() {
+  router.push('/room')
+}
+
 </script>
 
 <template>
@@ -19,7 +27,8 @@
 
     <nav class="salas">
       <div>
-        <h1>SALAS</h1>  <font-awesome-icon icon="plus"/> <!-- esse font-awesome-icon é o botão de mais ao lado do título salas que vai abrir o adicionar sala -->
+        <h1>SALAS</h1>  <!-- esse font-awesome-icon é o botão de mais ao lado do título salas que vai abrir o adicionar sala -->
+        <button @click="irCriarSala"> <font-awesome-icon icon="plus"/> </button>
 
         <div> <!-- quem for criar as salas, já cria lá na pasta data um dataset de salas padrão pfv, pra deixar um v-for aqui. -->
 
