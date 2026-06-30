@@ -44,12 +44,14 @@ let mostrar = ref(false);
       <button class="seguirUsuario" v-on:click="seguir()">{{ mensagemSeguir }}</button>
         <button class="editarDeletar" v-on:click="mostrarItens()">•••</button>
         <div class="editEdelete" v-show="mostrar == true" v-on:click="mostrarItens()">
-          <button v-on:click="editar">Editar</button>
+          <router-link to="/edit">
+            <button v-on:click="editar">Editar</button>
+          </router-link>
           <button v-on:click="excluir">Deletar</button>
         </div>
 
 
-      <h1 id="nomeUsuario"></h1>
+      <h1>{{ nomeUsuario }}</h1>
       <p id="desc"></p>
 
     </div>
