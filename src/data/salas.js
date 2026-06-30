@@ -1,6 +1,3 @@
 import { ref } from "vue"
 
-const salas = ref[{
-
-}]
-export {salas}
+export const salas = ref([]);

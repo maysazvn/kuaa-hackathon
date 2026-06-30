@@ -11,11 +11,16 @@ function cancelar() {
   router.push('/')
 }
 function criar() {
-  salas.push.value ({
+  salas.value.push ({
     nome: nome.value,
     descricao: descricao.value
   })
-  console.log('shkjdafaa')
+  console.log(salas.value);
+
+  nome.value = '';
+  descricao.value = '';
+
+  router.push('/');
 }
 
 </script>
