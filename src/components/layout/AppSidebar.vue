@@ -1,4 +1,6 @@
 <script setup>
+import { RouterLink } from 'vue-router';
+
 </script>
 
 <template>
@@ -12,6 +14,9 @@
       </router-link>
       <router-link to="/profile">
         <font-awesome-icon icon="user"/> Perfil
+      </router-link>
+      <router-link to="/login">
+Login
       </router-link>
     </nav>
 
