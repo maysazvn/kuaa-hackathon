@@ -1,9 +1,29 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
-const nomeUsuario = ref("");
+const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || '');
+
+const desc = ref(localStorage.getItem('desc' || ''));
 
 
+watch(nomeUsuario, (novoNome) => {
+  localStorage.setItem('nomeUsuario', novoNome);
+})
+
+watch(desc, (novaDesc) => {
+  localStorage.setItem('desc', novaDesc)
+})
+
+export let novaFoto = ref(null);
+export let urlFoto = ref(null);
+
+function mudarFoto () {
+  novaFoto.value = event.target.files[0];
+
+  if (novaFoto.value){
+    urlFoto.value = URL.createObjectURL(novaFoto);
+  }
+}
 
 </script>
 
@@ -15,14 +35,14 @@ const nomeUsuario = ref("");
 
         <div class="adicionarFoto">
 
-            <input type="file" id="fotoDePerfil" accept="/image*">
+            <input type="file" id="fotoDePerfil" @change="mudarFoto()" accept="/image*">
             <img id="preview" src="" alt="">
 
         </div>
 
 
       <input v-model="nomeUsuario">
-      <input type="text" id="desc">
+      <input v-model="desc">
 
 
       <div class="salaMostra">

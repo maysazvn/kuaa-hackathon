@@ -2,6 +2,13 @@
 <script setup>
 
 import { ref } from 'vue';
+/* import { novaFoto } from '../user/EditProfileView.vue'; */
+import { urlFoto } from '../user/EditProfileView.vue';
+
+let existe = ref(true);
+
+const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || '');
+const desc = ref(localStorage.getItem('desc' || ''));
 
 let seguindo = false;
  let mensagemSeguir = ref('Seguir')
@@ -30,16 +37,17 @@ let mostrar = ref(false);
   }
 
   function excluir () {
-    console.log('deletando...');
+    localStorage.clear();
+    existe.value = false;
   }
 
 </script>
 
 <template>
-  <main class="container">
+  <main class="container" v-show="existe == true" >
     <div class="cartaoPerfil">
       <img src="" alt="" id="banner">
-      <img src="" alt="" id="fotoDePerfil">
+      <img v-if="urlFoto" :src="urlFoto" alt="" id="fotoDePerfil">
 
       <button class="seguirUsuario" v-on:click="seguir()">{{ mensagemSeguir }}</button>
         <button class="editarDeletar" v-on:click="mostrarItens()">•••</button>
@@ -52,7 +60,7 @@ let mostrar = ref(false);
 
 
       <h1>{{ nomeUsuario }}</h1>
-      <p id="desc"></p>
+      <p>{{ desc }}</p>
 
     </div>
   </main>
