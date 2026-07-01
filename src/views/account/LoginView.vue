@@ -27,12 +27,23 @@ function selecionarCadastro(){
 }
 
 function enviar(email, senha, user){
+  if(email.length != 0 && user.length != 0 && senha.length != 0){
 dadosLogin.value.push(email)[0]
 dadosLogin.value.push(senha)[1]
 dadosLogin.value.push(user)[2]
 emailFalso = ''
 senhaFalsa = ''
 userFalso = '';
+}else{
+  alert('Preencha todos os campos!');
+}
+}
+function logar(email, senha){
+  if(email === dadosLogin.value[0] && senha === dadosLogin.value[1]){
+    alert('Você logou com sucesso!')
+  }else{
+    alert('Vai tomar no cu')
+  }
 }
 
 
@@ -61,11 +72,11 @@ Faça seu cadastro hoje mesmo!
       <ButtonChild @clique="enviar(emailFalso, senhaFalsa, userFalso)">Cadastrar</ButtonChild>
     </div>
     <div class="login" v-show="login == true">
-      <ul>
-        <li v-for="coisa in dadosLogin">
-          {{ coisa }}
-        </li>
-      </ul>
+      <input type="email" name="email" placeholder="E-mail" required v-model="emailFalso">
+     <input type="text" required v-model="senhaFalsa" placeholder="Senha">
+     <ButtonChild @clique="logar(emailFalso, senhaFalsa)">
+      Logar
+     </ButtonChild>
     </div>
   </div>
 </template>
