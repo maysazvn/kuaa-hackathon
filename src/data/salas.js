@@ -1,5 +1,5 @@
 import { ref } from "vue"
-export const salas = ref[
+export const salas = ref([
 {
     idSala: 1,
     nome: '22info22',
@@ -32,4 +32,4 @@ export const salas = ref[
     usuarioCriador: 'erererer',
     status: 0,
 }
-]
+])
