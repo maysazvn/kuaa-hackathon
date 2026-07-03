@@ -3,8 +3,7 @@ import { ref, watch } from "vue";
 
 const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || '');
 
-const desc = ref(localStorage.getItem('desc' || ''));
-
+const desc = ref(localStorage.getItem('desc') || '');
 
 watch(nomeUsuario, (novoNome) => {
   localStorage.setItem('nomeUsuario', novoNome);
@@ -14,14 +13,40 @@ watch(desc, (novaDesc) => {
   localStorage.setItem('desc', novaDesc)
 })
 
-export let novaFoto = ref(null);
-export let urlFoto = ref(null);
+const urlFoto = ref(localStorage.getItem('urlFoto') || '');
+const urlBanner = ref(localStorage.getItem('urlBanner') || '');
 
-function mudarFoto () {
+
+let novaFoto = ref(null);
+let novoBanner = ref(null);
+
+function mudarFoto(event) {
   novaFoto.value = event.target.files[0];
 
   if (novaFoto.value){
-    urlFoto.value = URL.createObjectURL(novaFoto);
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      urlFoto.value = reader.result;
+      localStorage.setItem('urlFoto', reader.result);
+    };
+
+    reader.readAsDataURL(novaFoto.value);
+  }
+}
+
+function mudarBanner(event) {
+  novoBanner.value = event.target.files[0];
+
+  if (novoBanner.value){
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      urlFoto.value = reader.result;
+      localStorage.setItem('urlBanner', reader.result);
+    };
+
+    reader.readAsDataURL(novoBanner.value);
   }
 }
 
@@ -35,9 +60,8 @@ function mudarFoto () {
 
         <div class="adicionarFoto">
 
-            <input type="file" id="fotoDePerfil" @change="mudarFoto()" accept="/image*">
-            <img id="preview" src="" alt="">
-
+            <input type="file" id="fotoDePerfil" @change="mudarFoto" accept="image/*">
+            <img id="preview" :src="urlFoto" alt="Preview" v-if="urlFoto">
         </div>
 
 

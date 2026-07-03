@@ -3,12 +3,12 @@
 
 import { ref } from 'vue';
 /* import { novaFoto } from '../user/EditProfileView.vue'; */
-import { urlFoto } from '../user/EditProfileView.vue';
 
 let existe = ref(true);
 
 const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || '');
-const desc = ref(localStorage.getItem('desc' || ''));
+const desc = ref(localStorage.getItem('desc') || '');
+const urlFoto = ref(localStorage.getItem('urlFoto') || '');
 
 let seguindo = false;
  let mensagemSeguir = ref('Seguir')
@@ -47,7 +47,7 @@ let mostrar = ref(false);
   <main class="container" v-show="existe == true" >
     <div class="cartaoPerfil">
       <img src="" alt="" id="banner">
-      <img v-if="urlFoto" :src="urlFoto" alt="" id="fotoDePerfil">
+      <img v-if="urlFoto" :src="urlFoto" id="preview">
 
       <button class="seguirUsuario" v-on:click="seguir()">{{ mensagemSeguir }}</button>
         <button class="editarDeletar" v-on:click="mostrarItens()">•••</button>
