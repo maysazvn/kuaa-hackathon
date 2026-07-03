@@ -9,6 +9,9 @@ let login = ref(false);
 let emailFalso = ref('');
 let userFalso = ref('');
 let senhaFalsa = ref('');
+let senhaReal = ref('');
+let emailReal = ref('');
+let userReal = ref('');
 
 // Functions /////
 
@@ -27,19 +30,24 @@ function selecionarCadastro(){
 }
 
 function enviar(email, senha, user){
-  if(email.length != 0 && user.length != 0 && senha.length != 0){
-dadosLogin.value.push(email)[0]
-dadosLogin.value.push(senha)[1]
-dadosLogin.value.push(user)[2]
-emailFalso = ''
-senhaFalsa = ''
-userFalso = '';
+  if(email.trim() !== '' && senha.trim() !== '' && user.trim() !== ''){
+dadosLogin.value.push(email)
+dadosLogin.value.push(senha)
+dadosLogin.value.push(user)
+
+emailReal.value = email
+userReal.value = user
+senhaReal.value = senha
+
+emailFalso.value = ''
+senhaFalsa.value = ''
+userFalso.value = '';
 }else{
   alert('Preencha todos os campos!');
 }
 }
 function logar(email, senha){
-  if(email === dadosLogin.value[0] && senha === dadosLogin.value[1]){
+  if(email === emailReal.value && senha === senhaReal.value){
     alert('Você logou com sucesso!')
   }else{
     alert('Vai tomar no cu')
