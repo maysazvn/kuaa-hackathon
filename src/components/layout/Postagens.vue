@@ -1,6 +1,7 @@
 <script setup>
 
 import { ref } from 'vue';
+import CommentsPostagens from './CommentsPostagens.vue';
 
 let postagens = ref([
     {
@@ -9,20 +10,15 @@ let postagens = ref([
 
  let usuario = ref('H')
 
-
 const postagensTituloNovo = ref('');
 const postagensConteudoNovo = ref('');
 const postagensAutorNovo = ref('');
 
 function adicionar() {
-
 if (!postagensAutorNovo.value.trim() || !postagensConteudoNovo.value.trim() || !postagensTituloNovo.value.trim()) {
     alert(`Preencha os campos!!`);
 } else {
-
-
     let maiorId =  Math.max(...postagens.value.map(item => item.id))
-
     const novoPost = {
         titulo: postagensTituloNovo.value,
      conteudo: postagensConteudoNovo.value,
@@ -30,18 +26,12 @@ if (!postagensAutorNovo.value.trim() || !postagensConteudoNovo.value.trim() || !
         data:  Date(Date.now()).toLocaleString('pt-BR'),
         id: maiorId + 1
     }
-
     postagens.value.unshift(novoPost)
-
     postagensAutorNovo.value = '';
     postagensConteudoNovo.value = '';
     postagensTituloNovo.value = '';
 }
 }
-
-
-
-
 
 function excluir(idItem) {
    postagens.value = postagens.value.filter(post => post.id !== idItem)
@@ -51,16 +41,10 @@ function editar(post) {
     const index = postagens.value.findIndex(p => p.id === post.id)
 
     if (index !== -1) {
-
         const edicao = prompt(`Edite o seu post...`, post.conetudo)
 
         if (edicao !== null) {
-                postagens.value[index].conteudo = edicao
-        }
-    
-    }
-}
-
+                postagens.value[index].conteudo = edicao}}}
 
 </script>
 
@@ -104,15 +88,15 @@ function editar(post) {
                         {{post.data}}
                     </small>
                 </p>
-             
-
-   <div v-if="post.autor === usuario">
+             <div v-if="post.autor === usuario">
 
             <button @click.prevent="excluir(post.id)" >Excluir</button>
             <button @click="editar(post)">Editar</button>
 
         </div>
+<CommentsPostagens :post='post' :usuario='usuario'>
 
+</CommentsPostagens>
     </div>
         </div>
 
