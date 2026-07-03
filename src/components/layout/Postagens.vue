@@ -15,6 +15,12 @@ const postagensConteudoNovo = ref('');
 const postagensAutorNovo = ref('');
 
 function adicionar() {
+
+if (!postagensAutorNovo.value.trim() || !postagensConteudoNovo.value.trim() || !postagensTituloNovo.value.trim()) {
+    alert(`Preencha os campos!!`);
+} else {
+
+
     let maiorId =  Math.max(...postagens.value.map(item => item.id))
 
     const novoPost = {
@@ -22,7 +28,7 @@ function adicionar() {
      conteudo: postagensConteudoNovo.value,
         autor: postagensAutorNovo.value,
         data:  Date(Date.now()).toLocaleString('pt-BR'),
-        id: maiorId.value + 1
+        id: maiorId + 1
     }
 
     postagens.value.unshift(novoPost)
@@ -31,22 +37,27 @@ function adicionar() {
     postagensConteudoNovo.value = '';
     postagensTituloNovo.value = '';
 }
-
-
+}
 
 
 
 
 
 function excluir(idItem) {
-   postagens.value = postagens.value.filter(postagens => postagens.id !== idItem)
+   postagens.value = postagens.value.filter(post => post.id !== idItem)
 }
 
 function editar(post) {
-    const edicao = prompt(`Edite o seu post!:`)
+    const index = postagens.value.findIndex(p => p.id === post.id)
 
-    if (edicao !== null) {
-        post.conteudo = edicao.value
+    if (index !== -1) {
+
+        const edicao = prompt(`Edite o seu post...`, post.conetudo)
+
+        if (edicao !== null) {
+                postagens.value[index].conteudo = edicao
+        }
+    
     }
 }
 
@@ -83,25 +94,27 @@ function editar(post) {
                 <p>
                     {{ post.conteudo }}
                 </p>
-                <p>
-                    {{post.data}}
+                   <p>
+                    <small><strong>
+                        {{ post.autor }}
+                    </strong></small>
                 </p>
+                <p>
+                    <small>
+                        {{post.data}}
+                    </small>
+                </p>
+             
 
-
-    </div>
-
-     <div v-if="post.autor === usuario">
+   <div v-if="post.autor === usuario">
 
             <button @click.prevent="excluir(post.id)" >Excluir</button>
-            <button @click="editar(post.id)">Editar</button>
-
-        </div>
-          
+            <button @click="editar(post)">Editar</button>
 
         </div>
 
-       
-
+    </div>
+        </div>
 
     </div>
 
@@ -125,6 +138,7 @@ button {
     border-radius: 25px;
     padding: 10px;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 input {
@@ -142,4 +156,5 @@ div.postar {
     margin: 0 auto;
     margin-bottom: 30px;
 }
+
 </style>
