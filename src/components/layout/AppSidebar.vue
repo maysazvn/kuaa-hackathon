@@ -65,13 +65,13 @@ aside.sidebar {
   flex-direction: column;
   width: 200px;
   height: 100vh;
-  position: fixed;
   padding-top: 10px;
 }
 
 h1 {
   color: #D9D9D9;
   font-weight: bold;
+  margin: 5px 0;
 }
 
 .criarSala {
@@ -82,8 +82,12 @@ h1 {
   gap: 5px;
 }
 
+ul li{
+  margin: 5px 0;
+}
+
 ul li a {
-  color: #D9D9D9
+  color: #D9D9D9;
 }
 
 ul li:hover {
