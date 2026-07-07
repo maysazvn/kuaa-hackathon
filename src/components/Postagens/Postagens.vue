@@ -12,24 +12,23 @@ let postagens = ref([
 
 const postagensTituloNovo = ref('');
 const postagensConteudoNovo = ref('');
-const postagensAutorNovo = ref('');
-const mostrarComent = ref(false)
+const mostrarComent = ref(false);
+const usuLogado = ref('cofeeBarney')
 
 
 function adicionar() {
-if (!postagensAutorNovo.value.trim() || !postagensConteudoNovo.value.trim() || !postagensTituloNovo.value.trim()) {
+if (!postagensConteudoNovo.value.trim() || !postagensTituloNovo.value.trim()) {
     alert(`Preencha os campos!!`);
 } else {
     let maiorId =  Math.max(...postagens.value.map(item => item.id))
     const novoPost = {
         titulo: postagensTituloNovo.value,
      conteudo: postagensConteudoNovo.value,
-        autor: postagensAutorNovo.value,
+        autor: usuLogado.value,
         data:  Date(Date.now()).toLocaleString('pt-BR'),
         id: maiorId + 1
     }
     postagens.value.unshift(novoPost)
-    postagensAutorNovo.value = '';
     postagensConteudoNovo.value = '';
     postagensTituloNovo.value = '';
 }
@@ -59,7 +58,6 @@ function editar(post) {
         <h2>Criar post</h2>
 
         <input type="text" v-model="postagensTituloNovo" placeholder="Titulo"> 
-        <input type="text" v-model="postagensAutorNovo" placeholder="Usuario">
         <textarea v-model="postagensConteudoNovo" placeholder="estou com dificuldade em..."></textarea>
         <button @click="adicionar">
          Postar
