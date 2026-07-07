@@ -11,6 +11,10 @@ function cancelar() {
   router.push('/')
 }
 function criar() {
+
+  if (nome.value === "" && descricao.value === "") {
+    alert("Algum campo obrigatorio deixou de ser peenchido")
+  }
   salas.value.push({
     nome: nome.value,
     descricao: descricao.value,
@@ -25,10 +29,15 @@ function criar() {
   router.push('/')
 }
 
+// function gerar() {
+//   banner.value
+// }
+
+
 </script>
 
 <template>
-  <img class="imagem" :src="salas.banner" alt="Imagem do banner">
+  <img class="imagem" :src="banner" alt="Imagem do banner"> <button>Gerar</button>
   <h1 class="nome">Criar Sala</h1>
   <section class="criarsala">
     <div class="naosei">
@@ -65,6 +74,12 @@ function criar() {
 }
 .botoes {
   text-align: center;
+}
+.botoes button {
+  text-align: center;
+  gap: 20vw;
+  border: solid 2px #bbb;
+  padding: 5px 10px;
 }
 
 input {

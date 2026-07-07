@@ -5,6 +5,7 @@ import { salas } from '@/data/salas'
 <template>
   <div v-for="sala in salas" :key="sala.nome" :nome="sala.nome" :descricao="sala.descricao" :banner="sala.banner" class="salas">
     <h2>{{ sala.nome }}</h2>
+    <img :src="sala.banner" :alt="sala.nome">
   </div>
   Explorar
 </template>
