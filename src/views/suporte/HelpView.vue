@@ -59,11 +59,11 @@ h1, h2{
 }
 
 h1{
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 h2{
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 div.p{
@@ -81,12 +81,14 @@ div.p{
 summary{
   font-weight: 600;
   list-style: none;
+  font-size: 1.5rem;
 }
 
 div.p p{
   color: #d9d9d9d9;
   margin: 5px;
   text-align: left;
+  font-size: 1.2rem;
 }
 
 .seta{
@@ -111,5 +113,6 @@ border-radius: 15px;
 font-weight: bold;
 width: fit-content;
 padding: 5px 15px;
+font-size: 1.2rem;
 }
 </style>

@@ -5,7 +5,7 @@
   <div class="about">
     <div>
      <h1>O que é o KUAA?</h1>
-    <p>blablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablablabla</p>
+    <p class="oq">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae molestias dignissimos quia maxime, odio in itaque placeat sunt voluptates perspiciatis nostrum nobis, vel provident qui odit alias illo quo ullam?</p>
     </div>
     <div>
       <img src="../../../public/logo-kuaa-2.png" alt="">
@@ -80,16 +80,21 @@ h1, h2{
   font-family: "Prompt", sans-serif;
   font-weight: bold;
   text-align: center;
+  font-size: 2rem;
 }
 
 h1{
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
 }
 
 .about{
   margin: 0 auto;
   display: flex;
+}
+
+.about img{
+  width: 30vw;
 }
 
 .estudantes{
@@ -108,10 +113,13 @@ h1{
 
 .estudante-card ul li{
   text-align: center;
+  font-size: 1.5rem;
 }
 
-p{
+p.oq{
   text-align: center;
+  font-size: 1.5rem;
+  width: 40vw;
 }
 
 </style>

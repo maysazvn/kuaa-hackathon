@@ -25,21 +25,34 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 5px;
 }
 
 .search{
+  display: flex;
   background: #F9EAA8;
   border-radius: 10px;
   padding: 2px;
+  align-items: center;
+}
+
+.lupa{
+  margin: 5px;
+}
+
+input{
+font-size: 1.2rem;
 }
 
 .direito{
   display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 .menu{
   color: #D9D9D9;
+  font-size: 1.5rem;
 }
 
 </style>
