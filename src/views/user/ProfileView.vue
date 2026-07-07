@@ -9,6 +9,8 @@ let existe = ref(true);
 const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || '');
 const desc = ref(localStorage.getItem('desc') || '');
 const urlFoto = ref(localStorage.getItem('urlFoto') || '');
+const urlBanner = ref(localStorage.getItem('urlBanner') || '');
+const mostrarSala = false;
 
 let seguindo = false;
  let mensagemSeguir = ref('Seguir')
@@ -46,7 +48,7 @@ let mostrar = ref(false);
 <template>
   <main class="container" v-show="existe == true" >
     <div class="cartaoPerfil">
-      <img src="" alt="" id="banner">
+      <img v-if="urlBanner" :src="urlBanner" id="banner">
       <img v-if="urlFoto" :src="urlFoto" id="preview">
 
       <button class="seguirUsuario" v-on:click="seguir()">{{ mensagemSeguir }}</button>
@@ -56,6 +58,10 @@ let mostrar = ref(false);
             <button v-on:click="editar">Editar</button>
           </router-link>
           <button v-on:click="excluir">Deletar</button>
+        </div>
+
+        <div class="salas" v-show="mostrarSala = true">
+
         </div>
 
 

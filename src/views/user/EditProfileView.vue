@@ -42,7 +42,7 @@ function mudarBanner(event) {
     const reader = new FileReader();
 
     reader.onload = () => {
-      urlFoto.value = reader.result;
+      urlBanner.value = reader.result;
       localStorage.setItem('urlBanner', reader.result);
     };
 
@@ -56,9 +56,13 @@ function mudarBanner(event) {
     <main class="container">
     <div class="cartaoPerfil">
         
-        <input type="file" id="banner">
+        <div class="adicionarFotoBanner">
 
-        <div class="adicionarFoto">
+            <input type="file" id="fotoDeBanner" @change="mudarBanner" accept="image/*">
+            <img id="preview" :src="urlBanner" alt="Preview" v-if="urlBanner">
+        </div>
+
+        <div class="adicionarFotoPerfil">
 
             <input type="file" id="fotoDePerfil" @change="mudarFoto" accept="image/*">
             <img id="preview" :src="urlFoto" alt="Preview" v-if="urlFoto">
