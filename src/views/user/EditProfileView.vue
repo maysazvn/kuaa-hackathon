@@ -50,6 +50,10 @@ function mudarBanner(event) {
   }
 }
 
+function confirmar () {
+  console.log('confirmando alterações...');
+}
+
 </script>
 
 <template>
@@ -57,21 +61,33 @@ function mudarBanner(event) {
     <div class="cartaoPerfil">
         
         <div class="adicionarFotoBanner">
-
-            <input type="file" id="fotoDeBanner" @change="mudarBanner" accept="image/*">
-            <img id="preview" :src="urlBanner" alt="Preview" v-if="urlBanner">
+          <label for="fotoDeBanner">
+            <img class="previewBanner" :src="urlBanner" alt="Preview" v-if="urlBanner">
+          </label>
+            
+          <input type="file" id="fotoDeBanner" class="fotoBanner" @change="mudarBanner" accept="image/*"> 
         </div>
 
         <div class="adicionarFotoPerfil">
-
-            <input type="file" id="fotoDePerfil" @change="mudarFoto" accept="image/*">
-            <img id="preview" :src="urlFoto" alt="Preview" v-if="urlFoto">
+          <label for="fotoDePerfil">
+            <img class="previewFoto" :src="urlFoto" alt="Preview" v-if="urlFoto">
+          </label>
+            <input type="file" id="fotoDePerfil" class="fotoPerfil" @change="mudarFoto" accept="image/*">
+            
         </div>
 
-
-      <input v-model="nomeUsuario">
-      <input v-model="desc">
-
+        <div class="editarNome">
+          <h1>
+            Nome usuário
+          </h1>
+          <input v-model="nomeUsuario" class="nomeUsuario">
+        </div>
+        <div class="editarDesc">
+          <h1>
+            Descrição
+          </h1>
+          <input v-model="desc" class="descricao">
+        </div>
 
       <div class="salaMostra">
         <h3>
@@ -83,6 +99,10 @@ function mudarBanner(event) {
         <input type="radio" name="mostrarSala?" value="nao" id="no" >
         <label for="no">Não</label>
       </div>
+
+      <router-link to="/profile">
+        <button v-on:click="confirmar">Confirmar</button>
+      </router-link>
       
 
     </div>
@@ -90,5 +110,57 @@ function mudarBanner(event) {
 </template>
 
 <style scoped>
+
+.previewBanner {
+    width: 57vw;
+    height: 11vw;
+    object-fit: cover;
+    border-radius: 2vw 2vw 0 0;
+  }
+
+.previewFoto {
+    width: 8vw;
+    height: 8vw;
+    object-fit: cover;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    top: 8vw;
+    left: 5vw;
+  }
+
+  .cartaoPerfil {
+    width: 57vw;
+    height: 35vw;
+    background-color: gray;
+    position: relative;
+    border-radius: 2vw;
+    justify-content: center;
+  }
+
+  .nomeUsuario {
+    border: 1px solid chartreuse;
+    border-radius: 0.25vw;
+  }
+
+  .descricao {
+    border: 1px solid chartreuse;
+    border-radius: 0.25vw;
+    
+  }
+
+  .fotoBanner {
+    display: none;
+    opacity: 0%;
+  }
+  
+  .fotoPerfil {
+    display: none;
+    opacity: 0%;
+  }
+
+  .editarNome {
+    margin: 5vw 0 0 0;
+  }
 
 </style>
