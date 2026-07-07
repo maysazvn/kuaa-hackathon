@@ -31,5 +31,26 @@ export const salas = ref([
     desc: 'AAAAAAAAaaa',
     usuarioCriador: 'erererer',
     status: 0,
-}
+},{
+    idSala: 5,
+    nome: '22info22',
+    participantes: 21,
+    desc: 'fórum de discussão de sociologia da 2info2',
+    usuarioCriador: 'Samusaax',
+    status: 1
+},{
+    idSala: 6,
+    nome: '22info22',
+    participantes: 21,
+    desc: 'fórum de discussão de sociologia da 2info2',
+    usuarioCriador: 'Samusaax',
+    status: 1
+},{
+    idSala: 7,
+    nome: '22info22',
+    participantes: 21,
+    desc: 'fórum de discussão de sociologia da 2info2',
+    usuarioCriador: 'Samusaax',
+    status: 1
+},
 ])

@@ -4,7 +4,6 @@ import { salas } from '@/data/salas';
 </script>
 
 <template>
-  <div class="tudo">
 
  
   <div class="container">
@@ -14,11 +13,25 @@ import { salas } from '@/data/salas';
       </CartSala>
     </section>
   </div> 
-  </div>
+
 </template>
 
 <style scoped>
-.tudo {
-margin-left: 33vw;
+.container{
+  margin: 3vw 0 0 13vw;
+  background-color: #1E1E1E;
+  text-align: center;
 }
+
+ .salas{
+  display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 1fr)); 
+    gap: 4vw;
+    margin: 0px auto;
+    padding: 40px;
+    width: 80%;
+    position: relative;
+ }
+
 </style>
