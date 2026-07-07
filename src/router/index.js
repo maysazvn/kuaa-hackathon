@@ -7,7 +7,7 @@ import ProfileView from '@/views/user/ProfileView.vue'
 import ExploreView from '@/views/rooms/ExploreView.vue'
 import AboutView from '@/views/suporte/AboutView.vue'
 import HelpView from '@/views/suporte/HelpView.vue'
-import Postagens from '@/components/layout/Postagens.vue'
+import Postagens from '@/components/Postagens/Postagens.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,7 +30,7 @@ const router = createRouter({
     {
       path: '/room',
       name: 'Sala',
-      component: RoomView
+      component: RoomView,
     },
     {
       path: '/about',
@@ -55,7 +55,7 @@ const router = createRouter({
      {
       path: '/postagens',
       name: 'Postagens',
-      component: Postagens,
+      component: Postagens
     },
   ],
 })

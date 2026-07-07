@@ -13,6 +13,8 @@ let postagens = ref([
 const postagensTituloNovo = ref('');
 const postagensConteudoNovo = ref('');
 const postagensAutorNovo = ref('');
+const mostrarComent = ref(false)
+
 
 function adicionar() {
 if (!postagensAutorNovo.value.trim() || !postagensConteudoNovo.value.trim() || !postagensTituloNovo.value.trim()) {
@@ -36,7 +38,6 @@ if (!postagensAutorNovo.value.trim() || !postagensConteudoNovo.value.trim() || !
 function excluir(idItem) {
    postagens.value = postagens.value.filter(post => post.id !== idItem)
 }
-
 function editar(post) {
     const index = postagens.value.findIndex(p => p.id === post.id)
 
@@ -44,17 +45,15 @@ function editar(post) {
         const edicao = prompt(`Edite o seu post...`, post.conetudo)
 
         if (edicao !== null) {
-                postagens.value[index].conteudo = edicao}}}
+     postagens.value[index].conteudo = edicao}}}
+
 
 </script>
 
 <template>
 
     <section>
- 
     <div>
-
-
  <div class="postar">
 
         <h2>Criar post</h2>
@@ -94,9 +93,11 @@ function editar(post) {
             <button @click="editar(post)">Editar</button>
 
         </div>
-<CommentsPostagens :post='post' :usuario='usuario'>
-
-</CommentsPostagens>
+<button @click="mostrarComent = true" v-show="!mostrarComent">Ver Comentários</button>
+<div v-if="mostrarComent">
+    <CommentsPostagens :post='post' :usuario='usuario'></CommentsPostagens>
+    <button @click="mostrarComent = false">Fechar Comentários</button>
+</div>
     </div>
         </div>
 
