@@ -6,6 +6,10 @@ defineEmits(['id', 'texto', 'usu','comentar', 'usuarioLogado'])
 
 let comentarios = ref([{
     id: 1, texto: "Não entendi, alguem me explica?", usu: "NeymarJr"
+}, {
+    id: 1, texto: "Não sei isso, mas  o @kklmao sabe!", usu: "estupidossori"
+}, {
+    id: 1, texto: "O artigo 11 do cód.Penal pode te ajudar amigo!", usu: "fbigatito"
 }
 ]
 );

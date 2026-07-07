@@ -5,7 +5,11 @@ import CommentsPostagens from './CommentsPostagens.vue';
 
 let postagens = ref([
     {
-    id: 1, titulo:'Esse é o bobby', conteudo: 'conteudo super importante', autor: 'usuariobobby', data: '24/06/2009'}
+    id: 1, titulo:'Esse é o bobby', conteudo: 'conteudo super importante', autor: 'usuariobobby', data: '24/06/2009'}, {
+    id: 2, titulo:'NÃO SEI VUE', conteudo: 'Gente, não estou conseguindo entender os componentes do Vue, alguem pode me ajudar com isso??', autor: 'hvm', data: '08/04/2009'}, {
+    id: 3, titulo:'Aulas de atuação', conteudo: 'Alguem sabe alguma aula de atuação boa ou um prof bom??', autor: 'stvgran', data: '24/06/2009'}, {
+    id: 4, titulo:'Café', conteudo: 'Onde vende café? meu fornecedor do hospital não faz mais isso', autor: 'coffbarneynotkillanyone', data: '06/07/2009'},     {id: 5, titulo:'Biollgia e Zoologia', conteudo: 'Algm bom de biologia. Estou com dificuldades sobre genetica  estatistica', autor: 'sontoffolizorrone', data: '11/07/2009'}
+
 ]);
 
  let usuario = ref('H')
@@ -53,21 +57,12 @@ function editar(post) {
 
     <section>
     <div>
- <div class="postar">
 
-        <h2>Criar post</h2>
-
-        <input type="text" v-model="postagensTituloNovo" placeholder="Titulo"> 
-        <textarea v-model="postagensConteudoNovo" placeholder="estou com dificuldade em..."></textarea>
-        <button @click="adicionar">
-         Postar
-        </button>
-    </div>
+    <h3>Postagens</h3>
 
  <div class="postagenss" v-for="post in postagens" :key="post.id" :usuario="usuario">
 
     <div class="listaPosts">
-    <h3>Postagens</h3>
 
                 <h2>
                    {{ post.titulo }}
@@ -101,6 +96,16 @@ function editar(post) {
 
     </div>
 
+     <div class="postar">
+
+        <h2>Criar post</h2>
+
+        <input type="text" v-model="postagensTituloNovo" placeholder="Titulo"> 
+        <textarea v-model="postagensConteudoNovo" placeholder="estou com dificuldade em..."></textarea>
+        <button @click="adicionar">
+         Postar
+        </button>
+    </div>
 
     </section>
     
@@ -138,6 +143,12 @@ div.postar {
     max-width: 30%;
     margin: 0 auto;
     margin-bottom: 30px;
+}
+
+h3{
+    font-size: 60px;
+    text-align: center;
+    font-weight: bolder;
 }
 
 </style>
