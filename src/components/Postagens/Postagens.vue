@@ -2,7 +2,7 @@
 
 import { ref } from 'vue';
 import CommentsPostagens from './CommentsPostagens.vue';
-
+import CriarPost from './CriarPost.vue';
 let postagens = ref([
     {
     id: 1, titulo:'Esse é o bobby', conteudo: 'conteudo super importante', autor: 'usuariobobby', data: '24/06/2009'}, {
@@ -16,11 +16,11 @@ let postagens = ref([
 
 const postagensTituloNovo = ref('');
 const postagensConteudoNovo = ref('');
-const mostrarComent = ref(false);
-const usuLogado = ref('cofeeBarney')
+const mostrarComent = ref(null);
+const usuLogado = ref('cofeeBarney');
+const mostrarPostar = ref(false);
 
-
-function adicionar() {
+function adicionar(posts) {
 if (!postagensConteudoNovo.value.trim() || !postagensTituloNovo.value.trim()) {
     alert(`Preencha os campos!!`);
 } else {
@@ -86,26 +86,25 @@ function editar(post) {
             <button @click="editar(post)">Editar</button>
 
         </div>
-<button @click="mostrarComent = true" v-show="!mostrarComent">Ver Comentários</button>
-<div v-if="mostrarComent">
+<button @click="mostrarComent = post.id" v-show="!mostrarComent">Ver Comentários</button>
+<div v-if="mostrarComent === post.id">
     <CommentsPostagens :post='post' :usuario='usuario'></CommentsPostagens>
-    <button @click="mostrarComent = false">Fechar Comentários</button>
+    <button @click="mostrarComent = null">Fechar Comentários</button>
 </div>
     </div>
         </div>
 
     </div>
+    <div>
+      <button @click="mostrarPostar = true">
+    +
+</button>  
+<CriarPost v-if="mostrarPostar" @postar="adicionar" @fechar="mostrarPostar = false">
 
-     <div class="postar">
-
-        <h2>Criar post</h2>
-
-        <input type="text" v-model="postagensTituloNovo" placeholder="Titulo"> 
-        <textarea v-model="postagensConteudoNovo" placeholder="estou com dificuldade em..."></textarea>
-        <button @click="adicionar">
-         Postar
-        </button>
+</CriarPost>
     </div>
+
+   
 
     </section>
     

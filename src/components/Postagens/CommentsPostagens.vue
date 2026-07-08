@@ -2,7 +2,7 @@
 
 import { ref } from 'vue';
 
-defineEmits(['id', 'texto', 'usu','comentar', 'usuarioLogado'])
+defineProps(['post', 'usuario'])
 
 let comentarios = ref([{
     id: 1, texto: "Não entendi, alguem me explica?", usu: "NeymarJr"
