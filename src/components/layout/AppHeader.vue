@@ -4,7 +4,7 @@
 <template>
   <header>
     <div>
-     <img src="../../../public/logo-kuaa.png" alt="Logo Header" class="logo">
+     <img src="/logo-kuaa.png" alt="Logo Header" class="logo">
     </div>
     <div class="direito">
       <div class="search">
