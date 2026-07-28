@@ -16,6 +16,7 @@ function criar() {
     alert("Algum campo obrigatorio deixou de ser peenchido")
   }
   salas.value.push({
+    id: Date.now(),
     nome: nome.value,
     descricao: descricao.value,
     banner: banner.value
