@@ -13,7 +13,7 @@
         <input type="search" v-model="busca" placeholder="Buscar..."> <!-- Busca de usuário, sala e postagem -->
       </div>
       <div>
-        <font-awesome-icon icon="bars" class="menu" />
+        <router-link to="/login"><font-awesome-icon icon="right-to-bracket" class="login" /></router-link>
       </div>
     </div>
   </header>
@@ -50,7 +50,7 @@ font-size: 1.2rem;
   align-items: center;
 }
 
-.menu{
+.login{
   color: #D9D9D9;
   font-size: 1.5rem;
 }
