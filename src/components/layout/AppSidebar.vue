@@ -1,10 +1,13 @@
 <script setup>
+import { RouterLink } from 'vue-router';
+
 import { salas } from '@/data/salas'
 </script>
 
 <template>
   <aside class="sidebar">
     <nav class="geral">
+
       <ul>
         <li>
           <router-link to="/"> <font-awesome-icon icon="house" /> Página Inicial </router-link>
@@ -15,7 +18,9 @@ import { salas } from '@/data/salas'
         <li>
           <router-link to="/profile"> <font-awesome-icon icon="user" /> Perfil </router-link>
         </li>
+        <router-link to="/login">
       </ul>
+
     </nav>
 
     <hr />
