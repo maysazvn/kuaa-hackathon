@@ -56,6 +56,8 @@
       </ul>
     </nav>
   </aside>
+
+  <!-- bottom navigation https://vuetifyjs.com/en/components/bottom-navigation/#color -->
 </template>
 
 <style scoped>
