@@ -19,6 +19,7 @@ import { salas } from '@/data/salas'
           <router-link to="/profile"> <font-awesome-icon icon="user" /> Perfil </router-link>
         </li>
         <router-link to="/login">
+          <router-link to="/postagens"> POstagens </router-link> <!-- isso é um teste, apagar depois!-->
       </ul>
 
     </nav>
