@@ -20,10 +20,8 @@ const mostrarComent = ref(null);
 const usuLogado = ref('cofeeBarney');
 const mostrarPostar = ref(false);
 
-function adicionar(posts) {
-if (!postagensConteudoNovo.value.trim() || !postagensTituloNovo.value.trim()) {
-    alert(`Preencha os campos!!`);
-} else {
+function adicionar() {
+  
     let maiorId =  Math.max(...postagens.value.map(item => item.id))
     const novoPost = {
         titulo: postagensTituloNovo.value,
@@ -33,9 +31,7 @@ if (!postagensConteudoNovo.value.trim() || !postagensTituloNovo.value.trim()) {
         id: maiorId + 1
     }
     postagens.value.unshift(novoPost)
-    postagensConteudoNovo.value = '';
-    postagensTituloNovo.value = '';
-}
+   
 }
 
 function excluir(idItem) {
