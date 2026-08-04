@@ -6,6 +6,7 @@ import ProfileView from '@/views/user/ProfileView.vue'
 import ExploreView from '@/views/rooms/ExploreView.vue'
 import AboutView from '@/views/suporte/AboutView.vue'
 import HelpView from '@/views/suporte/HelpView.vue'
+import EditProfileView from '@/views/user/EditProfileView.vue'
 import SalaView from '@/views/rooms/SalaView.vue'
 
 const router = createRouter({
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/profile',
       name: 'Perfil',
       component: ProfileView,
+    },
+    {
+      path: '/edit',
+      name: 'Editar',
+      component: EditProfileView,
     },
   ],
 })
