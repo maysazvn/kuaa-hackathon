@@ -6,6 +6,7 @@ import ProfileView from '@/views/user/ProfileView.vue'
 import ExploreView from '@/views/rooms/ExploreView.vue'
 import AboutView from '@/views/suporte/AboutView.vue'
 import HelpView from '@/views/suporte/HelpView.vue'
+import SalaView from '@/views/rooms/SalaView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,6 +25,11 @@ const router = createRouter({
       path: '/room',
       name: 'Sala',
       component: RoomView
+    },
+    {
+      path: '/salas/:id',
+      name: 'Salas',
+      component: SalaView
     },
     {
       path: '/about',
