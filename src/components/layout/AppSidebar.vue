@@ -59,15 +59,16 @@ aside.sidebar {
   background: #262626;
   display: flex;
   flex-direction: column;
-  width: 200px;
+  width: 250px;
   height: 100vh;
-  position: fixed;
   padding-top: 10px;
 }
 
 h1 {
   color: #d9d9d9;
   font-weight: bold;
+  margin: 5px 0;
+  font-size: 1.5rem;
 }
 
 nav.salas{

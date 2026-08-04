@@ -19,7 +19,8 @@
     "@fortawesome/free-solid-svg-icons": "^7.3.0",
     "@fortawesome/vue-fontawesome": "^3.3.0",
     "vue": "^3.5.38",
-    "vue-router": "^5.1.0"
+    "vue-router": "^5.1.0",
+    "vuetify": "^4.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
