@@ -26,12 +26,13 @@ header{
   justify-content: space-between;
   align-items: center;
   padding: 5px;
+  border-bottom: 2px solid #313131;
 }
 
 .search{
   display: flex;
-  background: #F9EAA8;
-  border-radius: 10px;
+  background: #F8D76B;
+  border-radius: 50px;
   padding: 2px;
   align-items: center;
 }

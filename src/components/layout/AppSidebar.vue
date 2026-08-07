@@ -61,12 +61,13 @@ import { salas } from '@/data/salas'
 
 <style scoped>
 aside.sidebar {
-  background: #262626;
+  background: #313131;
   display: flex;
   flex-direction: column;
   width: 250px;
   height: 100vh;
-  padding-top: 10px;
+
+  padding: 10px 5px;
 }
 
 h1 {
@@ -95,6 +96,8 @@ div.salas{
 
 ul li a {
   color: #d9d9d9;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 ul li:hover {
@@ -103,7 +106,10 @@ ul li:hover {
 }
 
 .router-link-active {
-  font-weight: bold;
+border-left: 3px solid #F8D76B;
+background: #1e1e1e;
+padding: 3px 6px;
+border-radius: 5px;
 }
 
 .mais{

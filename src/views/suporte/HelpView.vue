@@ -54,7 +54,7 @@
 h1, h2{
   font-family: "Prompt", sans-serif;
   font-weight: bold;
-  color: #1E1E1E;
+  color: #d9d9d9;
   text-align: center;
 }
 
@@ -71,11 +71,12 @@ div.p{
   justify-content: center;
   flex-direction: column;
   margin: 1vw auto;
-  background: #1E1E1E;
+  background: #313131;
   padding: 15px;
   border-radius: 15px;
   color: #D9D9D9;
   width: 50%;
+  box-shadow: 0px 0px 10px #0000005d;
 }
 
 summary{
@@ -105,10 +106,10 @@ div.contato{
 }
 
 div.contato p {
-color: #1E1E1E;
+color: #d9d9d9;
 text-align: center;
 margin: 15px auto;
-border: 4px solid #1E1E1E;
+border: 3px solid #d9d9d9;
 border-radius: 15px;
 font-weight: bold;
 width: fit-content;
