@@ -21,12 +21,19 @@
 
 <style scoped>
 header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
   background: #1E1E1E;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px;
+  padding: 5px 20px;
   border-bottom: 2px solid #313131;
+  box-sizing: border-box;
+  z-index: 1000;
 }
 
 .search{
@@ -43,6 +50,13 @@ header{
 
 input{
 font-size: 1.2rem;
+background: transparent;
+  border: none;
+  outline: none;
+}
+
+input::placeholder {
+  color: #584c3a;
 }
 
 .direito{

@@ -61,12 +61,18 @@ import { salas } from '@/data/salas'
 
 <style scoped>
 aside.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  height: calc(100vh - 60px);
+  z-index: 999;
   background: #313131;
   display: flex;
   flex-direction: column;
   width: 250px;
   height: 100vh;
-
   padding: 10px 5px;
 }
 
@@ -98,6 +104,7 @@ ul li a {
   color: #d9d9d9;
   font-weight: 600;
   font-size: 1.1rem;
+  transition: 0.25s ease;
 }
 
 ul li:hover {
@@ -105,11 +112,11 @@ ul li:hover {
   transition: 0.2s;
 }
 
-.router-link-active {
+ul li a.router-link-active {
 border-left: 3px solid #F8D76B;
-background: #1e1e1e;
-padding: 3px 6px;
+padding: 3px 15px 3px 6px;
 border-radius: 5px;
+box-shadow: inset 4px 0 8px -2px #a98e3641;
 }
 
 .mais{

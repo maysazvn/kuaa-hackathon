@@ -2,7 +2,6 @@
 </script>
 
 <template>
-  <main>
     <h1>Ajuda</h1>
     <div class="p">
           <details>
@@ -46,7 +45,6 @@
     <p>E-mail: kuaacontact@kuaamail.com</p>
 </div>
 
-  </main>
 </template>
 
 <style scoped>
