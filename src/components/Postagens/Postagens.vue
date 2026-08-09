@@ -3,14 +3,7 @@
 import { ref } from 'vue';
 import CommentsPostagens from './CommentsPostagens.vue';
 import CriarPost from './CriarPost.vue';
-let postagens = ref([
-    {
-    id: 1, titulo:'Esse é o bobby', conteudo: 'conteudo super importante', autor: 'usuariobobby', data: '24/06/2009'}, {
-    id: 2, titulo:'NÃO SEI VUE', conteudo: 'Gente, não estou conseguindo entender os componentes do Vue, alguem pode me ajudar com isso??', autor: 'hvm', data: '08/04/2009'}, {
-    id: 3, titulo:'Aulas de atuação', conteudo: 'Alguem sabe alguma aula de atuação boa ou um prof bom??', autor: 'stvgran', data: '24/06/2009'}, {
-    id: 4, titulo:'Café', conteudo: 'Onde vende café? meu fornecedor do hospital não faz mais isso', autor: 'coffbarneynotkillanyone', data: '06/07/2009'},     {id: 5, titulo:'Biollgia e Zoologia', conteudo: 'Algm bom de biologia. Estou com dificuldades sobre genetica  estatistica', autor: 'sontoffolizorrone', data: '11/07/2009'}
-
-]);
+import { postagens } from '@/data/postagens.js';
 
  let usuario = ref('H')
 
@@ -21,7 +14,7 @@ const usuLogado = ref('cofeeBarney');
 const mostrarPostar = ref(false);
 
 function adicionar() {
-  
+
     let maiorId =  Math.max(...postagens.value.map(item => item.id))
     const novoPost = {
         titulo: postagensTituloNovo.value,
@@ -31,7 +24,7 @@ function adicionar() {
         id: maiorId + 1
     }
     postagens.value.unshift(novoPost)
-   
+
 }
 
 function excluir(idItem) {
@@ -94,16 +87,16 @@ function editar(post) {
     <div>
       <button @click="mostrarPostar = true">
     +
-</button>  
+</button>
 <CriarPost v-if="mostrarPostar" @postar="adicionar" @fechar="mostrarPostar = false">
 
 </CriarPost>
     </div>
 
-   
+
 
     </section>
-    
+
 </template>
 
 <style scoped>
