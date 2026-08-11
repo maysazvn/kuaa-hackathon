@@ -11,8 +11,8 @@ let existe = ref(true);
 
 const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || '');
 const desc = ref(localStorage.getItem('desc') || '');
-const urlFoto = ref(localStorage.getItem('urlFoto') || '');
-const urlBanner = ref(localStorage.getItem('urlBanner') || '');
+const urlFoto = ref(localStorage.getItem('urlFoto') || '/pfpPlaceholder.png');
+const urlBanner = ref(localStorage.getItem('urlBanner') || '/bannerPlaceholder.png');
 const mostrarSala = false;
 
 let estaseguindo = false;

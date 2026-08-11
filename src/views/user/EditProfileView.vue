@@ -13,8 +13,8 @@ watch(desc, (novaDesc) => {
   localStorage.setItem('desc', novaDesc)
 })
 
-const urlFoto = ref(localStorage.getItem('urlFoto') || '');
-const urlBanner = ref(localStorage.getItem('urlBanner') || '');
+const urlFoto = ref(localStorage.getItem('urlFoto') || '/pfpPlaceholder.png');
+const urlBanner = ref(localStorage.getItem('urlBanner') || '/bannerPlaceholder.png');
 
 
 let novaFoto = ref(null);
