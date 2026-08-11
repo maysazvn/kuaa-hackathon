@@ -1,45 +1,105 @@
 <script setup>
 import { ref } from 'vue'
-const emit = defineEmits(['postar', 'fechar'])
+const emit = defineEmits(['fechar', 'adicionar'])
+import { postagens } from '@/data/postagens.js';
+ import { shallowRef } from 'vue'
 
-const titulo = ref('')
-const conteudo = ref('')
 
-function postar () {
-    
-    if (!titulo.value.trim() || !conteudo.value.trim()) {
-    alert(`Preencha os campos!!`);
+ const dialog = shallowRef(false)
+const postagensTituloNovo = ref('');
+const postagensConteudoNovo = ref('');
+const usuLogado = ref('cofeeBarney');
+
+
+
+
+function adicionar() {
+  if (!postagensTituloNovo.value.trim() || !postagensConteudoNovo.value.trim()) {
+    alert(`Preencha os campos!`);
 } else {
-    emit('postar', {
-        titulo: titulo.value,
-        conteudo: conteudo.value
-    }) 
-    
-    titulo.value = ''
-    conteudo.value = ''
+    let maiorId =  Math.max(...postagens.value.map(item => item.id))
+    const novoPost = {
+        titulo: postagensTituloNovo.value,
+     conteudo: postagensConteudoNovo.value,
+        autor: usuLogado.value,
+        data:  Date(Date.now()).toLocaleString('pt-BR'),
+        id: maiorId + 1
+    }
 
-}
+    postagens.value.unshift(novoPost)
+     postagensTituloNovo.value =''
+ postagensConteudoNovo.value = '';
+ console.log("fechei")
+  emit('fechar') }
    
 }
 
+
 </script>
 <template>
-    <section>
+    <section class="sessaoPostar">
 
-         <div class="postar">
+        <v-card prepend-icon="mdi-account" title="Postar" class="caixa">
+        <v-card-text>
+          <v-row density="comfortable">
+            <v-col cols="12" md="12">
+              <v-text-field label="Título" required v-model="postagensTituloNovo"  class="formulario"></v-text-field>
+            </v-col>
 
-        <h2>Criar post</h2>
+            <v-col cols="12" md="12">
+              <v-text-field
+                hint="Compartilhe suas ideias"
+                label="O que está pensando agora?..."
+                v-model="postagensConteudoNovo"
+                class="formulario"
+              ></v-text-field>
+            </v-col>
 
-        <input type="text" v-model="postagensTituloNovo" placeholder="Titulo"> 
-        <textarea v-model="postagensConteudoNovo" placeholder="estou com dificuldade em..."></textarea>
+            <v-col cols="12">
+              <v-autocomplete
+                :items="['2info2', 'Quimica do Mal', 'Biologia']"
+                label="Sala"
+                auto-select-first
+                multiple
+               class="formulario"
 
-        <button @click="postar">
-         Postar
-        </button>
-        <button @click="$emit('fechar')">Cancelar</button>
-    </div>
+              ></v-autocomplete>
+            </v-col>
+          </v-row>
+
+          <small class="text-body-small text-medium-emphasis">
+            *indica campo obrigatório
+          </small>
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-btn color="primary" @click="adicionar">Postar</v-btn>
+           <v-btn
+            text="Close"
+            variant="plain"
+            @click="$emit('fechar')"
+          ></v-btn>
+</v-card-actions>
+  </v-card>
+    
+         
     </section>
  
 </template>
 <style>
+
+.caixa  {
+  padding: 50px;
+  border-radius: 7px;
+}
+
+title {
+  border-bottom: 20px;
+}
+
+label {
+  padding: 20px;
+}
 </style>

@@ -3,36 +3,13 @@
 import { ref } from 'vue';
 import CommentsPostagens from './CommentsPostagens.vue';
 import CriarPost from './CriarPost.vue';
-let postagens = ref([
-    {
-    id: 1, titulo:'Esse é o bobby', conteudo: 'conteudo super importante', autor: 'usuariobobby', data: '24/06/2009'}, {
-    id: 2, titulo:'NÃO SEI VUE', conteudo: 'Gente, não estou conseguindo entender os componentes do Vue, alguem pode me ajudar com isso??', autor: 'hvm', data: '08/04/2009'}, {
-    id: 3, titulo:'Aulas de atuação', conteudo: 'Alguem sabe alguma aula de atuação boa ou um prof bom??', autor: 'stvgran', data: '24/06/2009'}, {
-    id: 4, titulo:'Café', conteudo: 'Onde vende café? meu fornecedor do hospital não faz mais isso', autor: 'coffbarneynotkillanyone', data: '06/07/2009'},     {id: 5, titulo:'Biollgia e Zoologia', conteudo: 'Algm bom de biologia. Estou com dificuldades sobre genetica  estatistica', autor: 'sontoffolizorrone', data: '11/07/2009'}
-
-]);
+import { postagens } from '@/data/postagens.js';
 
  let usuario = ref('H')
-
-const postagensTituloNovo = ref('');
-const postagensConteudoNovo = ref('');
 const mostrarComent = ref(null);
-const usuLogado = ref('cofeeBarney');
-const mostrarPostar = ref(false);
+import { shallowRef } from 'vue'
+const dialog = shallowRef(false)
 
-function adicionar() {
-  
-    let maiorId =  Math.max(...postagens.value.map(item => item.id))
-    const novoPost = {
-        titulo: postagensTituloNovo.value,
-     conteudo: postagensConteudoNovo.value,
-        autor: usuLogado.value,
-        data:  Date(Date.now()).toLocaleString('pt-BR'),
-        id: maiorId + 1
-    }
-    postagens.value.unshift(novoPost)
-   
-}
 
 function excluir(idItem) {
    postagens.value = postagens.value.filter(post => post.id !== idItem)
@@ -63,12 +40,12 @@ function editar(post) {
                 <h2>
                    {{ post.titulo }}
                 </h2>
-                <p>
+                <p class="conteudo">
                     {{ post.conteudo }}
                 </p>
-                   <p>
+                   <p class="autor">
                     <small><strong>
-                        {{ post.autor }}
+                       por  {{ post.autor }}
                     </strong></small>
                 </p>
                 <p>
@@ -91,17 +68,21 @@ function editar(post) {
         </div>
 
     </div>
-    <div>
-      <button @click="mostrarPostar = true">
-    +
-</button>  
-<CriarPost v-if="mostrarPostar" @postar="adicionar" @fechar="mostrarPostar = false">
+  
+  <div class="pa-4 text-center">
+      <v-dialog v-model="dialog" max-width="600">
+        <template v-slot:activator="{ props: activatorProps }">
+          <v-btn
+            class="text-none font-weight-regular"
+            text="+"
+            variant="tonal"
+            v-bind="activatorProps"
+          />
+        </template>
 
-</CriarPost>
+        <CriarPost @adicionar="adicionar" @fechar="dialog = false"/>
+      </v-dialog>
     </div>
-
-   
-
     </section>
     
 </template>
@@ -145,5 +126,11 @@ h3{
     text-align: center;
     font-weight: bolder;
 }
+p.autor {
+    margin: 0 0;
+}
 
+p.conteudo {
+    font-size: 1.2rem;
+}
 </style>
