@@ -50,10 +50,6 @@ function mudarBanner(event) {
   }
 }
 
-function confirmar () {
-  console.log('confirmando alterações...');
-}
-
 </script>
 
 <template>
@@ -101,7 +97,7 @@ function confirmar () {
       </div>
 
       <router-link to="/profile">
-        <button v-on:click="confirmar">Confirmar</button>
+        <button>Confirmar</button>
       </router-link>
       
 
