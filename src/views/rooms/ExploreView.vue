@@ -1,23 +1,38 @@
 <script setup>
-import { salas } from '@/data/salas'
+import CartSala from '@/components/cart/CartSala.vue';
+import { salas } from '@/data/salas';
 </script>
 
 <template>
-  <div v-for="sala in salas" :key="sala.nome" :nome="sala.nome" :descricao="sala.descricao" :banner="sala.banner"
-    class="salas">
-    <h2>{{ sala.nome }}</h2>
-    <img :src="sala.banner" :alt="sala.nome">
-    <RouterLink :to="`/salas/${sala.id}`">
-      <button>Entrar</button>
-    </RouterLink>
-  </div>
 
-  Explorar
+ 
+  <div class="container">
+    <h1>Explorar Salas</h1>
+    <section class="salas">
+      <CartSala v-for="sala in salas" :key="sala.idSala" :idSala="sala.idSala" :nome="sala.nome" :participantes="sala.participantes" :desc="sala.desc" :usuarioCriador="sala.usuarioCriador" :status="sala.status">
+       <RouterLink :to="`/salas/${sala.idSala}`">
+          <button>Entrar</button>
+        </RouterLink>
+  </CartSala>
+    </section>
+  </div> 
+
 </template>
 
 <style scoped>
-.salas {
-  color: black;
+.container{
+  margin: 3vw 0 0 13vw;
+  background-color: #1E1E1E;
   text-align: center;
 }
+
+ .salas{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr)); 
+    gap: 4vw;
+    margin: 0px auto;
+    padding: 40px;
+    width: 80%;
+    position: relative;
+ }
 </style>
