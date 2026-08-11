@@ -6,6 +6,8 @@ import { ref } from 'vue';
 
 import { seguidores } from './Followers';
 import { seguindo } from './Following';
+import { salasUsuario } from '@/data/salasUsuario';
+
 
 let existe = ref(true);
 
@@ -86,9 +88,13 @@ let mostrar = ref(false);
         </div>
 
         <div class="salas" v-show="mostrarSala === 'sim'">
-          <p>
-            (salas do usuario)
-          </p>
+          <ul>
+            <li v-for="sala in salasUsuario" :key="sala.id" :nome="sala.nome">
+              <p>
+                {{ sala.nome }}
+              </p>
+            </li>
+          </ul> 
         </div>
 
 
