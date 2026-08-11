@@ -1,6 +1,10 @@
 <script setup>
 import CartSala from '@/components/cart/CartSala.vue';
 import { salas } from '@/data/salas';
+import { salasUsuario } from '@/data/salasUsuario';
+function enviar(sal){
+salasUsuario.value.push(sal)
+}
 </script>
 
 <template>
@@ -14,9 +18,11 @@ import { salas } from '@/data/salas';
     <section class="salas">
       <CartSala v-for="sala in salas" :key="sala.idSala" :idSala="sala.idSala" :nome="sala.nome" :participantes="sala.participantes" :desc="sala.desc" :usuarioCriador="sala.usuarioCriador" :banner="sala.banner" :status="sala.status">
        <RouterLink :to="`/salas/${sala.idSala}`">
-          Entrar
+          Vizualizar
         </RouterLink>
-
+        <button v-on:click="enviar(sala)"> 
+          Entrar
+        </button>
   </CartSala>
     </section>
   </div> 
@@ -45,6 +51,6 @@ import { salas } from '@/data/salas';
  .titulo{
   display: flex;
   align-items: center;
-  
+
  }
 </style>
