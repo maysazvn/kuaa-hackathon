@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { salas } from '@/data/salas'
+defineProps (['nome', 'desc', 'banner'])
 
 const route = useRoute()
 
@@ -16,15 +17,16 @@ console.log("Sala encontrada:", sala.value)
 </script>
 <template>
     <div class="sala" v-if="sala">
-        <img :src="sala.banner">
+        <img :src="banner">
 
-        <h1>{{ sala.nome }}</h1>
+        <h1>{{ nome }}</h1>
 
-        <p>{{ sala.descricao }}</p>
+        <p>{{ desc }}</p>
     </div>
 </template>
 <style scoped>
 .sala {
-    margin-left: 20rem;
+    margin-left: 25rem;
+    font-size: 10vw;
 }
 </style>

@@ -6,7 +6,8 @@ export const salas = ref([
     participantes: 21,
     desc: 'fórum de discussão de sociologia da 2info2',
     usuarioCriador: 'Samusaax',
-    status: 1
+    status: 1,
+    banner: ''
 },
 {
     idSala: 2,
@@ -14,7 +15,8 @@ export const salas = ref([
     participantes: 32,
     desc: 'Discutindo física com kurt Cobain brasileiro',
     usuarioCriador: 'PedroLooser',
-    status: 1
+    status: 1,
+    banner: ''
 },
 {
     idSala: 3,
@@ -22,7 +24,8 @@ export const salas = ref([
     participantes: 2,
     desc: 'Sala de discussão da 2quimiii',
     usuarioCriador: 'Rochelixx',
-    status: 1
+    status: 1,
+    banner: ''
 },
 {
     idSala: 4,
@@ -31,26 +34,30 @@ export const salas = ref([
     desc: 'AAAAAAAAaaa',
     usuarioCriador: 'erererer',
     status: 0,
+    banner: ''
 },{
     idSala: 5,
     nome: '22info22',
     participantes: 21,
     desc: 'fórum de discussão de sociologia da 2info2',
     usuarioCriador: 'Samusaax',
-    status: 1
+    status: 1,
+    banner: ''
 },{
     idSala: 6,
     nome: '22info22',
     participantes: 21,
     desc: 'fórum de discussão de sociologia da 2info2',
     usuarioCriador: 'Samusaax',
-    status: 1
+    status: 1,
+    banner: ''
 },{
     idSala: 7,
     nome: '22info22',
     participantes: 21,
     desc: 'fórum de discussão de sociologia da 2info2',
     usuarioCriador: 'Samusaax',
-    status: 1
+    status: 1,
+    banner: ''
 },
 ])

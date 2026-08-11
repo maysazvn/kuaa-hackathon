@@ -9,9 +9,9 @@ import { salas } from '@/data/salas';
   <div class="container">
     <h1>Explorar Salas</h1>
     <section class="salas">
-      <CartSala v-for="sala in salas" :key="sala.idSala" :idSala="sala.idSala" :nome="sala.nome" :participantes="sala.participantes" :desc="sala.desc" :usuarioCriador="sala.usuarioCriador" :status="sala.status">
+      <CartSala v-for="sala in salas" :key="sala.idSala" :idSala="sala.idSala" :nome="sala.nome" :participantes="sala.participantes" :desc="sala.desc" :usuarioCriador="sala.usuarioCriador" :banner="sala.banner" :status="sala.status">
        <RouterLink :to="`/salas/${sala.idSala}`">
-          <button>Entrar</button>
+          Entrar
         </RouterLink>
   </CartSala>
     </section>
@@ -20,6 +20,9 @@ import { salas } from '@/data/salas';
 </template>
 
 <style scoped>
+.button {
+  color: aqua;
+}
 .container{
   margin: 3vw 0 0 13vw;
   background-color: #1E1E1E;
