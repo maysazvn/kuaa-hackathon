@@ -63,16 +63,17 @@ function pegarSala(idSala) {
 <template>
   <div class="container">
     <div class="postar">
-      <div>
-        <img src="" alt="icone de perfil do usuario" />
+      <div class="imginput">
+        <img src="../../public/kuaa.png" alt="icone de perfil do usuario" />
         <input type="text" placeholder="Qual é seu tema de estudo agora?">
 
+      </div>
+
+      <div class="botao">
         <ul v-for="sala in salas" :key="sala.id">
           <!-- a opção de escolher uma sala para psotar -->
         </ul>
-      </div>
 
-      <div>
         <button class="botaoPostar" type="submit">Postar</button>
       </div>
     </div>
@@ -86,9 +87,12 @@ function pegarSala(idSala) {
 
         <div class="identificacao">
           <span class="salas" v-if="usuarioLogado.salasInscritas.includes(post.idSala)"
-            >Em {{ pegarSala(post.idSala) }}</span
-          >
+            >Em {{ pegarSala(post.idSala) }}</span>
           <span class="salas" v-else>Em alta em {{ pegarSala(post.idSala) }}</span>
+        </div>
+
+        <div>
+
         </div>
       </div>
     </div>
@@ -96,7 +100,53 @@ function pegarSala(idSala) {
 </template>
 
 <style scoped>
+
+.container{
+margin: 3vw;
+}
+
 div{
   color: white;
+}
+
+.postar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postar img{
+  border-radius: 100%;
+  width: 80px;
+}
+
+input{
+  outline: none;
+  border: none;
+  width: 500px;
+}
+
+.botao{
+  display: flex;
+  justify-content: baseline;
+}
+
+.botaoPostar{
+  color: #1e1e1e;
+  font-weight: bold;
+  background-color: #eeeeee;
+  padding: 3px 30px;
+  border-radius: 15px;
+}
+
+.botaoPostar:hover{
+  transition: .2s;
+  opacity: calc(0.8);
+  transform: scale(0.95);
+}
+
+.imginput{
+  display: flex;
+  gap: 15px;
 }
 </style>
