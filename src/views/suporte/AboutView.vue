@@ -307,7 +307,7 @@ h2 {
 
 h1 {
   font-size: 2.5rem;
-  color: #1e1e1e;
+  color: #d9d9d9;
 }
 
 h2 {
@@ -333,7 +333,7 @@ p.oq {
   text-align: center;
   font-size: 1.2rem;
   width: 30vw;
-  color: #1e1e1e;
+  color: #d9d9d9;
   font-weight: bold;
 }
 
@@ -358,8 +358,8 @@ p.oq {
 }
 
 .estudante-card {
-  background: #1e1e1e;
-  color: #d9d9d9;
+  background: #F8D76B;
+  color: #1e1e1e;
   padding: 30px;
   border-radius: 15px;
   width: 450px;
@@ -387,8 +387,8 @@ p.oq {
 .seta {
   position: absolute;
   z-index: 2;
-  background: #1e1e1e;
-  color: #fff;
+  background: #313131;
+  color: #d9d9d9;
   border: none;
   border-radius: 50%;
   width: 44px;
@@ -400,7 +400,7 @@ p.oq {
 .seta:hover{
 transform: scale(0.9);
 transition: 0.3s;
-background-color: #1e1e1eaf;
+background-color: #313131af;
 }
 
 .seta-esquerda {
