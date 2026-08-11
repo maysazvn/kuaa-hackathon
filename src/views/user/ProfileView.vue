@@ -13,7 +13,6 @@ const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || '');
 const desc = ref(localStorage.getItem('desc') || '');
 const urlFoto = ref(localStorage.getItem('urlFoto') || '/pfpPlaceholder.png');
 const urlBanner = ref(localStorage.getItem('urlBanner') || '/bannerPlaceholder.png');
-const mostrarSala = false;
 
 let estaseguindo = false;
  let mensagemSeguir = ref('Seguir')
@@ -37,6 +36,8 @@ function seguir (){
 
 }
 
+const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim');
+
 let mostrar = ref(false);
 
   function mostrarItens () {
@@ -52,6 +53,8 @@ let mostrar = ref(false);
     localStorage.clear();
     existe.value = false;
   }
+
+  
 
 </script>
 
@@ -82,8 +85,10 @@ let mostrar = ref(false);
           </ul>
         </div>
 
-        <div class="salas" v-show="mostrarSala = true">
-
+        <div class="salas" v-show="mostrarSala === 'sim'">
+          <p>
+            (salas do usuario)
+          </p>
         </div>
 
 
