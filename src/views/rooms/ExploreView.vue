@@ -4,15 +4,19 @@ import { salas } from '@/data/salas';
 </script>
 
 <template>
-
- 
   <div class="container">
+<div class="titulo">
+    <RouterLink to="/">
+      Voltar
+    </RouterLink>
+ </div>
     <h1>Explorar Salas</h1>
     <section class="salas">
       <CartSala v-for="sala in salas" :key="sala.idSala" :idSala="sala.idSala" :nome="sala.nome" :participantes="sala.participantes" :desc="sala.desc" :usuarioCriador="sala.usuarioCriador" :banner="sala.banner" :status="sala.status">
        <RouterLink :to="`/salas/${sala.idSala}`">
           Entrar
         </RouterLink>
+
   </CartSala>
     </section>
   </div> 
@@ -24,7 +28,7 @@ import { salas } from '@/data/salas';
   color: aqua;
 }
 .container{
-  margin: 3vw 0 0 13vw;
+  margin: 3vw 0 0 2vw;
   background-color: #1E1E1E;
   text-align: center;
 }
@@ -37,5 +41,10 @@ import { salas } from '@/data/salas';
     padding: 40px;
     width: 80%;
     position: relative;
+ }
+ .titulo{
+  display: flex;
+  align-items: center;
+  
  }
 </style>
