@@ -13,8 +13,8 @@ watch(desc, (novaDesc) => {
   localStorage.setItem('desc', novaDesc)
 })
 
-const urlFoto = ref(localStorage.getItem('urlFoto') || '');
-const urlBanner = ref(localStorage.getItem('urlBanner') || '');
+const urlFoto = ref(localStorage.getItem('urlFoto') || '/pfpPlaceholder.png');
+const urlBanner = ref(localStorage.getItem('urlBanner') || '/bannerPlaceholder.png');
 
 
 let novaFoto = ref(null);
@@ -50,9 +50,11 @@ function mudarBanner(event) {
   }
 }
 
-function confirmar () {
-  console.log('confirmando alterações...');
-}
+const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim');
+
+watch(mostrarSala, (novoValor) => {
+  localStorage.setItem('mostrarSala?', novoValor);
+});
 
 </script>
 
@@ -93,15 +95,15 @@ function confirmar () {
         <h3>
             Mostrar Salas?
         </h3>
-        <input type="radio" name="mostrarSala?" value="sim" id="yes">
+        <input type="radio" name="mostrarSala?" value="sim" id="yes" v-model="mostrarSala">
         <label for="yes">Sim</label>
 
-        <input type="radio" name="mostrarSala?" value="nao" id="no" >
+        <input type="radio" name="mostrarSala?" value="nao" id="no" v-model="mostrarSala">
         <label for="no">Não</label>
       </div>
 
       <router-link to="/profile">
-        <button v-on:click="confirmar">Confirmar</button>
+        <button>Confirmar</button>
       </router-link>
       
 

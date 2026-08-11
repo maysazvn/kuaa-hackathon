@@ -6,14 +6,15 @@ import { ref } from 'vue';
 
 import { seguidores } from './Followers';
 import { seguindo } from './Following';
+import { salasUsuario } from '@/data/salasUsuario';
+
 
 let existe = ref(true);
 
 const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || '');
 const desc = ref(localStorage.getItem('desc') || '');
-const urlFoto = ref(localStorage.getItem('urlFoto') || '');
-const urlBanner = ref(localStorage.getItem('urlBanner') || '');
-const mostrarSala = false;
+const urlFoto = ref(localStorage.getItem('urlFoto') || '/pfpPlaceholder.png');
+const urlBanner = ref(localStorage.getItem('urlBanner') || '/bannerPlaceholder.png');
 
 let estaseguindo = false;
  let mensagemSeguir = ref('Seguir')
@@ -37,6 +38,8 @@ function seguir (){
 
 }
 
+const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim');
+
 let mostrar = ref(false);
 
   function mostrarItens () {
@@ -52,6 +55,8 @@ let mostrar = ref(false);
     localStorage.clear();
     existe.value = false;
   }
+
+  
 
 </script>
 
@@ -82,8 +87,14 @@ let mostrar = ref(false);
           </ul>
         </div>
 
-        <div class="salas" v-show="mostrarSala = true">
-
+        <div class="salas" v-show="mostrarSala === 'sim'">
+          <ul>
+            <li v-for="sala in salasUsuario" :key="sala.id" :nome="sala.nome">
+              <p>
+                {{ sala.nome }}
+              </p>
+            </li>
+          </ul> 
         </div>
 
 
