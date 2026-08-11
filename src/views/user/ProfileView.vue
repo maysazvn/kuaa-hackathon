@@ -3,11 +3,9 @@
 
 import { ref } from 'vue';
 /* import { novaFoto } from '../user/EditProfileView.vue'; */
-
 import { seguidores } from './Followers';
 import { seguindo } from './Following';
-import { salasUsuario } from '@/data/salasUsuario';
-
+const suarios = JSON.parse(localStorage.getItem("salasEntradas")) || [];
 
 let existe = ref(true);
 
@@ -89,7 +87,7 @@ let mostrar = ref(false);
 
         <div class="salas" v-show="mostrarSala === 'sim'">
           <ul>
-            <li v-for="sala in salasUsuario" :key="sala.id" :nome="sala.nome">
+            <li v-for="sala in suarios" :key="sala.id" :nome="sala.nome">
               <p>
                 {{ sala.nome }}
               </p>
