@@ -2,8 +2,16 @@
 import CartSala from '@/components/cart/CartSala.vue';
 import { salas } from '@/data/salas';
 import { salasUsuario } from '@/data/salasUsuario';
+function estaNaSala(idSala) {
+  return salasUsuario.value.some(i => i.idSala === idSala);
+}
+function sair(saal){
+ salasUsuario.value = salasUsuario.value.filter(i => i != saal);
+}
 function enviar(sal){
-salasUsuario.value.push(sal)
+  if (!estaNaSala(sal.idSala)) {
+salasUsuario.value.push(sal);
+}
 }
 </script>
 
@@ -20,8 +28,11 @@ salasUsuario.value.push(sal)
        <RouterLink :to="`/salas/${sala.idSala}`">
           Vizualizar
         </RouterLink>
-        <button v-on:click="enviar(sala)"> 
+        <button v-on:click="enviar(sala)" v-if="!estaNaSala(sala.idSala)"> 
           Entrar
+        </button>
+        <button v-on:click="sair(sala)" v-else>
+          Sair
         </button>
   </CartSala>
     </section>
