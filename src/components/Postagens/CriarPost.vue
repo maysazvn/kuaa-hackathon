@@ -29,7 +29,6 @@ function adicionar() {
     postagens.value.unshift(novoPost)
      postagensTituloNovo.value =''
  postagensConteudoNovo.value = '';
- console.log("fechei")
   emit('fechar') }
    
 }
