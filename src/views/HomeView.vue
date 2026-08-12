@@ -65,73 +65,80 @@ function pegarSala(idSala) {
     <div class="postar">
       <div class="imginput">
         <img src="../../public/kuaa.png" alt="icone de perfil do usuario" />
-        <input type="text" placeholder="Qual é seu tema de estudo agora?">
-
+        <input type="text" placeholder="Qual é seu tema de estudo agora?" />
       </div>
 
       <div class="botao">
-        <ul v-for="sala in salas" :key="sala.id">
-          <!-- a opção de escolher uma sala para psotar -->
-        </ul>
+        <div v-for="sala in usuarioLogado" :key="sala.idSala" class="salasPostar">
+          <span @click="teste"> ! {{ sala.salasInscritas }}</span>
+        </div>
 
-        <button class="botaoPostar" type="submit">Postar</button>
+        <div>
+          <button class="botaoPostar" type="submit">Postar</button>
+        </div>
       </div>
     </div>
 
-    <div class="semPosts" v-if="postsTimeline.length === 0" >
+    <div class="semPosts" v-if="postsTimeline.length === 0">
       <p>Ainda não há posts. Experimente entrar em uma sala!</p>
     </div>
 
     <div class="feed" v-else>
       <div class="posts" v-for="post in postsTimeline" :key="post.id">
-
         <div class="identificacao">
           <span class="salas" v-if="usuarioLogado.salasInscritas.includes(post.idSala)"
-            >Em {{ pegarSala(post.idSala) }}</span>
+            >Em {{ pegarSala(post.idSala) }}</span
+          >
           <span class="salas" v-else>Em alta em {{ pegarSala(post.idSala) }}</span>
         </div>
 
-        <div>
-
-        </div>
+        <div></div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-
-.container{
-margin: 3vw;
+.container {
+  margin: 3vw;
 }
 
-div{
+div {
   color: white;
 }
 
-.postar{
+.postar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 }
 
-.postar img{
+.postar img {
   border-radius: 100%;
   width: 80px;
 }
 
-input{
+input {
   outline: none;
   border: none;
-  width: 500px;
+  width: 80vw;
 }
 
-.botao{
+.botao {
   display: flex;
-  justify-content: baseline;
+  justify-content: space-between;
+  gap: 5px;
 }
 
-.botaoPostar{
+.botao span {
+  cursor: pointer;
+  padding: 5px 15px;
+  background-color: #313131;
+  border-radius: 15px;
+}
+
+.botaoPostar {
   color: #1e1e1e;
   font-weight: bold;
   background-color: #eeeeee;
@@ -139,13 +146,13 @@ input{
   border-radius: 15px;
 }
 
-.botaoPostar:hover{
-  transition: .2s;
+.botaoPostar:hover {
+  transition: 0.2s;
   opacity: calc(0.8);
   transform: scale(0.95);
 }
 
-.imginput{
+.imginput {
   display: flex;
   gap: 15px;
 }
