@@ -6,30 +6,42 @@ import { salas } from '@/data/salas';
 
 const route = useRoute();
 
-const coisaPesquisada = ref('');
+const coisaPesquisada = ref(route.query.dado || '');
 
 watch(
-    () => route.query.dado,
-    (novoDado) => {
-        if(novoDado) {
-            coisaPesquisada.value = novoDado;
-        }
-    }
-)
+  () => route.query.dado,
+  (novoDado) => {
+    coisaPesquisada.value = novoDado || '';
+  }
+);
 
 const salasFiltradas = computed(() => {
-    if(!coisaPesquisada.value)
-    return salas.filter(sala => sala.nome === coisaPesquisada.value);
-}
-)
-console.log(coisaPesquisada)
+    const lista = salas.value; 
+
+    if (!coisaPesquisada.value) return lista;
+
+    const termo = coisaPesquisada.value.toLowerCase().trim();
+
+    return lista.filter(sala => 
+        sala.nome && sala.nome.toLowerCase().includes(termo)
+    );
+});
+
 
 </script>
 
 <template>
-    <div v-for="sala in salasFiltradas" :key="sala.idSala">
-        <div>
-            {{ sala.nome }}
+    <div>
+        <div v-if="salasFiltradas.length > 0">
+            <div v-for="sala in salasFiltradas" :key="sala.idSala || sala.id">
+                <div>
+                    {{ sala.nome }}
+                </div>
+            </div>
+        </div>
+
+        <div v-else>
+            <p>Nenhuma sala encontrada para "{{ coisaPesquisada }}"</p>
         </div>
     </div>
 
