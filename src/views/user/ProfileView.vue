@@ -5,11 +5,12 @@ import { ref } from 'vue';
 /* import { novaFoto } from '../user/EditProfileView.vue'; */
 import { seguidores } from './Followers';
 import { seguindo } from './Following';
+import { userReal } from '../account/login/UserReal';
 const suarios = JSON.parse(localStorage.getItem("salasEntradas")) || [];
 
 let existe = ref(true);
 
-const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || '');
+const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || userReal);
 const desc = ref(localStorage.getItem('desc') || '');
 const urlFoto = ref(localStorage.getItem('urlFoto') || '/pfpPlaceholder.png');
 const urlBanner = ref(localStorage.getItem('urlBanner') || '/bannerPlaceholder.png');
