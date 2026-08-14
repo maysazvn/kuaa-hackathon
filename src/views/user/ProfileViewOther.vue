@@ -1,17 +1,22 @@
 <script setup>
-import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { computed } from 'vue';
 import { seguidores } from './Followers';
 import { seguindo } from './Following';
 import { users } from './Users';
+const suarios = JSON.parse(localStorage.getItem("salasEntradas")) || [];
 
-let existe = ref(true);
+const route = useRoute();
+
+const usuario = computed(() => users.value.find((u) => u.id == route.params.id));
+
 </script>
 
 <template>
-    <main class="container" v-show="existe == true" >
+    <main class="container">
     <div class="cartaoPerfil">
-      <img v-if="urlBanner" :src="urlBanner" class="banner">
-      <img v-if="urlFoto" :src="urlFoto" class="foto">
+      <img v-if="usuario.banner" :src="usuario.banner" class="banner">
+      <img v-if="usuario.pfp" :src="usuario.pfp" class="foto">
 
       <button class="seguirUsuario" v-on:click="seguir()">{{ mensagemSeguir }}</button>
 
@@ -27,7 +32,7 @@ let existe = ref(true);
           </ul>
         </div>
 
-        <div class="salas" v-show="mostrarSala === 'sim'">
+        <div class="salas" v-show="usuario.mostrarSala === 'sim'">
           <ul>
             <li v-for="sala in suarios" :key="sala.id" :nome="sala.nome">
               <p>
