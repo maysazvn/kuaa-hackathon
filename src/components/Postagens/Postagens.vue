@@ -1,27 +1,42 @@
 <script setup>
 
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import CommentsPostagens from './CommentsPostagens.vue';
 import CriarPost from './CriarPost.vue';
 import { postagens } from '@/data/postagens.js';
 
- let usuario = ref('H')
+
+ let usuario = ref('cofeeBarney')
 const mostrarComent = ref(null);
 import { shallowRef } from 'vue'
 const dialog = shallowRef(false)
 
+const storage = `postagens_${postagens.id}`
+
+
+onMounted(() => {
+  const salvos = localStorage.getItem(storage)
+
+  if (salvos) {
+    postagens.value = JSON.parse(salvos)
+  }
+})
 
 function excluir(idItem) {
    postagens.value = postagens.value.filter(post => post.id !== idItem)
+     localStorage.setItem(storage, JSON.stringify(postagens.value))
+
 }
 function editar(post) {
     const index = postagens.value.findIndex(p => p.id === post.id)
 
     if (index !== -1) {
-        const edicao = prompt(`Edite o seu post...`, post.conetudo)
+        const edicao = prompt(`Edite o seu post...`, post.conteudo)
 
         if (edicao !== null) {
-     postagens.value[index].conteudo = edicao}}}
+     postagens.value[index].conteudo = edicao}}
+      localStorage.setItem(storage, JSON.stringify(postagens.value))
+}
 
 
 </script>
@@ -77,7 +92,8 @@ function editar(post) {
             text="+"
             variant="tonal"
             v-bind="activatorProps"
-          />
+
+          > <span class="text-black" size="large">+</span></v-btn>
         </template>
 
         <CriarPost @adicionar="adicionar" @fechar="dialog = false"/>
@@ -133,4 +149,14 @@ p.autor {
 p.conteudo {
     font-size: 1.2rem;
 }
+
+.text-none{
+    background-color: #F8D76B;
+}
+.text-none:hover{
+    transition: 0.5s;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 </style>

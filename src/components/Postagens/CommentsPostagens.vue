@@ -12,7 +12,7 @@ let comentarios = ref([
   {
     id: 1,
     texto: 'Não sei isso, mas  o @kklmao sabe!',
-    usu: 'estupidossori',
+    usu: 'Krasue',
   },
   {
     id: 2,
@@ -21,12 +21,14 @@ let comentarios = ref([
   },
 ])
 
+
+
 const usuarioLogado = ref('H')
 const novoComent = ref('')
 const chaveStorage = `comentarios_${props.post.id}`
 
 onMounted(() => {
-  const salvos = localStorage.getItem(`chaveStorage`)
+  const salvos = localStorage.getItem(chaveStorage)
 
   if (salvos) {
     comentarios.value = JSON.parse(salvos)
@@ -49,13 +51,13 @@ function comentar() {
     comentarios.value.unshift(novoNoComentario)
 
     novoComent.value = ''
-    localStorage.setItem(`chaveStorage`, JSON.stringify(comentarios.value))
+    localStorage.setItem(chaveStorage, JSON.stringify(comentarios.value))
   }
 }
 
 function excluir(idItem) {
   comentarios.value = comentarios.value.filter((c) => c.id !== idItem)
-  localStorage.setItem(`chaveStorage`, JSON.stringify(comentarios.value))
+  localStorage.setItem(chaveStorage, JSON.stringify(comentarios.value))
 }
 
 function editar(comentario) {
@@ -66,7 +68,7 @@ function editar(comentario) {
 
     if (edicao !== null) {
       comentarios.value[index].texto = edicao
-      localStorage.setItem(`chaveStorage`, JSON.stringify(comentarios.value))
+      localStorage.setItem(chaveStorage, JSON.stringify(comentarios.value))
     }
   }
 }

@@ -1,17 +1,24 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted} from 'vue'
 const emit = defineEmits(['fechar', 'adicionar'])
 import { postagens } from '@/data/postagens.js';
  import { shallowRef } from 'vue'
 
-
+const props = defineProps(['post'])
  const dialog = shallowRef(false)
 const postagensTituloNovo = ref('');
 const postagensConteudoNovo = ref('');
 const usuLogado = ref('cofeeBarney');
+const storage = `postagens_${postagens.id}`
 
 
+onMounted(() => {
+  const salvos = localStorage.getItem(storage)
 
+  if (salvos) {
+    postagens.value = JSON.parse(salvos)
+  }
+})
 
 function adicionar() {
   if (!postagensTituloNovo.value.trim() || !postagensConteudoNovo.value.trim()) {
@@ -29,6 +36,7 @@ function adicionar() {
     postagens.value.unshift(novoPost)
      postagensTituloNovo.value =''
  postagensConteudoNovo.value = '';
+  localStorage.setItem(storage, JSON.stringify(postagens.value))
   emit('fechar') }
    
 }
