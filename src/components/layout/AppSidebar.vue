@@ -67,13 +67,20 @@ function validarLoginout(){
       </ul>
     </nav>
 
-    <div class="usuario">
+    <div class="usuario" v-if="loginOut.value == 'ativo'">
       <img src="" alt="" class="fotoUser">
       <p>{{ loginOut }}</p>
       <h2 class="tituloUser"></h2>
       <p class="emailUser"></p>
 
       <span @click="validarLoginout()"><font-awesome-icon icon="arrow-right-from-bracket" class="mais"/> Sair</span>
+    </div>
+
+    <div class="usuario" v-else>
+      <img src="" alt="" class="fotoUser">
+      <p>{{ loginOut }}</p>
+
+      <span @click="validarLoginout()"><font-awesome-icon icon="arrow-left-from-bracket" class="mais"/> Entrar </span>
     </div>
   </aside>
 </template>
