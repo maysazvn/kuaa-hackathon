@@ -111,4 +111,81 @@ export const users = [
         sala2: null,
         sala3: null
     },
+    {
+        id: 11,
+        nome: 'o inimigo',
+        pfp: 'https://content.imageresizer.com/images/memes/Buddy-satan-meme-5.jpg',
+        banner: 'https://aventurasnahistoria.com.br/wp-content/uploads/demoniocapafilme2.jpg',
+        desc: 'fale palavrão minha criança',
+        mostrarSala: 'sim',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
+    {
+        id: 12,
+        nome: 'frisk1',
+        pfp: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyWHdUseiKkP60pKO_9lvW0u6exL3MxeDKXE0d4Jx3Qg&s=10',
+        banner: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQtzxyhWUyn5Uha-1YuLqz5lkAFelsmmkKacrveNJlpm8WXfY1ntuaOEIP&s=10',
+        desc: 'odeio self-insert',
+        mostrarSala: 'nao',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
+    {
+        id: 13,
+        nome: 'homotron3000',
+        pfp: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ96tZagiInGJY7vKHkbvao_Q7OIQ4Q8Fq9ZHqo35pC6-dJX3bCpnPc4I&s=10',
+        banner: 'https://cdn.kobo.com/book-images/e0a84b50-7fa0-49dd-a0ad-2e94d2b8904f/353/569/90/False/lgbt-1.jpg',
+        desc: 'bip bip conectando aos servidores da argelia',
+        mostrarSala: 'nao',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
+    {
+        id: 14,
+        nome: 'Gabriel',
+        pfp: 'https://media.istockphoto.com/id/614333298/pt/foto/funny-nerd-or-geek-have-an-idea.jpg?s=612x612&w=0&k=20&c=8vcAO_oYkfPT7ZxsjnFWsAuecaFZ_3c8VvoMSTj7fvQ=',
+        banner: 'https://pt.quizur.com/_image?href=https://static.quizur.com/i/b/5a8c20a9600d97.302390645a8c20a942ffb6.76737408.jpg&w=1200&h=900&f=webp',
+        desc: 'vocês preferem sorvete de morango ou de bosta',
+        mostrarSala: 'sim',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
+    {
+        id: 15,
+        nome: 'Edwin',
+        pfp: 'https://media.forgecdn.net/attachments/description/1366638/description_38d6f30d-f853-469f-89c9-591cf6d00a5d.jpg',
+        banner: 'https://i.pinimg.com/736x/f5/50/34/f5503432e88456b6f143040aa7c5196e.jpg',
+        desc: 'eu não quero bosta',
+        mostrarSala: 'sim',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
+    {
+        id: 16,
+        nome: 'kaori',
+        pfp: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5cgtM6CQjM7x5pfPruPWMT5xhX7J-f_dkVeEtQ75_JVnrwFT64DXn0As&s=10',
+        banner: 'https://miro.medium.com/v2/0*AODaFOtQp_4WvKct.jpg',
+        desc: 'luto Kaori, 14 anos. Primária Arima',
+        mostrarSala: 'nao',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
+    {
+        id: 17,
+        nome: 'Wilhelm',
+        pfp: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeBzYJ6K8YtGWT8Ey9wrqsibvpUz4aL9LlZdLnHfbNiQ&s=10',
+        banner: 'https://kdfrases.com/frases-imagens/frase-nada-e-real-a-nao-ser-o-sonho-e-o-amor-anne-noailles-151740.jpg',
+        desc: 'Ninguém é real',
+        mostrarSala: 'nao',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
 ];
