@@ -1,7 +1,17 @@
 <script setup>
+// imports //////////////////
 import { RouterLink } from 'vue-router';
-
+import { loginOut } from '@/views/account/login/Loginout';
 import { salas } from '@/data/salas'
+
+// functions /////////////////
+function validarLoginout(){
+  if(loginOut.value == 'ativo'){
+    loginOut.value = 'inativo'
+  }else{
+    alert('Faça login primeiro!')
+  }
+}
 </script>
 
 <template>
@@ -56,6 +66,15 @@ import { salas } from '@/data/salas'
         </li>
       </ul>
     </nav>
+
+    <div class="usuario">
+      <img src="" alt="" class="fotoUser">
+      <p>{{ loginOut }}</p>
+      <h2 class="tituloUser"></h2>
+      <p class="emailUser"></p>
+
+      <span @click="validarLoginout()"><font-awesome-icon icon="arrow-right-from-bracket" class="mais"/> Sair</span>
+    </div>
   </aside>
 </template>
 

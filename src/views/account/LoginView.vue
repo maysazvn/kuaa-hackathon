@@ -7,6 +7,7 @@ import ButtonChild from '@/components/ButtonChild.vue';
 import { userReal } from './login/UserReal';
 import { emailReal } from './login/EmailReal';
 import { senhaReal } from './login/SenhaReal';
+import { loginOut } from './login/Loginout';
 
 // lets ////////
 
@@ -52,6 +53,7 @@ userFalso.value = '';
 }
 function logar(email, senha){
   if(email === emailReal.value && senha === senhaReal.value){
+    loginOut.value = 'ativo'
     alert('Você logou com sucesso!')
     senhaFalsa.value = '';
     emailFalso.value = '';
