@@ -14,27 +14,6 @@ const desc = ref(localStorage.getItem('desc') || '')
 const urlFoto = ref(localStorage.getItem('urlFoto') || '/pfpPlaceholder.png')
 const urlBanner = ref(localStorage.getItem('urlBanner') || '/bannerPlaceholder.png')
 
-let estaseguindo = false
-let mensagemSeguir = ref('Seguir')
-
-function seguir() {
-  if (estaseguindo == false) {
-    estaseguindo = true
-    mensagemSeguir.value = 'Seguindo'
-    seguidores.push({ id: 5, nome: 'vc ne kkkk' })
-  } else {
-    estaseguindo = false
-    mensagemSeguir.value = 'Seguir'
-
-    const indice = seguidores.findIndex((usuario) => usuario.id == 5)
-    if (indice > -1) {
-      seguidores.splice(indice, 1)
-    }
-  }
-  console.log(estaseguindo)
-  console.log(mensagemSeguir)
-}
-
 const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
 
 let mostrar = ref(false)
@@ -61,7 +40,6 @@ function excluir() {
       <img v-if="urlFoto" :src="urlFoto" class="foto" />
 
       <div class="acoesPerfil">
-        <button class="seguirUsuario" v-on:click="seguir()">{{ mensagemSeguir }}</button>
 
         <div class="menu">
           <button class="editarDeletar" v-on:click="mostrarItens()">•••</button>
@@ -144,21 +122,6 @@ function excluir() {
   top: 100px;
   left: 25px;
   border: 5px solid#1e1e1e;
-}
-
-button.seguirUsuario {
-  background-color: #f8d768;
-  color: #1e1e1e;
-  padding: 3px 35px;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button.seguirUsuario:hover {
-  background-color: #f8d668e7;
-  transform: scale(0.97);
-  transition: 0.3s;
 }
 
 .editarDeletar {

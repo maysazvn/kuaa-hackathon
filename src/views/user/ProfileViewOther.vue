@@ -43,20 +43,30 @@ function seguir() {
 </script>
 
 <template>
-  <main class="container">
+  <div class="container">
     <div v-if="usuario" class="cartaoPerfil">
       <img v-if="usuario.banner" :src="usuario.banner" class="banner" />
       <img v-if="usuario.pfp" :src="usuario.pfp" class="foto" />
 
       <div class="acoesPerfil">
-
         <button class="seguirUsuario" v-on:click="seguir()">{{ mensagemSeguir }}</button>
-        <div>
-          <ul>
-            <li class="seguidores">{{ seguidores.length }} Seguidores</li>
-            <li class="seguindo">{{ seguindo.length }} Seguindo</li>
-          </ul>
-        </div>
+      </div>
+
+      <div class="info">
+        <h1>{{ usuario.nome }}</h1>
+        <p>{{ usuario.desc }}</p>
+      </div>
+
+      <div>
+        <ul>
+          <li class="seguidores">
+            <span>{{ seguidores.length }}</span> Seguidores
+          </li>
+          <li class="seguindo">
+            <span>{{ seguindo.length }}</span> Seguindo
+          </li>
+        </ul>
+      </div>
 
         <div class="salas" v-show="mostrarSala === 'sim'">
           <ul>
@@ -64,21 +74,137 @@ function seguir() {
               <p>{{ sala.nome }}</p>
             </li>
           </ul>
-        </div>
-      </div>
-      
-
-      <h1>{{ usuario.nome }}</h1>
-      <p>{{ usuario.desc }}</p>
+        </div> 
     </div>
 
 
     <div v-else>
       <p>Usuário não encontrado.</p>
     </div>
-  </main>
+  </div>
 </template>
 
 <style scoped>
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
+.cartaoPerfil {
+  position: relative;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.acoesPerfil {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.menu {
+  position: relative;
+}
+
+.banner {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.foto {
+  width: 8vw;
+  height: 8vw;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+  top: 100px;
+  left: 25px;
+  border: 5px solid#1e1e1e;
+}
+
+button.seguirUsuario {
+  background-color: #f8d768;
+  color: #1e1e1e;
+  padding: 3px 35px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button.seguirUsuario:hover {
+  background-color: #f8d668e7;
+  transform: scale(0.97);
+  transition: 0.3s;
+}
+
+.editarDeletar {
+  color: #d9d9d9;
+}
+
+div.editEdelete {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  background-color: #313131;
+  color: #d9d9d9;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.179);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  z-index: 10;
+}
+
+.editEDelete a button {
+  padding: 5px 10px;
+  text-align: left;
+  cursor: pointer;
+}
+
+:deep(.btn-menu:hover) {
+color: #f8d668;
+  transform: scale(0.97);
+    transition: 0.3s;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 15px 0;
+}
+
+.info h1,
+.info p{
+  color: #d9d9d9;
+  margin: 15px 30px;
+}
+
+.info h1{
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.info p{
+  max-width: 500px;
+  word-break: break-word;
+}
+
+.seguidores,
+.seguindo {
+  font-size: 0.95rem;
+  color: #d9d9d9;
+  margin: 15px 30px;
+}
+
+.seguidores span,
+.seguindo span {
+  font-weight: bold;
+}
 </style>
