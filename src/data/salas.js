@@ -7,7 +7,7 @@ export const salas = ref([
     desc: 'fórum de discussão de sociologia da 2info2',
     usuarioCriador: 'Samusaax',
     status: 1,
-    banner: ''
+    banner: 'https://pbs.twimg.com/profile_images/1462928084726861828/3mshjWqp_400x400.jpg'
 },
 {
     idSala: 2,
