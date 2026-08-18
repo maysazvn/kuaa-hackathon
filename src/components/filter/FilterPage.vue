@@ -1,8 +1,9 @@
 <script setup>
 
 import { ref, watch, computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { salas } from '@/data/salas';
+import { users } from '@/views/user/Users';
 
 const route = useRoute();
 
@@ -16,9 +17,9 @@ watch(
 );
 
 const salasFiltradas = computed(() => {
-    const lista = salas.value; 
+    const lista = Array.isArray(salas) ? salas : salas.value || []; 
 
-    if (!coisaPesquisada.value) return lista;
+    if (!coisaPesquisada.value) return lista ;
 
     const termo = coisaPesquisada.value.toLowerCase().trim();
 
@@ -27,23 +28,46 @@ const salasFiltradas = computed(() => {
     );
 });
 
+const usersFiltrados = computed(() => {
+    const lista = Array.isArray(users) ? users : users.value || []; 
+
+    if (!coisaPesquisada.value) return lista ;
+
+    const termo = coisaPesquisada.value.toLowerCase().trim();
+
+    return lista.filter(user => 
+        user.nome && user.nome.toLowerCase().includes(termo)
+    );
+});
 
 </script>
 
 <template>
-    <div>
-        <div v-if="salasFiltradas.length > 0">
-            <div v-for="sala in salasFiltradas" :key="sala.idSala || sala.id">
-                <div>
-                    {{ sala.nome }}
+        <div>
+            <div v-if="salasFiltradas.length > 0">
+                <div v-for="sala in salasFiltradas" :key="sala.idSala || sala.id">
+                    <div>
+                        {{ sala.nome }}
+                    </div>
                 </div>
             </div>
+            <div v-else>
+                <p>Nenhuma sala encontrada para "{{ coisaPesquisada }}"</p>
+            </div>
         </div>
-
-        <div v-else>
-            <p>Nenhuma sala encontrada para "{{ coisaPesquisada }}"</p>
+        
+        <div>
+            <div v-if="usersFiltrados.length > 0">
+                <div v-for="user in usersFiltrados" :key="user.id">
+                    <RouterLink :to="`/otherProfile/${user.id}`">
+                        {{ user.nome }}
+                    </RouterLink>
+                </div>
+            </div>
+            <div v-else>
+                <p>Nenhum usuário encontrado para "{{ coisaPesquisada }}"</p>
+            </div>
         </div>
-    </div>
 
 </template>
 

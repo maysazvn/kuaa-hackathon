@@ -10,6 +10,7 @@ import EditProfileView from '@/views/user/EditProfileView.vue'
 import SalaView from '@/views/rooms/SalaView.vue'
 import Postagens from '@/components/Postagens/Postagens.vue'
 import FilterPage from '@/components/filter/FilterPage.vue'
+import ProfileViewOther from '@/views/user/ProfileViewOther.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -57,7 +58,7 @@ const router = createRouter({
      {
       path: '/postagens',
       name: 'Postagens',
-      component: Postagens
+      component: Postagens,
     },
     {
       path: '/edit',
@@ -67,7 +68,12 @@ const router = createRouter({
     {
       path: '/filter',
       name: 'Pesquisa',
-      component: FilterPage
+      component: FilterPage,
+    },
+    {
+      path: '/otherProfile/:id',
+      name: 'Perfil de outro',
+      component: ProfileViewOther,
     }
   ],
 })

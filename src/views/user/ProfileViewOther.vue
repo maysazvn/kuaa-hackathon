@@ -4,48 +4,51 @@ import { computed } from 'vue';
 import { seguidores } from './Followers';
 import { seguindo } from './Following';
 import { users } from './Users';
-const suarios = JSON.parse(localStorage.getItem("salasEntradas")) || [];
+import { ref } from 'vue';
+
 
 const route = useRoute();
 
-const usuario = computed(() => users.value.find((u) => u.id == route.params.id));
+const usuario = computed(() => {
+  return users.find(
+    (usuario) => usuario.id === Number(route.params.id),
+  )
+})
+
+const suarios = JSON.parse(localStorage.getItem('salasEntradas')) || []
+
+const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
 
 </script>
 
 <template>
-    <main class="container">
-    <div class="cartaoPerfil">
-      <img v-if="usuario.banner" :src="usuario.banner" class="banner">
-      <img v-if="usuario.pfp" :src="usuario.pfp" class="foto">
+  <main class="container">
+    <div v-if="usuario" class="cartaoPerfil">
+      <img v-if="usuario.banner" :src="usuario.banner" class="banner" />
+      <img v-if="usuario.pfp" :src="usuario.pfp" class="foto" />
 
-      <button class="seguirUsuario" v-on:click="seguir()">{{ mensagemSeguir }}</button>
+      <div>
+        <ul>
+          <li class="seguidores">{{ seguidores.length }} Seguidores</li>
+          <li class="seguindo">{{ seguindo.length }} Seguindo</li>
+        </ul>
+      </div>
 
-        <div>
-          <ul>
-            <li class="seguidores">
-              {{ seguidores.length }} Seguidores
-            </li>
+      <div class="salas" v-show="mostrarSala === 'sim'">
+      <ul>
+        <li v-for="sala in suarios" :key="sala.id" :nome="sala.nome">
+          <p>{{ sala.nome }}</p>
+        </li>
+      </ul>
+    </div>
 
-            <li class="seguindo">
-              {{ seguindo.length }} Seguindo
-            </li>
-          </ul>
-        </div>
-
-        <div class="salas" v-show="usuario.mostrarSala === 'sim'">
-          <ul>
-            <li v-for="sala in suarios" :key="sala.id" :nome="sala.nome">
-              <p>
-                {{ sala.nome }}
-              </p>
-            </li>
-          </ul> 
-        </div>
+      <h1>{{ usuario.nome }}</h1>
+      <p>{{ usuario.desc }}</p>
+    </div>
 
 
-      <h1>{{ nomeUsuario }}</h1>
-      <p>{{ desc }}</p>
-
+    <div v-else>
+      <p>Usuário não encontrado.</p>
     </div>
   </main>
 </template>
