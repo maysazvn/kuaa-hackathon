@@ -19,6 +19,27 @@ const suarios = JSON.parse(localStorage.getItem('salasEntradas')) || []
 
 const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
 
+let mensagemSeguir = ref('Seguir')
+
+let estaseguindo = false
+function seguir() {
+  if (estaseguindo == false) {
+    estaseguindo = true
+    mensagemSeguir.value = 'Seguindo'
+    seguidores.push({ id: 5, nome: 'vc ne kkkk' })
+  } else {
+    estaseguindo = false
+    mensagemSeguir.value = 'Seguir'
+
+    const indice = seguidores.findIndex((usuario) => usuario.id == 5)
+    if (indice > -1) {
+      seguidores.splice(indice, 1)
+    }
+  }
+  console.log(estaseguindo)
+  console.log(mensagemSeguir)
+}
+
 </script>
 
 <template>
@@ -27,20 +48,25 @@ const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
       <img v-if="usuario.banner" :src="usuario.banner" class="banner" />
       <img v-if="usuario.pfp" :src="usuario.pfp" class="foto" />
 
-      <div>
-        <ul>
-          <li class="seguidores">{{ seguidores.length }} Seguidores</li>
-          <li class="seguindo">{{ seguindo.length }} Seguindo</li>
-        </ul>
-      </div>
+      <div class="acoesPerfil">
 
-      <div class="salas" v-show="mostrarSala === 'sim'">
-      <ul>
-        <li v-for="sala in suarios" :key="sala.id" :nome="sala.nome">
-          <p>{{ sala.nome }}</p>
-        </li>
-      </ul>
-    </div>
+        <button class="seguirUsuario" v-on:click="seguir()">{{ mensagemSeguir }}</button>
+        <div>
+          <ul>
+            <li class="seguidores">{{ seguidores.length }} Seguidores</li>
+            <li class="seguindo">{{ seguindo.length }} Seguindo</li>
+          </ul>
+        </div>
+
+        <div class="salas" v-show="mostrarSala === 'sim'">
+          <ul>
+            <li v-for="sala in suarios" :key="sala.id" :nome="sala.nome">
+              <p>{{ sala.nome }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
 
       <h1>{{ usuario.nome }}</h1>
       <p>{{ usuario.desc }}</p>
