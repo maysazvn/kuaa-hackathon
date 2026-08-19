@@ -232,6 +232,26 @@ export const users = [
         sala2: null,
         sala3: null
     },
-
-    
+    {
+        id: 22,
+        nome: 'usuariobobby',
+        pfp: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTglFqMpY3fXwCqWvnBYGUA7LSaWfsctiPFr_VdKvmlAA&s=10',
+        banner: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlHPw6CKwSGwFKXj6u4YDzwLv3odzAkX1lrsUmYhho4w&s=10',
+        desc: 'meu nome é bobby',
+        mostrarSala: 'nao',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
+    {
+        id: 23,
+        nome: 'coffbarneynotkillanyone',
+        pfp: 'https://static.wikia.nocookie.net/animal-hospital/images/b/b8/Barney_Closeup.png/revision/latest/smart/width/250/height/250?cb=20260627123129',
+        banner: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdKjfjHtgIMHo1uwL-A8_2xxUixtJXHyGrDNEjShC-OQ&s=10',
+        desc: 'quero café',
+        mostrarSala: 'nao',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
 ];
