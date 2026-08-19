@@ -15,6 +15,7 @@ defineProps(['idSala', 'nome', 'participantes', 'desc', 'usuarioCriador', 'statu
     <p>{{ desc }}</p>
     <slot/>
   </div>
+  
 </template>
 
 <style>
