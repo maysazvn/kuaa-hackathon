@@ -21,8 +21,6 @@ let comentarios = ref([
   },
 ])
 
-
-
 const usuarioLogado = ref('H')
 const novoComent = ref('')
 const chaveStorage = `comentarios_${props.post.id}`
@@ -72,6 +70,7 @@ function editar(comentario) {
     }
   }
 }
+
 </script>
 <template>
   <section>
@@ -79,11 +78,13 @@ function editar(comentario) {
       <div class="comentar">
         <textarea placeholder="O que está pensando?" v-bind="texto" v-model="novoComent"></textarea>
       </div>
-      <button type="submit" @click="comentar()">Comentar</button>
+      <button type="submit" @click="comentar()" class="comentarBtn">Comentar</button>
 
       <div class="todos" v-for="comentario in comentarios" :key="comentario.id">
-        <h2>@{{ comentario.usu }}</h2>
-        <p>{{ comentario.texto }}</p>
+        <div class="cima">
+          <h2 class="usuario">@{{ comentario.usu }}</h2>
+        </div>
+        <p class="texto">{{ comentario.texto }}</p>
 
         <div class="seu" v-if="comentario.usu === usuarioLogado">
           <button @click="editar(comentario)">Editar</button>
@@ -95,23 +96,63 @@ function editar(comentario) {
 </template>
 
 <style scoped>
-button {
-  border: 1px solid black;
-  border-radius: 10px;
-  padding: 5px;
+.comentarios {
+  border-top: 2px solid #3e3e3e;
 }
 
 textarea {
-  border: 1px solid black;
+  border: 2px solid #3e3e3e;
+  width: 500px !important;
+  height: 90px !important;
+  border-radius: 10px;
   margin-top: 25px;
+  resize: none;
+  outline: none;
+  padding: 5px 10px;
 }
 
-h2 {
-  font-style: italic;
+.cima{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+textarea:focus {
+  border: 2px solid #f8d76bb8;
 }
 
 div.todos {
   margin-bottom: 20px;
   margin-top: 20px;
+  border-bottom: 1px solid #3e3e3e;
+  padding: 5px;
+  padding-bottom: 20px;
+}
+
+h2.usuario {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+p.texto {
+  overflow-wrap: break-word;
+  max-width: 20vw;
+  margin: 2px;
+}
+
+button.comentarBtn {
+  background: #f8d76b;
+  color: #1e1e1e;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 5px 15px;
+  margin: 5px 0;
+}
+
+button.comentarBtn:hover {
+  opacity: 0.9;
+  transform: scale(0.95);
+  transition: 0.2s;
 }
 </style>

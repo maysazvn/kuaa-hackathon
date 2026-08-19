@@ -1,18 +1,15 @@
 <script setup>
+import { ref, onMounted } from 'vue'
+import CommentsPostagens from './CommentsPostagens.vue'
+import CriarPost from './CriarPost.vue'
+import { postagens } from '@/data/postagens.js'
 
-import { ref, onMounted } from 'vue';
-import CommentsPostagens from './CommentsPostagens.vue';
-import CriarPost from './CriarPost.vue';
-import { postagens } from '@/data/postagens.js';
-
-
- let usuario = ref('cofeeBarney')
-const mostrarComent = ref(null);
+let usuario = ref('cofeeBarney')
+const mostrarComent = ref(null)
 import { shallowRef } from 'vue'
 const dialog = shallowRef(false)
 
 const storage = `postagens_${postagens.id}`
-
 
 onMounted(() => {
   const salvos = localStorage.getItem(storage)
@@ -23,68 +20,61 @@ onMounted(() => {
 })
 
 function excluir(idItem) {
-   postagens.value = postagens.value.filter(post => post.id !== idItem)
-     localStorage.setItem(storage, JSON.stringify(postagens.value))
-
+  postagens.value = postagens.value.filter((post) => post.id !== idItem)
+  localStorage.setItem(storage, JSON.stringify(postagens.value))
 }
 function editar(post) {
-    const index = postagens.value.findIndex(p => p.id === post.id)
+  const index = postagens.value.findIndex((p) => p.id === post.id)
 
-    if (index !== -1) {
-        const edicao = prompt(`Edite o seu post...`, post.conteudo)
+  if (index !== -1) {
+    const edicao = prompt(`Edite o seu post...`, post.conteudo)
 
-        if (edicao !== null) {
-     postagens.value[index].conteudo = edicao}}
-      localStorage.setItem(storage, JSON.stringify(postagens.value))
+    if (edicao !== null) {
+      postagens.value[index].conteudo = edicao
+    }
+  }
+  localStorage.setItem(storage, JSON.stringify(postagens.value))
 }
-
-
 </script>
 
 <template>
-
-    <section>
+  <section>
     <div>
+      <h3>Postagens</h3>
 
-    <h3>Postagens</h3>
+      <div class="postagens" v-for="post in postagens" :key="post.id" :usuario="usuario">
+        <div class="listaPosts">
+          <div class="cima">
+            <p class="autor">
+              <strong>{{ post.autor }} </strong>
+            </p>
 
- <div class="postagenss" v-for="post in postagens" :key="post.id" :usuario="usuario">
+            <p>
+              {{ post.data }}
+            </p>
+          </div>
 
-    <div class="listaPosts">
+          <h2 class="titulo">
+            {{ post.titulo }}
+          </h2>
+          <p class="conteudo">
+            {{ post.conteudo }}
+          </p>
 
-                <h2>
-                   {{ post.titulo }}
-                </h2>
-                <p class="conteudo">
-                    {{ post.conteudo }}
-                </p>
-                   <p class="autor">
-                    <small><strong>
-                       por  {{ post.autor }}
-                    </strong></small>
-                </p>
-                <p>
-                    <small>
-                        {{post.data}}
-                    </small>
-                </p>
-             <div v-if="post.autor === usuario">
-
-            <button @click.prevent="excluir(post.id)" >Excluir</button>
+          <div v-if="post.autor === usuario">
+            <button @click.prevent="excluir(post.id)">Excluir</button>
             <button @click="editar(post)">Editar</button>
-
+          </div>
+          <button @click="mostrarComent = post.id" v-show="!mostrarComent"><font-awesome-icon icon="comment" />Abrir comentários</button>
+          <div v-if="mostrarComent === post.id">
+            <CommentsPostagens :post="post" :usuario="usuario"></CommentsPostagens>
+            <button @click="mostrarComent = null"><font-awesome-icon icon="comment" />Fechar Comentários</button>
+          </div>
         </div>
-<button @click="mostrarComent = post.id" v-show="!mostrarComent">Ver Comentários</button>
-<div v-if="mostrarComent === post.id">
-    <CommentsPostagens :post='post' :usuario='usuario'></CommentsPostagens>
-    <button @click="mostrarComent = null">Fechar Comentários</button>
-</div>
+      </div>
     </div>
-        </div>
 
-    </div>
-  
-  <div class="pa-4 text-center">
+    <div class="pa-4 text-center">
       <v-dialog v-model="dialog" max-width="600">
         <template v-slot:activator="{ props: activatorProps }">
           <v-btn
@@ -92,71 +82,106 @@ function editar(post) {
             text="+"
             variant="tonal"
             v-bind="activatorProps"
-
-          > <span class="text-black" size="large">+</span></v-btn>
+          >
+            <span class="text-black" size="large">+</span></v-btn
+          >
         </template>
 
-        <CriarPost @adicionar="adicionar" @fechar="dialog = false"/>
+        <CriarPost @adicionar="adicionar" @fechar="dialog = false" />
       </v-dialog>
     </div>
-    </section>
-    
+  </section>
 </template>
 
 <style scoped>
-
 div.listaPosts {
-    border: solid 2px black;
-    padding: 30px;
-    max-width: 30%;
-    margin: 0 auto;
-    margin-bottom: 35px;
+  background: #262626;
+  color: #d9d9d9;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 40%;
+  margin: 0 auto;
+  margin-bottom: 35px;
 }
 
-button {
-    border: SOLID black 2px;
-    border-radius: 25px;
-    padding: 10px;
-    margin-top: 10px;
-    cursor: pointer;
+.cima {
+  display: flex;
+  align-items: center;
 }
 
-input {
-    border: 1px black solid;;
-}
-
-textarea {
-        border: 1px black solid;;
-}
-
-div.postar {
-    display: flex;
-    flex-direction: column;
-    max-width: 30%;
-    margin: 0 auto;
-    margin-bottom: 30px;
-}
-
-h3{
-    font-size: 60px;
-    text-align: center;
-    font-weight: bolder;
-}
 p.autor {
-    margin: 0 0;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h2.titulo {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 1px;
 }
 
 p.conteudo {
-    font-size: 1.2rem;
+  font-size: 1.1rem;
+  margin: 15px 0;
+  margin-top: 1px;
 }
 
-.text-none{
-    background-color: #F8D76B;
-}
-.text-none:hover{
-    transition: 0.5s;
-    transform: scale(1.1);
-    cursor: pointer;
+button {
+    background-color: #3e3e3e;
+  border-radius: 25px;
+  padding: 10px 25px;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
 }
 
+button:hover {
+    opacity: 0.9;
+    transform: scale(0.95);
+    transition: .2s;
+}
+
+/*//////*/
+
+input {
+  border: 1px black solid;
+}
+
+textarea {
+  border: 1px black solid;
+}
+
+div.postar {
+  display: flex;
+  flex-direction: column;
+  max-width: 30%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 60px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.text-none {
+  background-color: #f8d76b;
+}
+.text-none:hover {
+  transition: 0.5s;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/*
+checklist:
+-- menu dropdown editar/excluir caso seja o usuario dono da postagem
+-- função adicionar imagem e fotos do usuario e das salas nos posts
+-- colocar sala nos posts, e escolher a sala em que você vai postar tbm
+-- (andre vai ajudar) apenas poder postar/comentar quando esta logado */
 </style>
