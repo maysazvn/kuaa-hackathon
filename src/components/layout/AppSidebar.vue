@@ -173,6 +173,7 @@ hr {
   color: wheat;
 }
 .dadosUser{
+  display: block;
   color: chartreuse;
 }
 </style>
