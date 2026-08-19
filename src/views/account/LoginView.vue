@@ -66,18 +66,18 @@ function logar(email, senha){
 </script>
 
 <template>
-  <div class="container"> 
+  <div class="container">
     <!-- essa ^ div é a geral que contem TUDO -->
     <div class="bemVindo">
       <!-- essa ^ tem o texto de bem vindo e a imagem do kuaa -->
       <img src="../../../public/kuaa.png" alt="Kuaa Logo">
       <p v-if="cadastro == true">
-        <span>Bem vindo ao Kuaa!</span> 
+        <span>Bem vindo ao Kuaa!</span>
 O Kuaa veio para ajudar você estudante a ter um desempenho melhor em seus estudos, provas e até mesmo fazer amigos novos!
 Faça seu cadastro hoje mesmo!
       </p>
       <p v-if="login == true">
-        Bem vindo de volta ao Kuaa! 
+        Bem vindo de volta ao Kuaa!
 O Kuaa veio para ajudar você estudante a ter um desempenho melhor em seus estudos, provas e até mesmo fazer amigos novos!
 Faça seu login e encontre seus colegas novamente!
       </p>

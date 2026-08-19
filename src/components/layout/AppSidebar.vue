@@ -12,6 +12,7 @@ function validarLoginout(){
     alert('Faça login primeiro!')
   }
 }
+
 </script>
 
 <template>
@@ -67,20 +68,16 @@ function validarLoginout(){
       </ul>
     </nav>
 
-    <div class="usuario" v-if="loginOut.value == 'ativo'">
-      <img src="" alt="" class="fotoUser">
+    <div class="usuario" v-if="loginOut == 'ativo'">
       <p>{{ loginOut }}</p>
-      <h2 class="tituloUser"></h2>
-      <p class="emailUser"></p>
 
-      <span @click="validarLoginout()"><font-awesome-icon icon="arrow-right-from-bracket" class="mais"/> Sair</span>
+      <span @click="validarLoginout()"><font-awesome-icon icon="arrow-right-from-bracket" class="sair"/> Sair</span>
     </div>
 
     <div class="usuario" v-else>
-      <img src="" alt="" class="fotoUser">
       <p>{{ loginOut }}</p>
 
-      <span @click="validarLoginout()"><font-awesome-icon icon="arrow-left-from-bracket" class="mais"/> Entrar </span>
+      <span @click="validarLoginout()"><font-awesome-icon icon="arrow-left-from-bracket" class="entrar"/> Entrar </span>
     </div>
   </aside>
 </template>
@@ -161,5 +158,9 @@ hr {
 
 .icone-grupo {
   right: 0% !important;
+}
+
+.usuario{
+  color: wheat;
 }
 </style>
