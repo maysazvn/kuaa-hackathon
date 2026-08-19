@@ -7,7 +7,10 @@ localStorage.setItem("salasEntradas", JSON.stringify(salasUsuario.value))
 watch(
   salasUsuario,
   (novoValor) => {
-    localStorage.setItem("salasEntradas", JSON.stringify(novoValor));
+    const dadosSimplificados = novoValor.map(sala => ({
+      id: sala.id,
+      nome: sala.nome}));
+    localStorage.setItem("salasEntradas", JSON.stringify(dadosSimplificados));
   },
   { deep: true } 
 );
