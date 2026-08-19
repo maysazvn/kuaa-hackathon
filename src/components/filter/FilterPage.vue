@@ -46,9 +46,9 @@ const usersFiltrados = computed(() => {
         <div>
             <div v-if="salasFiltradas.length > 0">
                 <div v-for="sala in salasFiltradas" :key="sala.idSala || sala.id">
-                    <div>
+                    <RouterLink :to="`/salas/${sala.idSala}`">
                         {{ sala.nome }}
-                    </div>
+                    </RouterLink>
                 </div>
             </div>
             <div v-else>
