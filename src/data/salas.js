@@ -1,4 +1,5 @@
 import { ref } from "vue"
+
 export const salas = ref([
 {
     idSala: 1,
