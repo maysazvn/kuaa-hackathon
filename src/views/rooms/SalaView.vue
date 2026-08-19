@@ -48,6 +48,7 @@ console.log('Sala encontrada:', sala.value)
     <h3>Criador: {{ sala.usuarioCriador }}</h3>
     <p>Status: {{ satus }}</p>
     <p>{{ sala.desc }}</p>
+    <p>{{ sala.participantes }} Membros</p>
 
     <div v-if="popupExcluir" class="telapopup">
         <h2>Tem certeza que deseja excluir sua sala?</h2>
