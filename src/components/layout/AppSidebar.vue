@@ -3,6 +3,9 @@
 import { RouterLink } from 'vue-router';
 import { loginOut } from '@/views/account/login/Loginout';
 import { salas } from '@/data/salas'
+import { userReal } from '@/views/account/login/UserReal';
+import { emailReal } from '@/views/account/login/EmailReal';
+
 
 // functions /////////////////
 function validarLoginout(){
@@ -68,16 +71,22 @@ function validarLoginout(){
       </ul>
     </nav>
 
+      <div class="dadosUser" v-if="loginOut == 'ativo'">
+        {{ userReal }}
+        {{ emailReal }}
+      </div>
     <div class="usuario" v-if="loginOut == 'ativo'">
-      <p>{{ loginOut }}</p>
+  
 
       <span @click="validarLoginout()"><font-awesome-icon icon="arrow-right-from-bracket" class="sair"/> Sair</span>
     </div>
 
     <div class="usuario" v-else>
-      <p>{{ loginOut }}</p>
+  
 
-      <span @click="validarLoginout()"><font-awesome-icon icon="arrow-left-from-bracket" class="entrar"/> Entrar </span>
+      <span>
+        <router-link to="/login">Entrar</router-link>
+      </span>
     </div>
   </aside>
 </template>
@@ -162,5 +171,8 @@ hr {
 
 .usuario{
   color: wheat;
+}
+.dadosUser{
+  color: chartreuse;
 }
 </style>
