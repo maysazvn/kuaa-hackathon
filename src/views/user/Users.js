@@ -188,4 +188,50 @@ export const users = [
         sala2: null,
         sala3: null
     },
+    {
+        id: 18,
+        nome: 'Samusaax',
+        pfp: 'https://static.wikia.nocookie.net/alpheapedia/images/a/a7/Lugia.png/revision/latest?cb=20210924013042',
+        banner: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi9JeDlElPXQatu_198B-BSJeZxZwOKeGqAWcx4f-tIb7ogf1wZIzBJAY&s=10',
+        desc: 'deus pokemon da agua',
+        mostrarSala: 'sim',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
+    {
+        id: 19,
+        nome: 'PedroLooser',
+        pfp: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ17Ejm1h6nEeS2YvXrGV_rmdFV9ulvj5LM-wbeDtmQSC8mSwEdj5OQTN4&s=10',
+        banner: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdZMDaUdzTgLmr5QAeTsL4Wx14yxtjdm-fYRWcNfEpU3JKEbUfiWFu0ePu&s=10',
+        desc: 'O cara do ciência todo dia',
+        mostrarSala: 'sim',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
+    {
+        id: 20,
+        nome: 'Rochelixx',
+        pfp: 'https://www.estrelando.com.br/uploads/2016/06/27/2-1467035574.jpg',
+        banner: 'https://rollingstone.com.br/wp-content/uploads/rochelle_todo_mundo_odeia_o_chris_melhores_frases.jpg',
+        desc: '1 mol de motivos para sorrir',
+        mostrarSala: 'nao',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
+    {
+        id: 21,
+        nome: 'erererer',
+        pfp: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTu352-ezoYGcUgARDWszoZ5G59i-WUgxwmyLuM-c27g&s',
+        banner: 'https://i.ytimg.com/vi/68Ee-ls_j_0/sddefault.jpg',
+        desc: 'ererererererererererer',
+        mostrarSala: 'nao',
+        sala1: null,
+        sala2: null,
+        sala3: null
+    },
+
+    
 ];
