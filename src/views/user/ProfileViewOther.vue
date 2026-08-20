@@ -70,8 +70,14 @@ function seguir() {
 
         <div class="salas" v-show="mostrarSala === 'sim'">
           <ul>
-            <li v-for="sala in suarios" :key="sala.id" :nome="sala.nome">
-              <p>{{ sala.nome }}</p>
+            <li v-show="usuario.sala1 !== null">
+              <p> {{ usuario.sala1 }} </p>
+            </li>
+            <li v-show="usuario.sala2 !== null">
+              <p> {{ usuario.sala2 }} </p>
+            </li>
+            <li v-show="usuario.sala3 !== null">
+              <p> {{ usuario.sala3 }} </p>
             </li>
           </ul>
         </div> 
