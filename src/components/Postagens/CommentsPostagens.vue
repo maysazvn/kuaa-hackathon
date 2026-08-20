@@ -8,16 +8,19 @@ let comentarios = ref([
     id: 0,
     texto: 'Não entendi, alguem me explica?',
     usu: 'NeymarJr',
+    aberto: false,
   },
   {
     id: 1,
     texto: 'Não sei isso, mas  o @kklmao sabe!',
     usu: 'Krasue',
+    aberto: false,
   },
   {
     id: 2,
     texto: 'O artigo 11 do cód.Penal pode te ajudar amigo!',
     usu: 'fbigatito',
+    aberto: false,
   },
 ])
 
@@ -70,7 +73,15 @@ function editar(comentario) {
     }
   }
 }
+// ////
 
+function mostrarItens(comentario) {
+  comentario.aberto = !comentario.aberto
+}
+
+function denunciar() {
+  alert('Comentário denunciado com sucesso.')
+}
 </script>
 <template>
   <section>
@@ -83,13 +94,20 @@ function editar(comentario) {
       <div class="todos" v-for="comentario in comentarios" :key="comentario.id">
         <div class="cima">
           <h2 class="usuario">@{{ comentario.usu }}</h2>
+          <button class="editarDeletar" v-on:click="mostrarItens(comentario)">•••</button>
+
+          <div class="vshow" v-show="comentario.aberto">
+            <div v-if="comentario.usu === usuarioLogado" class="btnsEditarDeletar">
+              <button @click="editar(comentario)" class="editar">Editar</button>
+              <button @click="excluir(comentario.id)" class="deletar">Excluir</button>
+            </div>
+
+            <div v-else>
+              <button @click="denunciar()" class="denunciar">Denunciar</button>
+            </div>
+          </div>
         </div>
         <p class="texto">{{ comentario.texto }}</p>
-
-        <div class="seu" v-if="comentario.usu === usuarioLogado">
-          <button @click="editar(comentario)">Editar</button>
-          <button @click="excluir(comentario.id)">Excluir</button>
-        </div>
       </div>
     </div>
   </section>
@@ -111,10 +129,11 @@ textarea {
   padding: 5px 10px;
 }
 
-.cima{
+.cima {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 textarea:focus {
@@ -154,5 +173,42 @@ button.comentarBtn:hover {
   opacity: 0.9;
   transform: scale(0.95);
   transition: 0.2s;
+}
+
+button.editarDeletar {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 2px 8px;
+}
+
+.vshow {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #313131;
+  color: #d9d9d9;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.179);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  z-index: 10;
+  font-size: 0.8rem;
+}
+
+.btnsEditarDeletar {
+  display: flex;
+  flex-direction: column;
+}
+
+.editar:hover,
+.deletar:hover,
+.denunciar:hover {
+  color: #f8d668;
+  transform: scale(0.97);
+  transition: 0.3s;
 }
 </style>
