@@ -15,7 +15,7 @@ const usuario = computed(() => {
   )
 })
 
-const suarios = JSON.parse(localStorage.getItem('salasEntradas')) || []
+// const suarios = JSON.parse(localStorage.getItem('salasEntradas')) || [];
 
 const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
 
