@@ -7,20 +7,25 @@ const router = useRouter()
 const nome = ref('')
 const descricao = ref('')
 const banner = ref('')
+const mensagem = ('Algum campo obrigatorio deixou de ser peenchido')
 function cancelar() {
   router.push('/')
 }
 function criar() {
 
-  if (nome.value === "" && descricao.value === "") {
-    alert("Algum campo obrigatorio deixou de ser peenchido")
-  }
-  salas.value.push({
-    id: Date.now(),
+  if (nome.value === "" || descricao.value === "") {
+    alert(mensagem)
+    return
+
+  } else {
+   salas.value.push({
+    idSala: Date.now(),
     nome: nome.value,
-    descricao: descricao.value,
-    banner: banner.value
-  })
+    desc: descricao.value,
+    banner: banner.value,
+  }) 
+  }
+  
   console.log(salas.value)
 
   nome.value = ''

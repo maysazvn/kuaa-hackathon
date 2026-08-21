@@ -1,4 +1,14 @@
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const busca = ref('');
+const router = useRouter();
+
+function irParaOFiltro() {
+  router.push({path: '/filter', query: {dado: busca.value}})
+}
+
 </script>
 
 <template>
@@ -10,7 +20,11 @@
       <div class="search">
         <font-awesome-icon icon="magnifying-glass" class="lupa"/>
 
-        <input type="search" v-model="busca" placeholder="Buscar..."> <!-- Busca de usuário, sala e postagem -->
+        
+        <form action="/filter" method="GET" @submit.prevent="irParaOFiltro">
+          <input type="search" v-model="busca" placeholder="Buscar..."> <!-- Busca de usuário, sala e postagem -->
+        </form>
+        
       </div>
       <div>
         <router-link to="/login"><font-awesome-icon icon="right-to-bracket" class="login" /></router-link>

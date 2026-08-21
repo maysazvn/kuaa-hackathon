@@ -9,6 +9,9 @@ import HelpView from '@/views/suporte/HelpView.vue'
 import EditProfileView from '@/views/user/EditProfileView.vue'
 import SalaView from '@/views/rooms/SalaView.vue'
 import Postagens from '@/components/Postagens/Postagens.vue'
+import EditSalaView from '@/views/rooms/EditSalaView.vue'
+import FilterPage from '@/components/filter/FilterPage.vue'
+import ProfileViewOther from '@/views/user/ProfileViewOther.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,6 +37,11 @@ const router = createRouter({
       component: SalaView
     },
     {
+      path: '/salas/:id/editar',
+      name: 'EditarSala',
+      component: EditSalaView
+    },
+    {
       path: '/about',
       name: 'Sobre',
       component: AboutView,
@@ -52,17 +60,27 @@ const router = createRouter({
       path: '/profile',
       name: 'Perfil',
       component: ProfileView,
-    }, 
-     {
+    },
+    {
       path: '/postagens',
       name: 'Postagens',
-      component: Postagens
+      component: Postagens,
     },
     {
       path: '/edit',
       name: 'Editar',
       component: EditProfileView,
     },
+    {
+      path: '/filter',
+      name: 'Pesquisa',
+      component: FilterPage,
+    },
+    {
+      path: '/otherProfile/:id',
+      name: 'Perfil de outro',
+      component: ProfileViewOther,
+    }
   ],
 })
 
