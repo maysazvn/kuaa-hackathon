@@ -29,19 +29,21 @@ function editarSala() {
   router.push(`/salas/${route.params.id}/editar`)
 }
 
-const salaa = salas.value.find((s) => s.status == route.params.id)
-let satus = ''
-if (salaa?.status == 1) {
-  satus = 'Ativo'
-} else if (salaa?.status == 0) {
-  satus = 'Inativo'
-}
+
+const satus = ref('')
+
+  const salaa = salas.value.find((s) => s.status == route.params.id)
+  if (salaa?.status == 1) {
+    satus.value = 'Ativo'
+  } else {
+    satus.value = 'Inativo'
+  }
+
 
 console.log('Sala encontrada:', sala.value)
 </script>
 <template>
   <div class="sala" v-if="sala">
-
     <img :src="sala.banner" />
 
     <h1>{{ sala.nome }}</h1>
@@ -50,16 +52,13 @@ console.log('Sala encontrada:', sala.value)
     <p>{{ sala.desc }}</p>
     <p>{{ sala.participantes }} Membros</p>
 
-    
     <div v-if="popupExcluir" class="telapopup">
-        <h2>Tem certeza que deseja excluir sua sala?</h2>
-        <p>
-          Esta ação é permanente e todos os seus dados, salas e posts serão perdidos para sempre.
-        </p>
-        <div class="botoes">
-          <button @click="confirmarEx">Sim</button>
-          <button @click="popupExcluir = false">Não</button>
-        </div>
+      <h2>Tem certeza que deseja excluir sua sala?</h2>
+      <p>Esta ação é permanente e todos os seus dados, salas e posts serão perdidos para sempre.</p>
+      <div class="botoes">
+        <button @click="confirmarEx">Sim</button>
+        <button @click="popupExcluir = false">Não</button>
+      </div>
     </div>
 
     <div class="menu">
@@ -69,7 +68,6 @@ console.log('Sala encontrada:', sala.value)
         <button @click="editarSala">Editr Sala</button>
       </div>
     </div>
-
   </div>
   <div class="sala" v-else>
     <h1>Sala não encontrada</h1>

@@ -3,10 +3,12 @@
 import { useRouter } from 'vue-router'
 import { salas } from '@/data/salas'
 import { ref } from 'vue'
+import { userReal } from '../account/login/UserReal'
 const router = useRouter()
 const nome = ref('')
 const descricao = ref('')
 const banner = ref('')
+const coisa = ref(1)
 const mensagem = ('Algum campo obrigatorio deixou de ser peenchido')
 function cancelar() {
   router.push('/')
@@ -23,6 +25,8 @@ function criar() {
     nome: nome.value,
     desc: descricao.value,
     banner: banner.value,
+    status: coisa.value,
+    usuarioCriador: userReal.value
   }) 
   }
   
