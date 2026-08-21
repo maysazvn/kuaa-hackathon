@@ -1,8 +1,9 @@
 <script setup>
-import { ref, onMounted} from 'vue'
+import { ref, onMounted, computed} from 'vue'
 const emit = defineEmits(['fechar', 'adicionar'])
 import { postagens } from '@/data/postagens.js';
  import { shallowRef } from 'vue'
+ import { salas } from '@/data/salas.js'
 
 const props = defineProps(['post'])
  const dialog = shallowRef(false)
@@ -10,6 +11,10 @@ const postagensTituloNovo = ref('');
 const postagensConteudoNovo = ref('');
 const usuLogado = ref('cofeeBarney');
 const storage = `postagens_${postagens.id}`
+
+
+const salaSelecionada = ref(null)
+const salaFinal = computed(() => salaSelecionada.value)
 
 
 onMounted(() => {
@@ -30,9 +35,12 @@ function adicionar() {
      conteudo: postagensConteudoNovo.value,
         autor: usuLogado.value,
         data:  new Date().toLocaleDateString('pt-BR'),
-        id: maiorId + 1
-    }
+        id: maiorId + 1,
+        salaId: Number(salaFinal.value),
 
+    
+    }
+  console.log(`sala selecionada: ${salaFinal.value}`)
     postagens.value.unshift(novoPost)
      postagensTituloNovo.value =''
  postagensConteudoNovo.value = '';
@@ -77,11 +85,11 @@ function adicionar() {
 
           <v-col cols="12">
             <v-autocomplete
+              v-model="salaSelecionada"
               :items="['2info2', 'Quimica do Mal', 'Biologia']"
               label="Sala *"
               required
               auto-select-first
-              multiple
               class="formulario"
               variant="outlined"
               base-color="#3e3e3e"

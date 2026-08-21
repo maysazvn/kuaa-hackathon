@@ -7,6 +7,7 @@ import { postagens } from '@/data/postagens.js'
 let usuario = ref('cofeeBarney')
 const mostrarComent = ref(null)
 import { shallowRef } from 'vue'
+import { salas } from '@/data/salas.js'
 const dialog = shallowRef(false)
 
 const storage = `postagens_${postagens.id}`
@@ -43,6 +44,12 @@ function mostrarItens(post) {
 function denunciar() {
   alert('Comentário denunciado com sucesso.')
 }
+
+function salaDoPost (salaId) {
+  const index = salas.value.findIndex((s) => s.id === salaId)
+  return index !== -1 ? salas.value[index].nome : 'Geral'
+}
+
 </script>
 
 <template>
@@ -84,6 +91,9 @@ function denunciar() {
           </h2>
           <p class="conteudo">
             {{ post.conteudo }}
+          </p>
+          <p class="sala"> 
+            {{ salaDoPost(post.salaId) }}
           </p>
 
           <button @click="mostrarComent = post.id" v-show="!mostrarComent" class="mostrarComent">

@@ -7,6 +7,8 @@ export const postagens = ref([
     conteudo: 'conteudo super importante',
     autor: 'usuariobobby',
     data: '24/06/2009',
+    salaId: 1
+
   },
   {
     id: 2,
@@ -15,6 +17,8 @@ export const postagens = ref([
       'Gente, não estou conseguindo entender os componentes do Vue, alguem pode me ajudar com isso??',
     autor: 'hvm',
     data: '08/04/2009',
+    salaId: 1
+
   },
   {
     id: 3,
@@ -22,6 +26,8 @@ export const postagens = ref([
     conteudo: 'Alguem sabe alguma aula de atuação boa ou um prof bom??',
     autor: 'stvgran',
     data: '24/06/2009',
+    salaId: 1
+
   },
   {
     id: 4,
@@ -29,6 +35,8 @@ export const postagens = ref([
     conteudo: 'Onde vende café? meu fornecedor do hospital não faz mais isso',
     autor: 'coffbarneynotkillanyone',
     data: '06/07/2009',
+    salaId: 1
+
   },
   {
     id: 5,
@@ -36,6 +44,8 @@ export const postagens = ref([
     conteudo: 'Algm bom de biologia. Estou com dificuldades sobre genetica  estatistica',
     autor: 'sontoffolizorrone',
     data: '11/07/2009',
+    salaId: 3
+
   },
   {
     id: 6,
@@ -43,11 +53,15 @@ export const postagens = ref([
     conteudo: 'Abuguebum bombum deb ubioblobugia. Ubestobum cobum Ubedibuficubldadebus soberebum gebunubeticabum e ubestabumtistibeca',
     autor: 'ubeube',
     data: '11/07/2009',
+    salaId: 1
+
   },{
     id: 7,
     titulo: 'machado de assis era louco',
     conteudo: 'Gente,',
     autor: 'rita',
     data: '11/07/2009',
+    salaId: 2
+
   },
 ])

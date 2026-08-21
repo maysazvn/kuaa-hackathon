@@ -6,7 +6,7 @@ export const salas = ref([
     participantes: 21,
     desc: 'fórum de discussão de sociologia da 2info2',
     usuarioCriador: 'Samusaax',
-    status: 1
+    status: 1,
 },
 {
     idSala: 2,
