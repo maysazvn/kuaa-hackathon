@@ -1,7 +1,22 @@
 <script setup>
+// imports //////////////////
 import { RouterLink } from 'vue-router';
-
+import { loginOut } from '@/views/account/login/Loginout';
 import { salas } from '@/data/salas'
+import { userReal } from '@/views/account/login/UserReal';
+import { emailReal } from '@/views/account/login/EmailReal';
+import { urlFoto } from '@/views/user/urlFoto';
+
+
+// functions /////////////////
+function validarLoginout(){
+  if(loginOut.value == 'ativo'){
+    loginOut.value = 'inativo'
+  }else{
+    alert('Faça login primeiro!')
+  }
+}
+
 </script>
 
 <template>
@@ -57,6 +72,25 @@ import { salas } from '@/data/salas'
         </li>
       </ul>
     </nav>
+
+      <div class="dadosUser" v-if="loginOut == 'ativo'">
+        {{ userReal }}
+        {{ emailReal }}
+        <img :src="urlFoto" alt="Foto de perfil do usuário">
+      </div>
+    <div class="usuario" v-if="loginOut == 'ativo'">
+  
+
+      <span @click="validarLoginout()"><font-awesome-icon icon="arrow-right-from-bracket" class="sair"/> Sair</span>
+    </div>
+
+    <div class="usuario" v-else>
+  
+
+      <span>
+        <router-link to="/login">Entrar</router-link>
+      </span>
+    </div>
   </aside>
 </template>
 
@@ -136,5 +170,13 @@ hr {
 
 .icone-grupo {
   right: 0% !important;
+}
+
+.usuario{
+  color: wheat;
+}
+.dadosUser{
+  display: block;
+  color: chartreuse;
 }
 </style>
