@@ -6,12 +6,13 @@ import { ref } from 'vue';
 
 import { seguidores } from './Followers';
 import { seguindo } from './Following';
+import { urlFoto } from './urlFoto';
 
 let existe = ref(true);
 
 const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || '');
 const desc = ref(localStorage.getItem('desc') || '');
-const urlFoto = ref(localStorage.getItem('urlFoto') || '');
+// const urlFoto = ref(localStorage.getItem('urlFoto') || '');
 const urlBanner = ref(localStorage.getItem('urlBanner') || '');
 const mostrarSala = false;
 

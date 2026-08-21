@@ -1,2 +1,2 @@
 import { ref } from "vue";
-export const loginOut = ref('');
+export const loginOut = ref('inativo');

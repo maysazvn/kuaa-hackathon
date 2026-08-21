@@ -5,6 +5,7 @@ import { loginOut } from '@/views/account/login/Loginout';
 import { salas } from '@/data/salas'
 import { userReal } from '@/views/account/login/UserReal';
 import { emailReal } from '@/views/account/login/EmailReal';
+import { urlFoto } from '@/views/user/urlFoto';
 
 
 // functions /////////////////
@@ -74,6 +75,7 @@ function validarLoginout(){
       <div class="dadosUser" v-if="loginOut == 'ativo'">
         {{ userReal }}
         {{ emailReal }}
+        <img :src="urlFoto" alt="Foto de perfil do usuário">
       </div>
     <div class="usuario" v-if="loginOut == 'ativo'">
   
