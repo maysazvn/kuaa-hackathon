@@ -9,6 +9,7 @@ const nome = ref('')
 const descricao = ref('')
 const banner = ref('')
 const coisa = ref(1)
+const membros = ref(0)
 const mensagem = ('Algum campo obrigatorio deixou de ser peenchido')
 function cancelar() {
   router.push('/')
@@ -26,7 +27,8 @@ function criar() {
     desc: descricao.value,
     banner: banner.value,
     status: coisa.value,
-    usuarioCriador: userReal.value
+    usuarioCriador: userReal.value,
+    participantes: membros.value
   }) 
   }
   
@@ -47,7 +49,7 @@ function criar() {
 </script>
 
 <template>
-  <img class="imagem" :src="banner" alt="Imagem do banner"> <button>Gerar</button>
+  <img class="imagem" :src="banner" alt="https://i.pinimg.com/736x/ed/b6/06/edb606bf10aad2fdfd3a854758ee0042.jpg">
   <h1 class="nome">Criar Sala</h1>
   <section class="criarsala">
     <div class="naosei">

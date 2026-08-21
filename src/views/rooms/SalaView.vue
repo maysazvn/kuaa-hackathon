@@ -30,15 +30,13 @@ function editarSala() {
 }
 
 
-const satus = ref('')
-
-  const salaa = salas.value.find((s) => s.status == route.params.id)
-  if (salaa?.status == 1) {
-    satus.value = 'Ativo'
-  } else {
-    satus.value = 'Inativo'
+const statusTexto = computed(() => {
+  if (sala.value?.status == 1) {
+    return 'Ativo'
   }
 
+  return 'Inativo'
+})
 
 console.log('Sala encontrada:', sala.value)
 </script>
@@ -48,7 +46,7 @@ console.log('Sala encontrada:', sala.value)
 
     <h1>{{ sala.nome }}</h1>
     <h3>Criador: {{ sala.usuarioCriador }}</h3>
-    <p>Status: {{ satus }}</p>
+    <p>Status: {{ statusTexto }}</p>
     <p>{{ sala.desc }}</p>
     <p>{{ sala.participantes }} Membros</p>
 
