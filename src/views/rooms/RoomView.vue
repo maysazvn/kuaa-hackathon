@@ -15,12 +15,14 @@ function criar() {
 
   if (nome.value === "" || descricao.value === "") {
     alert(mensagem)
+    return
+
   } else {
    salas.value.push({
     idSala: Date.now(),
     nome: nome.value,
     desc: descricao.value,
-    banner: banner.value
+    banner: banner.value,
   }) 
   }
   

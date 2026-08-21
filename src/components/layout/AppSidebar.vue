@@ -1,13 +1,12 @@
 <script setup>
-import { RouterLink } from 'vue-router';
-
+import { RouterLink } from 'vue-router'
+import { salasUsuario } from '@/data/salasUsuario'
 import { salas } from '@/data/salas'
 </script>
 
 <template>
   <aside class="sidebar">
     <nav class="geral">
-
       <ul>
         <li>
           <router-link to="/"> <font-awesome-icon icon="house" /> Página Inicial </router-link>
@@ -19,25 +18,26 @@ import { salas } from '@/data/salas'
           <router-link to="/profile"> <font-awesome-icon icon="user" /> Perfil </router-link>
         </li>
         <router-link to="/login"></router-link>
-          <router-link to="/postagens"> POstagens </router-link> <!-- isso é um teste, apagar depois!-->
+        <router-link to="/postagens"> POstagens </router-link>
+        <!-- isso é um teste, apagar depois!-->
       </ul>
-
     </nav>
 
     <hr />
 
     <nav class="salas">
-
       <div class="criarSala">
         <div class="criar">
-        <h1>SALAS</h1>
-        <router-link to="/room"> <font-awesome-icon icon="plus" class="mais" /> </router-link>
-        <!-- esse font-awesome-icon é o botão de mais ao lado do título salas que vai abrir o adicionar sala -->
-         </div>
+          <h1>SALAS</h1>
+          <router-link to="/room"> <font-awesome-icon icon="plus" class="mais" /> </router-link>
+          <!-- esse font-awesome-icon é o botão de mais ao lado do título salas que vai abrir o adicionar sala -->
+        </div>
 
         <div class="salas">
-          <div v-for="sala in salas" :key="sala.nome">
-            <h2>{{ sala.nome }}</h2>
+          <div v-for="sala in salasUsuario" :key="sala.nome">
+            <RouterLink :to="`/salas/${sala.idSala}`">
+              <h2>{{ sala.nome }}</h2>
+            </RouterLink>
           </div>
           <!-- quem for criar as salas, já cria lá na pasta data um dataset de salas padrão pfv, pra deixar um v-for aqui. -->
         </div>
@@ -84,7 +84,7 @@ h1 {
   font-size: 1.5rem;
 }
 
-nav.salas{
+nav.salas {
   display: flex;
   flex-direction: column;
 }
@@ -97,8 +97,8 @@ nav.salas{
   gap: 5px;
 }
 
-div.salas{
-    color: #d9d9d9;
+div.salas {
+  color: #d9d9d9;
 }
 
 ul li a {
@@ -114,19 +114,19 @@ ul li:hover {
 }
 
 ul li a.router-link-active {
-border-left: 3px solid #F8D76B;
-padding: 3px 15px 3px 6px;
-border-radius: 5px;
-box-shadow: inset 4px 0 8px -2px #a98e3641;
+  border-left: 3px solid #f8d76b;
+  padding: 3px 15px 3px 6px;
+  border-radius: 5px;
+  box-shadow: inset 4px 0 8px -2px #a98e3641;
 }
 
-.mais{
+.mais {
   margin: 8px;
 }
 
-.router-link-active .mais{
+.router-link-active .mais {
   transform: scale(1.4);
-  transition: .2s;
+  transition: 0.2s;
 }
 
 hr {
