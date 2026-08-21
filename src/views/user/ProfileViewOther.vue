@@ -5,6 +5,7 @@ import { seguidores } from './Followers';
 import { seguindo } from './Following';
 import { users } from './Users';
 import { ref } from 'vue';
+import { watchEffect } from 'vue';
 
 
 const route = useRoute();
@@ -18,26 +19,34 @@ const usuario = computed(() => {
 // const suarios = JSON.parse(localStorage.getItem('salasEntradas')) || [];
 
 const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
+let estaseguindo = ref(false);
 
-let mensagemSeguir = ref('Seguir')
+watchEffect(() => {
+  if (usuario.value) {
+    const salvo = localStorage.getItem(`seguindo_${usuario.value.id}`);
+    estaseguindo.value = salvo === 'true';
+  }
+});
 
-let estaseguindo = false
+const mensagemSeguir = computed(() => (estaseguindo.value ? 'Seguindo' : 'Seguir'));
+
 function seguir() {
-  if (estaseguindo == false) {
-    estaseguindo = true
-    mensagemSeguir.value = 'Seguindo'
-    seguidores.push({ id: 5, nome: 'vc ne kkkk' })
-  } else {
-    estaseguindo = false
-    mensagemSeguir.value = 'Seguir'
+  if (!usuario.value) return;
 
-    const indice = seguidores.findIndex((usuario) => usuario.id == 5)
+  if (!estaseguindo.value) {
+    
+    estaseguindo.value = true;
+    localStorage.setItem(`seguindo_${usuario.value.id}`, 'true');
+    seguidores.push({ id: 5, nome: 'vc ne kkkk' });
+  } else {
+    estaseguindo.value = false;
+    localStorage.setItem(`seguindo_${usuario.value.id}`, 'false');
+
+    const indice = seguidores.findIndex((u) => u.id === 5);
     if (indice > -1) {
-      seguidores.splice(indice, 1)
+      seguidores.splice(indice, 1);
     }
   }
-  console.log(estaseguindo)
-  console.log(mensagemSeguir)
 }
 
 </script>
