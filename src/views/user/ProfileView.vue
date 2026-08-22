@@ -80,9 +80,11 @@ function excluir() {
     </div>
 
     <div class="salas" v-show="mostrarSala === 'sim'">
-      <ul>
-        <li v-for="sala in suarios" :key="sala.id" :nome="sala.nome">
-          <p>{{ sala.nome }}</p>
+      <ul class="listaSalas">
+        <li v-for="sala in suarios" :key="sala.id" :nome="sala.nome" class="cardSala">
+          <RouterLink :to="`/salas/${sala.idSala}`">
+              <span class="nomesala">{{ sala.nome }}</span>
+            </RouterLink>
         </li>
       </ul>
     </div>
@@ -196,5 +198,41 @@ ul {
 .seguidores span,
 .seguindo span {
   font-weight: bold;
+}
+
+.listaSalas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #444444 #1e1e1e;
+}
+
+.cardSala {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #313131;
+  padding: 1px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #d9d9d9;
+}
+
+.cardSala:hover {
+  opacity: 0.9;
+  transform: scale(0.95);
+  transition: .2s;
+}
+
+.nomeSala {
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 </style>

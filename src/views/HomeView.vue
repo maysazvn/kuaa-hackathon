@@ -1,76 +1,52 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { salas } from '@/data/salas'
+import { postagens } from '@/data/postagens'
+import Postagens from '@/components/Postagens/Postagens.vue'
+import { salasUsuario } from '@/data/salasUsuario'
+import { loginOut } from './account/login/Loginout'
 
-const usuarioLogado = ref({
-  nome: 'chuvsmilo',
-  salasInscritas: [1, 2],
-})
+function usuarioEstaNaSala(salaIdDoPost) {
+  for (let sala of salasUsuario.value) {
+    const idUsuario = sala.idSala || sala.id
 
-const postagensTemporarias = ref([
-  {
-    idPost: 1,
-    idSala: 1,
-    titulo: 'Brincadeira piadas também fotos',
-    conteudo: 'Não pode sem camisa homens',
-    autor: 'Sérgio',
-    data: '25/05/2027',
-    curtidas: 12,
-  },
-  {
-    idPost: 2,
-    idSala: 1,
-    titulo: 'Como derrotar um fantasma',
-    conteudo: 'tentei chegar com fogo perto dele e quase morri, preciso de métodos mais eficientes',
-    autor: 'ghostbusters',
-    data: '09/05/2027',
-    curtidas: 22,
-  },
-  {
-    idPost: 3,
-    idSala: 2,
-    titulo: 'queria estudar mais',
-    conteudo: 'me proíbam de usar instagram',
-    autor: 'bof',
-    data: '15/08/2026',
-    curtidas: 4,
-  },
-  {
-    idPost: 4,
-    idSala: 3,
-    titulo: 'Química',
-    conteudo: 'quantos mols de pessoas tem nessa sala?',
-    autor: 'Rochelle',
-    data: '12/06/2026',
-    curtidas: 205,
-  },
-])
+    if (Number(idUsuario) === Number(salaIdDoPost)) {
+      return true
+    }
+  }
+  return false
+}
 
 const postsTimeline = computed(() => {
-  return postagensTemporarias.value.filter((post) => {
-    const inscrito = usuarioLogado.value.salasInscritas.includes(post.idSala)
+  return postagens.value.filter((post) => {
+    const inscrito = usuarioEstaNaSala(post.salaId)
     const viral = post.curtidas >= 150
+
     return inscrito || viral
   })
 })
 
-function pegarSala(idSala) {
-  const sala = salas.value.find((room) => (room.idSala || room.id) === idSala)
-  return sala ? sala.nome : 'Sla'
-}
+const salaSelecionada = ref(null)
 </script>
 
 <template>
   <div class="container">
-    <div class="postar">
+    <div class="postar" v-if="loginOut === 'ativo'">
       <div class="imginput">
         <img src="../../public/kuaa.png" alt="icone de perfil do usuario" />
         <input type="text" placeholder="Qual é seu tema de estudo agora?" />
       </div>
 
       <div class="botao">
-        <div v-for="sala in usuarioLogado" :key="sala.idSala" class="salasPostar">
-          <span @click="teste"> ! {{ sala.salasInscritas }}</span>
+        <div class="botoesSala">
+          <span
+            v-for="sala in salasUsuario"
+            :key="sala.idSala || sala.id"
+            class="salaItem"
+            :class="{ ativa: salaSelecionada === (sala.idSala || sala.id) }"
+            @click="salaSelecionada = sala.idSala || sala.id"
+          >
+            {{ sala.nome }}
+          </span>
         </div>
 
         <div>
@@ -79,63 +55,119 @@ function pegarSala(idSala) {
       </div>
     </div>
 
+    <div class="postar" v-if="loginOut === 'inativo'">
+      <div class="semPosts">
+        <p>Você não tem conta para postar!</p>
+      </div>
+    </div>
+
     <div class="semPosts" v-if="postsTimeline.length === 0">
       <p>Ainda não há posts. Experimente entrar em uma sala!</p>
     </div>
 
     <div class="feed" v-else>
-      <div class="posts" v-for="post in postsTimeline" :key="post.id">
-        <div class="identificacao">
-          <span class="salas" v-if="usuarioLogado.salasInscritas.includes(post.idSala)"
-            >Em {{ pegarSala(post.idSala) }}</span
-          >
-          <span class="salas" v-else>Em alta em {{ pegarSala(post.idSala) }}</span>
-        </div>
-
-        <div></div>
-      </div>
+      <Postagens :posts="postsTimeline" />
     </div>
   </div>
 </template>
 
 <style scoped>
 .container {
-  margin: 3vw;
-}
-
-div {
-  color: white;
+  margin: 3vw 5vw auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+  color: #d9d9d9;
 }
 
 .postar {
+  background-color: #1e1e1e;
+  border: 1px solid #2d2d2d;
+  border-radius: 20px;
+  padding: 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 0 6px #0000002d;
+  width: 800px;
+  margin: 2vw auto;
 }
 
-.postar img {
-  border-radius: 100%;
-  width: 80px;
+.botoeSala {
+  display: flex;
+  flex: 1;
+  gap: 5px;
 }
 
-input {
-  outline: none;
+.imginput {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.imginput img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.imginput input {
+  flex: 1;
   border: none;
-  width: 80vw;
+  outline: none;
+  color: #d9d9d9;
+  font-size: 1rem;
+  padding: 12px 0 8px 0;
 }
 
 .botao {
   display: flex;
   justify-content: space-between;
-  gap: 5px;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #282828;
+  padding-top: 10px;
 }
 
-.botao span {
-  cursor: pointer;
-  padding: 5px 15px;
+.botoesSala {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 1;
+  max-width: 550px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 4px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #444444 #1e1e1e;
+}
+
+.semPosts p {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.salaItem {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #b0b0b0;
   background-color: #313131;
-  border-radius: 15px;
+  padding: 5px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.salaItem:hover {
+  transition: 0.2s;
+  opacity: 0.9;
+  color: #ffffff;
+}
+
+.salaItem.ativa {
+  background-color: #ffffff;
+  color: #1e1e1e;
+  font-weight: bold;
 }
 
 .botaoPostar {
@@ -148,12 +180,16 @@ input {
 
 .botaoPostar:hover {
   transition: 0.2s;
-  opacity: calc(0.8);
+  opacity: 0.9;
   transform: scale(0.95);
 }
 
-.imginput {
-  display: flex;
-  gap: 15px;
+.salas {
+  background-color: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  border-radius: 15px;
+  padding: 8px;
+  max-width: 300px;
+  box-shadow: 0 0 15px #0101012f;
 }
 </style>

@@ -3,6 +3,25 @@ import { ref, onMounted } from 'vue'
 import CommentsPostagens from './CommentsPostagens.vue'
 import CriarPost from './CriarPost.vue'
 import { postagens } from '@/data/postagens.js'
+import { salasUsuario } from '@/data/salasUsuario.js'
+
+const props = defineProps({
+  posts: {
+    type: Array,
+    required: true,
+  },
+})
+
+function usuarioEstaNaSala(salaIdDoPost) {
+  for (let sala of salasUsuario.value) {
+    const idUsuario = sala.idSala || sala.id
+
+    if (Number(idUsuario) === Number(salaIdDoPost)) {
+      return true
+    }
+  }
+  return false
+}
 
 let usuario = ref('cofeeBarney')
 const mostrarComent = ref(null)
@@ -10,7 +29,7 @@ import { shallowRef } from 'vue'
 import { salas } from '@/data/salas.js'
 const dialog = shallowRef(false)
 
-const storage = `postagens_${postagens.id}`
+const storage = 'postagens'
 
 onMounted(() => {
   const salvos = localStorage.getItem(storage)
@@ -55,10 +74,15 @@ function salaDoPost(salaId) {
 <template>
   <section>
     <div>
-      <h3>Postagens</h3>
 
-      <div class="postagens" v-for="post in postagens" :key="post.id" :usuario="usuario">
+      <div class="postagens" v-for="post in props.posts" :key="post.id">
         <div class="listaPosts">
+          <div class="identificacao">
+            <span class="salas" v-if="usuarioEstaNaSala(post.salaId)"
+              >Em {{ salaDoPost(post.salaId) }}</span
+            >
+            <span class="salas" v-else>Em alta em {{ salaDoPost(post.salaId) }}</span>
+          </div>
           <div class="cima">
             <div class="esq">
               <p class="autor">
@@ -91,9 +115,6 @@ function salaDoPost(salaId) {
           </h2>
           <p class="conteudo">
             {{ post.conteudo }}
-          </p>
-          <p class="sala"> 
-            {{ salaDoPost(post.salaId) }}
           </p>
 
           <button @click="mostrarComent = post.id" v-show="!mostrarComent" class="mostrarComent">
@@ -216,9 +237,9 @@ h3 {
 
 .btn-fixo {
   position: fixed !important;
-  bottom: 30px !important;  
-  right: 30px !important;   
-  z-index: 999 !important;  
+  bottom: 30px !important;
+  right: 30px !important;
+  z-index: 999 !important;
   padding: 0 !important;
 }
 
@@ -226,10 +247,10 @@ h3 {
   background-color: #f8d76b !important;
   font-size: 2.2rem !important;
   font-weight: bold !important;
-  width: 55px !important;      
-  height: 55px !important;      
+  width: 55px !important;
+  height: 55px !important;
   min-width: 0 !important;
-  border-radius: 50% !important; 
+  border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -237,7 +258,7 @@ h3 {
   margin: 80px !important;
 }
 
-.text-black{
+.text-black {
   font-weight: bold;
   color: #1e1e1e;
 }
@@ -251,12 +272,12 @@ h3 {
 .btn-mais {
   background-color: #f8d76b !important;
   color: #1e1e1e !important;
-  font-size: 2.2rem !important; 
+  font-size: 2.2rem !important;
   font-weight: bold !important;
-  width: 55px !important;       
-  height: 55px !important;     
+  width: 55px !important;
+  height: 55px !important;
   min-width: 0 !important;
-  border-radius: 50% !important; 
+  border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -265,7 +286,7 @@ h3 {
 }
 
 .btn-mais:hover {
-  transform: scale(1.1) !important; 
+  transform: scale(1.1) !important;
   cursor: pointer;
 }
 
@@ -301,10 +322,9 @@ h3 {
 checklist:
 -- função adicionar imagem e fotos do usuario e das salas nos posts
 -- colocar sala nos posts
--- (andre vai ajudar) apenas poder postar/comentar quando esta logado 
+-- (andre vai ajudar) apenas poder postar/comentar quando esta logado
 
 //////////////////////////// evita usar vuetify nao sei fazer css disso //////////////////////////////////////
 
 */
 </style>
-
