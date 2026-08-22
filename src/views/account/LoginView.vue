@@ -1,11 +1,12 @@
 <script setup>
 //imports
 
-import { ref } from 'vue'
-import ButtonChild from '@/components/ButtonChild.vue'
-import { userReal } from './login/UserReal'
-import { emailReal } from './login/EmailReal'
-import { senhaReal } from './login/SenhaReal'
+import { ref } from 'vue';
+import ButtonChild from '@/components/ButtonChild.vue';
+import { userReal } from './login/UserReal';
+import { emailReal } from './login/EmailReal';
+import { senhaReal } from './login/SenhaReal';
+import { loginOut } from './login/Loginout';
 
 // lets ////////
 
@@ -47,8 +48,9 @@ function enviar(email, senha, user) {
     alert('Preencha todos os campos!')
   }
 }
-function logar(email, senha) {
-  if (email === emailReal.value && senha === senhaReal.value) {
+function logar(email, senha){
+  if(email === emailReal.value && senha === senhaReal.value){
+    loginOut.value = 'ativo'
     alert('Você logou com sucesso!')
     senhaFalsa.value = ''
     emailFalso.value = ''
