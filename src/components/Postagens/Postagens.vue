@@ -45,11 +45,11 @@ function denunciar() {
   alert('Comentário denunciado com sucesso.')
 }
 
-function salaDoPost (salaId) {
-  const index = salas.value.findIndex((s) => s.id === salaId)
-  return index !== -1 ? salas.value[index].nome : 'Geral'
+function salaDoPost(salaId) {
+  if (!salas.value) return 'Geral'
+  const salaEncontrada = salas.value.find((s) => Number(s.idSala) === Number(salaId))
+  return salaEncontrada ? salaEncontrada.nome : 'Geral'
 }
-
 </script>
 
 <template>
