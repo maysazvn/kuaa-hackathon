@@ -1,7 +1,12 @@
 <script setup>
+
 // imports //////////////////
-import { RouterLink } from 'vue-router'
+
 import { loginOut } from '@/views/account/login/Loginout'
+
+import { RouterLink } from 'vue-router'
+import { salasUsuario } from '@/data/salasUsuario'
+
 import { salas } from '@/data/salas'
 import { userReal } from '@/views/account/login/UserReal'
 import { emailReal } from '@/views/account/login/EmailReal'
@@ -47,8 +52,10 @@ function validarLoginout() {
         </div>
 
         <div class="salas">
-          <div v-for="sala in salas" :key="sala.nome">
-            <h2>{{ sala.nome }}</h2>
+          <div v-for="sala in salasUsuario" :key="sala.nome">
+            <RouterLink :to="`/salas/${sala.idSala}`">
+              <h2>{{ sala.nome }}</h2>
+            </RouterLink>
           </div>
           <!-- quem for criar as salas, já cria lá na pasta data um dataset de salas padrão pfv, pra deixar um v-for aqui. -->
         </div>
