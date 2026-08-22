@@ -86,7 +86,7 @@ function adicionar() {
           <v-col cols="12">
             <v-autocomplete
               v-model="salaSelecionada"
-              :items="['2info2', 'Quimica do Mal', 'Biologia']"
+              :items="salas"
               label="Sala *"
               required
               auto-select-first
