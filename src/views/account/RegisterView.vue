@@ -1,9 +1,8 @@
-<!-- read salas/comunidades -->
 <script setup>
 </script>
 
 <template>
-  Sala
+Cadastro
 </template>
 
 <style scoped>
