@@ -94,7 +94,7 @@ function validarLoginout() {
 
     <div class="entrarUsuario" v-else>
       <span>
-        <router-link to="/login">Entrar</router-link>
+        <router-link to="/login" class="entrar"><font-awesome-icon icon="arrow-right-from-bracket" class="sair" />Entrar</router-link>
       </span>
     </div>
   </aside>
@@ -106,15 +106,13 @@ aside.sidebar {
   top: 60px;
   left: 0;
   bottom: 0;
-  width: 240px;
-  height: calc(100vh - 60px);
   z-index: 999;
   background: #313131;
   display: flex;
   flex-direction: column;
   width: 250px;
-  height: 100vh;
   padding: 10px 5px;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -183,11 +181,14 @@ hr {
   color: #d9d9d9;
   justify-content: baseline;
   align-items: center;
-  margin: 5px;
 }
 
 .usuarioSidebar, .emailSidebar{
   margin: 1px 10px;
+}
+
+.usuarioSidebar{
+  font-weight: bold;
 }
 
 .imgSidebar{
@@ -196,8 +197,26 @@ hr {
   border-radius: 100px;
 }
 
-.sair{
+.sair, .entrar{
   color: #d9d9d9;
-  font-style: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  gap: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sair:hover, .entrar:hover{
+  opacity: 0.8;
+  transition: .2s;
+}
+
+.entrarUsuario, .dadosUser{
+  margin-top: auto;
+}
+
+.entrarUsuario, .sairUsuario, .dadosUser{
+  padding: 2px 10px;
 }
 </style>
