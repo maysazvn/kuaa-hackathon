@@ -31,6 +31,7 @@ watch(sala, (novaSala) => {
 </script>
 <template>
     <h1>Perfil de Sala</h1>
+    <img class="imagem" :src="banner" alt="https://i.pinimg.com/736x/ed/b6/06/edb606bf10aad2fdfd3a854758ee0042.jpg">
     <p>Nome da Sala</p>
     <input v-model="nome">
     <p>Descrição</p>

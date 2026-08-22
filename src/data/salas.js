@@ -16,7 +16,7 @@ export const salas = ref([
     participantes: 32,
     desc: 'Discutindo física com kurt Cobain brasileiro',
     usuarioCriador: 'PedroLooser',
-    status: 1,
+    status: 0,
     banner: 'https://i.pinimg.com/736x/c0/72/47/c0724777580c31a95f3ddf84928b34d9.jpg'
 },
 {
