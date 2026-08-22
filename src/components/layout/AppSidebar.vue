@@ -1,7 +1,25 @@
 <script setup>
+
+// imports //////////////////
+
+import { loginOut } from '@/views/account/login/Loginout'
+
 import { RouterLink } from 'vue-router'
 import { salasUsuario } from '@/data/salasUsuario'
+
 import { salas } from '@/data/salas'
+import { userReal } from '@/views/account/login/UserReal'
+import { emailReal } from '@/views/account/login/EmailReal'
+import { urlFoto } from '@/views/user/urlFoto'
+
+// functions /////////////////
+function validarLoginout() {
+  if (loginOut.value == 'ativo') {
+    loginOut.value = 'inativo'
+  } else {
+    alert('Faça login primeiro!')
+  }
+}
 </script>
 
 <template>
@@ -57,6 +75,28 @@ import { salas } from '@/data/salas'
         </li>
       </ul>
     </nav>
+
+    <div class="dadosUser" v-if="loginOut == 'ativo'">
+      <div>
+        <img :src="urlFoto" alt="Foto de perfil do usuário" class="imgSidebar" />
+      </div>
+
+      <div>
+        <p class="usuarioSidebar">{{ userReal }}</p>
+        <p class="emailSidebar">{{ emailReal }}</p>
+      </div>
+    </div>
+
+    <div class="sairUsuario" v-if="loginOut == 'ativo'">
+      <span @click="validarLoginout()" class="sair"><font-awesome-icon icon="arrow-right-from-bracket" class="sair" /> Sair</span
+      >
+    </div>
+
+    <div class="entrarUsuario" v-else>
+      <span>
+        <router-link to="/login">Entrar</router-link>
+      </span>
+    </div>
   </aside>
 </template>
 
@@ -136,5 +176,28 @@ hr {
 
 .icone-grupo {
   right: 0% !important;
+}
+
+.dadosUser {
+  display: flex;
+  color: #d9d9d9;
+  justify-content: baseline;
+  align-items: center;
+  margin: 5px;
+}
+
+.usuarioSidebar, .emailSidebar{
+  margin: 1px 10px;
+}
+
+.imgSidebar{
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+}
+
+.sair{
+  color: #d9d9d9;
+  font-style: 1.3rem;
 }
 </style>

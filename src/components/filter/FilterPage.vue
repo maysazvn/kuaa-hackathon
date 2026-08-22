@@ -22,6 +22,8 @@ const salasFiltradas = computed(() => {
     if (!coisaPesquisada.value) return lista ;
 
     const termo = coisaPesquisada.value.toLowerCase().trim();
+    
+
 
     return lista.filter(sala => 
         sala.nome && sala.nome.toLowerCase().includes(termo)
@@ -45,8 +47,9 @@ const usersFiltrados = computed(() => {
 <template>
         <div>
             <div v-if="salasFiltradas.length > 0">
-                <div v-for="sala in salasFiltradas" :key="sala.idSala || sala.id " :idSala="sala.idSala">
+                <div v-for="sala in salasFiltradas" :key="sala.idSala || sala.id " :idSala="sala.idSala" :banner="sala.banner">
                     <RouterLink :to="`/salas/${sala.idSala}`">
+                        <img :src="sala.banner" alt="">
                         {{ sala.nome }}
                     </RouterLink>
                 </div>
@@ -58,8 +61,9 @@ const usersFiltrados = computed(() => {
         
         <div>
             <div v-if="usersFiltrados.length > 0">
-                <div v-for="user in usersFiltrados" :key="user.id">
+                <div v-for="user in usersFiltrados" :key="user.id" :pfp="user.pfp">
                     <RouterLink :to="`/otherProfile/${user.id}`">
+                        <img :src="user.pfp" alt="">
                         {{ user.nome }}
                     </RouterLink>
                 </div>
