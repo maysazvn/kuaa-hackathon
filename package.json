@@ -21,7 +21,8 @@
     "@mdi/font": "^7.4.47",
     "vue": "^3.5.38",
     "vue-router": "^5.1.0",
-    "vuetify": "^4.0.1"
+    "vuetify": "^4.1.11",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
