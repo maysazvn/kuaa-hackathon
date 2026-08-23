@@ -4,6 +4,7 @@ import { postagens } from '@/data/postagens'
 import Postagens from '@/components/Postagens/Postagens.vue'
 import { salasUsuario } from '@/data/salasUsuario'
 import { loginOut } from './account/login/Loginout'
+import { userReal } from '@/views/account/login/UserReal'
 
 function usuarioEstaNaSala(salaIdDoPost) {
   for (let sala of salasUsuario.value) {
@@ -25,7 +26,35 @@ const postsTimeline = computed(() => {
   })
 })
 
+const conteudoRapido = ref('')
 const salaSelecionada = ref(null)
+
+function criarPostRapido() {
+  if (!conteudoRapido.value.trim()) {
+    alert('Escreva algo antes de postar!')
+  }
+
+  if (!salaSelecionada.value) {
+    alert('Escolha uma sala antes de postar!')
+  }
+
+  let maiorId = Math.max(...postagens.value.map((item) => item.id))
+
+  const novoPost = {
+    titulo: '',
+    conteudo: conteudoRapido.value,
+    autor: userReal.value,
+    data: new Date().toLocaleDateString('pt-BR'),
+    id: maiorId + 1,
+    salaId: Number(salaSelecionada.value),
+  }
+
+  postagens.value.unshift(novoPost)
+  localStorage.setItem('postagens', JSON.stringify(postagens.value))
+
+  conteudoRapido.value = ''
+  salaSelecionada.value = null
+}
 </script>
 
 <template>
@@ -33,7 +62,7 @@ const salaSelecionada = ref(null)
     <div class="postar" v-if="loginOut === 'ativo'">
       <div class="imginput">
         <img src="../../public/kuaa.png" alt="icone de perfil do usuario" />
-        <input type="text" placeholder="Qual é seu tema de estudo agora?" />
+        <input type="text" placeholder="Qual é seu tema de estudo agora?" v-model="conteudoRapido"/>
       </div>
 
       <div class="botao">
@@ -50,7 +79,7 @@ const salaSelecionada = ref(null)
         </div>
 
         <div>
-          <button class="botaoPostar" type="submit">Postar</button>
+          <button class="botaoPostar" type="submit" @click="criarPostRapido">Postar</button>
         </div>
       </div>
     </div>
@@ -192,4 +221,44 @@ const salaSelecionada = ref(null)
   max-width: 300px;
   box-shadow: 0 0 15px #0101012f;
 }
+
+
+/*
+///////////////////////////////////////////// BUGS/COISAS PRA ARRUMAR /////////////////////////////////////////////
+TIMELINE:
+1. quando clicar na foto/nome da sala/usuario ter como entrar no perfil da sala/usuario
+2. criar post do + bugado na timeline, além de n ter como escolher salas
+3. quando o post é seu n ta mais aparecendo editar/excluir e n ta reconhecendo seu usuario
+4. posts em alta sem foto
+5. curtidas!!! e salvos
+
+SALAS:
+1. quando vc cria uma sala vc nao está nela automaticamente
+2. tem como editar/excluir salas aleatorias q nem sao suas
+
+PESQUISA:
+1. poder separar se vc quer pesquisar espeficamente uma sala, um usuario ou uma postagem
+2. ter como pesquisar postagens
+
+LOGIN:
+1. precisar ter conta pra comentar
+2. tem como ver posts sem ter conta logada (q esta relacionada a capacidade de entrar em salas sem ter conta)
+3. tem como criar sala sem ter conta
+4. tem como 'seguir' sem ter conta
+5. tem como entrar em salas sem conta
+6. tem como ver o proprio perfil sem ter conta
+
+USUARIOS:
+1. era bom ter variedade de seguidores e seguindo
+
+CSS:
+1. css de pesquisa
+2. css explorar salas
+3. css read sala
+4. responsividade
+
+
+
+
+*/
 </style>

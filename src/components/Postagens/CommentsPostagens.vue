@@ -120,7 +120,7 @@ function denunciar() {
 
 textarea {
   border: 2px solid #3e3e3e;
-  width: 500px !important;
+  width: 450px !important;
   height: 90px !important;
   border-radius: 10px;
   margin-top: 25px;

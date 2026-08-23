@@ -4,6 +4,9 @@ import CommentsPostagens from './CommentsPostagens.vue'
 import CriarPost from './CriarPost.vue'
 import { postagens } from '@/data/postagens.js'
 import { salasUsuario } from '@/data/salasUsuario.js'
+import { shallowRef } from 'vue'
+import { salas } from '@/data/salas.js'
+import { users } from '@/views/user/Users.js'
 
 const props = defineProps({
   posts: {
@@ -12,6 +15,7 @@ const props = defineProps({
   },
 })
 
+//hallana essa function procura se o usuario está na sala ou nao
 function usuarioEstaNaSala(salaIdDoPost) {
   for (let sala of salasUsuario.value) {
     const idUsuario = sala.idSala || sala.id
@@ -23,10 +27,41 @@ function usuarioEstaNaSala(salaIdDoPost) {
   return false
 }
 
+//essa procura la no salas.js o banner da sala
+function pegarBanner(salaId) {
+  const sala = salas.value.find((sal) => sal.idSala === Number(salaId))
+  if (sala) {
+    return sala.banner
+  } else {
+    return ''
+  }
+}
+
+//essa procura la no users.js o banner da sala
+function pegarFotoUsuario(autorID) {
+  console.log('TOTAL de usuários carregados:', users.length)
+  console.log('IDs disponíveis:', users.map(u => u.id))
+  const usuarioEncontrado = users.find(usu => usu.id === autorID)
+  if (usuarioEncontrado) {
+    return usuarioEncontrado.pfp
+  } else {
+    return '/pfpPlaceholder.png'
+  }
+}
+
+//e essa o nome do autorkkkkkkkkkkkkkkk
+function pegarNomeAutor(autorID) {
+  const usuarioEncontrado = users.find(usu => usu.id === autorID)
+  if (usuarioEncontrado) {
+    return usuarioEncontrado.nome
+  } else {
+    return 'Usuário desconhecido'
+  }
+}
+
+
 let usuario = ref('cofeeBarney')
 const mostrarComent = ref(null)
-import { shallowRef } from 'vue'
-import { salas } from '@/data/salas.js'
 const dialog = shallowRef(false)
 
 const storage = 'postagens'
@@ -74,19 +109,22 @@ function salaDoPost(salaId) {
 <template>
   <section>
     <div>
-
       <div class="postagens" v-for="post in props.posts" :key="post.id">
         <div class="listaPosts">
           <div class="identificacao">
-            <span class="salas" v-if="usuarioEstaNaSala(post.salaId)"
-              >Em {{ salaDoPost(post.salaId) }}</span
+            <span class="salas" v-if="usuarioEstaNaSala(post.salaId)">
+              <img :src="pegarBanner(post.salaId)" :alt="nome" class="iconSala"/>
+              Em {{ salaDoPost(post.salaId) }}</span
             >
             <span class="salas" v-else>Em alta em {{ salaDoPost(post.salaId) }}</span>
           </div>
           <div class="cima">
             <div class="esq">
               <p class="autor">
-                <strong>{{ post.autor }} </strong>
+                <strong>
+                  <img :src="pegarFotoUsuario(post.autorID)" class="fotoAutor">
+                  {{ pegarNomeAutor(post.autorID) }}
+                </strong>
               </p>
 
               <p>
@@ -211,6 +249,21 @@ button:hover {
   transition: 0.2s;
 }
 
+div.identificacao{
+  display: flex;
+  align-items: center;
+}
+
+span.salas{
+  font-weight: bold;
+}
+
+span.salas img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 /*//////*/
 
 input {
@@ -318,11 +371,18 @@ h3 {
   transition: 0.3s;
 }
 
+.fotoAutor {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
 /*
 checklist:
 -- função adicionar imagem e fotos do usuario e das salas nos posts
--- colocar sala nos posts
--- (andre vai ajudar) apenas poder postar/comentar quando esta logado
 
 //////////////////////////// evita usar vuetify nao sei fazer css disso //////////////////////////////////////
 

@@ -8,9 +8,7 @@ export const users = [
         banner: 'https://i.superesportes.com.br/Mma7tYFtvyrY4-HEGSiI4Q2-Zgk=/650x0/smart/imgsapp.mg.superesportes.com.br/app/noticia_126420360808/2022/11/22/3980504/neymar_1_87520.jpg',
         desc: 'menino ney.',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 2,
@@ -19,9 +17,7 @@ export const users = [
         banner: 'https://deadbydaylight.com/static/a197e7b8b44bfbe199546300338aeffb/691d2/MAPLE_Keyart_Resizes_WEBSITE_Keyart_1920x1080_V3_b1b5d017c9.png',
         desc: 'uma mulher com hábitos noturnos exóticos',
         mostrarSala: 'sim',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 3,
@@ -30,9 +26,7 @@ export const users = [
         banner: 'https://t4.ftcdn.net/jpg/05/40/20/91/360_F_540209110_YNGwMb4Q7zdqsYPmoP7gMnXtrXjKcIrS.jpg',
         desc: 'apenas um gato normal.',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 4,
@@ -41,9 +35,7 @@ export const users = [
         banner: 'https://p2.trrsf.com/image/fget/cf/1200/900/middle/images.terra.com/2022/05/20/lara-croft-1h7gdz69qqn90.jpg',
         desc: 'Arqueóloga formada!',
         mostrarSala: 'sim',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 5,
@@ -52,9 +44,7 @@ export const users = [
         banner: 'https://i0.wp.com/miniporco.com.br/wp-content/uploads/2026/01/unnamed-2-2.jpg?w=640&ssl=1',
         desc: 'Bióloga formada! e gosto de porcos',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 6,
@@ -63,9 +53,7 @@ export const users = [
         banner: 'https://cinebuzz.com.br/wp-content/uploads/2025/07/dexter-ressurreicao-traz-dexter-morgan-de-volta-a-vida-e-surpreende-fas.jpg',
         desc: 'não sou o dexter',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 7,
@@ -74,9 +62,7 @@ export const users = [
         banner: 'https://static0.srcdn.com/wordpress/wp-content/uploads/2022/01/james-doakes-dexter-new-blood-finale-montage.jpg?q=49&fit=contain&w=750&h=422&dpr=2',
         desc: 'eu sei que tem algo de errado com o dexter',
         mostrarSala: 'sim',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 8,
@@ -85,9 +71,7 @@ export const users = [
         banner: 'https://ovicio.com.br/wp-content/uploads/2023/05/20230525-c3hnptingdlomybbwiuqrp-730x365.jpg',
         desc: 'era eu barry',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 9,
@@ -96,9 +80,7 @@ export const users = [
         banner: 'https://i.pinimg.com/736x/c5/e4/0e/c5e40e88dc3584399305ebeb83a3f5c6.jpg',
         desc: 'mãe do barry allen da serie do flash',
         mostrarSala: 'sim',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 10,
@@ -107,9 +89,7 @@ export const users = [
         banner: 'https://i.pinimg.com/736x/24/1a/ea/241aeadd7c5900aac8c740010c8a1c9b.jpg',
         desc: 'pqp denovo nao',
         mostrarSala: 'sim',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 11,
@@ -118,9 +98,7 @@ export const users = [
         banner: 'https://aventurasnahistoria.com.br/wp-content/uploads/demoniocapafilme2.jpg',
         desc: 'fale palavrão minha criança',
         mostrarSala: 'sim',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 12,
@@ -129,9 +107,7 @@ export const users = [
         banner: 'https://image.api.playstation.com/vulcan/ap/rnd/202508/1316/e99168bdab3ac4f8804b8a92032c2e95e5187d0b0d92fff6.jpg?w=1920&thumb=false',
         desc: 'odeio self-insert',
         mostrarSala: 'sim',
-        sala1: '22info22',
-        sala2: 'Five Nights At Freddy',
-        sala3: null
+        salas: [1, 7]
     },
     {
         id: 13,
@@ -140,9 +116,7 @@ export const users = [
         banner: 'https://cdn.kobo.com/book-images/e0a84b50-7fa0-49dd-a0ad-2e94d2b8904f/353/569/90/False/lgbt-1.jpg',
         desc: 'bip bip conectando aos servidores da argelia',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 14,
@@ -151,9 +125,7 @@ export const users = [
         banner: 'https://pt.quizur.com/_image?href=https://static.quizur.com/i/b/5a8c20a9600d97.302390645a8c20a942ffb6.76737408.jpg&w=1200&h=900&f=webp',
         desc: 'vocês preferem sorvete de morango ou de bosta',
         mostrarSala: 'sim',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 15,
@@ -162,9 +134,7 @@ export const users = [
         banner: 'https://i.pinimg.com/736x/f5/50/34/f5503432e88456b6f143040aa7c5196e.jpg',
         desc: 'eu não quero bosta',
         mostrarSala: 'sim',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 16,
@@ -173,9 +143,7 @@ export const users = [
         banner: 'https://miro.medium.com/v2/0*AODaFOtQp_4WvKct.jpg',
         desc: 'luto Kaori, 14 anos. Primária Arima',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 17,
@@ -184,9 +152,7 @@ export const users = [
         banner: 'https://kdfrases.com/frases-imagens/frase-nada-e-real-a-nao-ser-o-sonho-e-o-amor-anne-noailles-151740.jpg',
         desc: 'Ninguém é real',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 18,
@@ -195,9 +161,7 @@ export const users = [
         banner: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi9JeDlElPXQatu_198B-BSJeZxZwOKeGqAWcx4f-tIb7ogf1wZIzBJAY&s=10',
         desc: 'deus pokemon da agua',
         mostrarSala: 'sim',
-        sala1: null,
-        sala2: null,
-        sala3: null
+       salas: [1, 3]
     },
     {
         id: 19,
@@ -206,9 +170,7 @@ export const users = [
         banner: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdZMDaUdzTgLmr5QAeTsL4Wx14yxtjdm-fYRWcNfEpU3JKEbUfiWFu0ePu&s=10',
         desc: 'O cara do ciência todo dia',
         mostrarSala: 'sim',
-        sala1: 'Ciência todo dia',
-        sala2: null,
-        sala3: null
+        salas: [2]
     },
     {
         id: 20,
@@ -217,9 +179,7 @@ export const users = [
         banner: 'https://rollingstone.com.br/wp-content/uploads/rochelle_todo_mundo_odeia_o_chris_melhores_frases.jpg',
         desc: '1 mol de motivos para sorrir',
         mostrarSala: 'nao',
-        sala1: 'Química do mal',
-        sala2: null,
-        sala3: null
+        salas: [3]
     },
     {
         id: 21,
@@ -228,9 +188,7 @@ export const users = [
         banner: 'https://i.ytimg.com/vi/68Ee-ls_j_0/sddefault.jpg',
         desc: 'ererererererererererer',
         mostrarSala: 'nao',
-        sala1: 'Matematica',
-        sala2: null,
-        sala3: null
+       salas: [4]
     },
     {
         id: 22,
@@ -239,9 +197,7 @@ export const users = [
         banner: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlHPw6CKwSGwFKXj6u4YDzwLv3odzAkX1lrsUmYhho4w&s=10',
         desc: 'meu nome é bobby',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 23,
@@ -250,9 +206,7 @@ export const users = [
         banner: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdKjfjHtgIMHo1uwL-A8_2xxUixtJXHyGrDNEjShC-OQ&s=10',
         desc: 'quero café',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 24,
@@ -261,9 +215,7 @@ export const users = [
         banner: 'https://i.pinimg.com/736x/4b/88/a3/4b88a371dc9130eda57ed510e3531632.jpg',
         desc: 'Assistam The Last of Us, a série',
         mostrarSala: 'sim',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 25,
@@ -272,9 +224,7 @@ export const users = [
         banner: 'https://static.significados.com.br/foto/piramide-egito-antigo-significados.jpg?width=768',
         desc: 'Pode me chamar sempre que quiser, menos a noite.',
         mostrarSala: 'sim',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 26,
@@ -283,9 +233,7 @@ export const users = [
         banner: 'https://static.significados.com.br/foto/piramide-egito-antigo-significados.jpg?width=768',
         desc: 'Me chame sempre que quiser, menos de dia.',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 27,
@@ -294,9 +242,7 @@ export const users = [
         banner: 'https://static.significados.com.br/foto/piramide-egito-antigo-significados.jpg?width=768',
         desc: 'Não me chame.',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
     {
         id: 28,
@@ -305,10 +251,26 @@ export const users = [
         banner: 'https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/02/harry-potter-severus-snape-tim-roth.jpg?q=50&fit=crop&w=1232&h=693&dpr=1.5',
         desc: 'Pare de me stalkear no Kuaa Harry Potah!',
         mostrarSala: 'nao',
-        sala1: null,
-        sala2: null,
-        sala3: null
+        salas: [1, 3]
     },
+    {
+        id: 29,
+        nome: 'ubeube',
+        pfp: 'https://i.pinimg.com/736x/27/13/22/271322c8cb72615663562377abed3767.jpg',
+        banner: 'https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/02/harry-potter-severus-snape-tim-roth.jpg?q=50&fit=crop&w=1232&h=693&dpr=1.5',
+        desc: 'ubebubabum',
+        mostrarSala: 'nao',
+        salas: [1, 3]
+    },
+    {
+        id: 30,
+        nome: 'rita',
+        pfp: 'https://i.pinimg.com/736x/27/13/22/271322c8cb72615663562377abed3767.jpg',
+        banner: 'https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/02/harry-potter-severus-snape-tim-roth.jpg?q=50&fit=crop&w=1232&h=693&dpr=1.5',
+        desc: 'Quem é camilo?',
+        mostrarSala: 'nao',
+        salas: [1, 3]
+    }
 
-    
+
 ];

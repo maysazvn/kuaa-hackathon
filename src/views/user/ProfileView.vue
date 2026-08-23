@@ -5,26 +5,27 @@ import { ref } from 'vue'
 import { seguidores } from './Followers'
 import { seguindo } from './Following'
 import { userReal } from '../account/login/UserReal'
+import { urlFoto } from './urlFoto';
+import { salas } from '@/data/salas';
+
 const suarios = JSON.parse(localStorage.getItem('salasEntradas')) || []
-
-
-
 const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || userReal)
 const desc = ref(localStorage.getItem('desc') || '')
-
 const urlBanner = ref(localStorage.getItem('urlBanner') || '/bannerPlaceholder.png')
-
-import { urlFoto } from './urlFoto';
-
-let existe = ref(true);
-
-
-
-
-
-
 const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
 
+function buscarSalas() {
+  return salas.value.filter(sala => {
+    for (const item of suarios) {
+      if (item.idSala === sala.idSala) {
+        return true;
+      }
+    }
+    return false;
+  });
+}
+
+let existe = ref(true);
 let mostrar = ref(false)
 
 function mostrarItens() {
@@ -81,7 +82,7 @@ function excluir() {
 
     <div class="salas" v-show="mostrarSala === 'sim'">
       <ul class="listaSalas">
-        <li v-for="sala in suarios" :key="sala.id" :nome="sala.nome" class="cardSala">
+        <li v-for="sala in buscarSalas()" :key="sala.idSala" :nome="sala.nome" class="cardSala">
           <RouterLink :to="`/salas/${sala.idSala}`">
               <span class="nomesala">{{ sala.nome }}</span>
             </RouterLink>
@@ -230,7 +231,7 @@ ul {
   transition: .2s;
 }
 
-.nomeSala {
+.nomesala {
   color: #e0e0e0;
   font-size: 0.9rem;
   font-weight: 500;
