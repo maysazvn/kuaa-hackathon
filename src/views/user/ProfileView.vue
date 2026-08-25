@@ -26,6 +26,13 @@ function buscarSalas() {
 }
 
 let existe = ref(true);
+// const urlFoto = ref(localStorage.getItem('urlFoto') || '');
+
+
+
+
+const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
+
 let mostrar = ref(false)
 
 function mostrarItens() {
