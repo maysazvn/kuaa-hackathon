@@ -10,7 +10,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 67,
+        seguindo: 69
     },
     {
         id: 2,
@@ -21,7 +23,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 1,
+        seguindo: 0
     },
     {
         id: 3,
@@ -32,7 +36,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 19,
+        seguindo: 10
     },
     {
         id: 4,
@@ -43,7 +49,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 107,
+        seguindo: 2
     },
     {
         id: 5,
@@ -54,7 +62,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 4,
+        seguindo: 12
     },
     {
         id: 6,
@@ -65,7 +75,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 93,
+        seguindo: 114
     },
     {
         id: 7,
@@ -76,7 +88,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 115,
+        seguindo: 1
     },
     {
         id: 8,
@@ -87,7 +101,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 28,
+        seguindo: 66
     },
     {
         id: 9,
@@ -98,7 +114,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 32,
+        seguindo: 1090
     },
     {
         id: 10,
@@ -109,7 +127,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 67,
+        seguindo: 67
     },
     {
         id: 11,
@@ -120,7 +140,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 666,
+        seguindo: 666
     },
     {
         id: 12,
@@ -131,7 +153,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: '22info22',
         sala2: 'Five Nights At Freddy',
-        sala3: null
+        sala3: null,
+        seguidores: 76,
+        seguindo: 490
     },
     {
         id: 13,
@@ -142,7 +166,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 109,
+        seguindo: 230
     },
     {
         id: 14,
@@ -153,7 +179,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 314,
+        seguindo: 932
     },
     {
         id: 15,
@@ -164,7 +192,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 59,
+        seguindo: 87
     },
     {
         id: 16,
@@ -175,7 +205,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 149,
+        seguindo: 1
     },
     {
         id: 17,
@@ -186,7 +218,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 1244543,
+        seguindo: 1
     },
     {
         id: 18,
@@ -197,7 +231,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 1,
+        seguindo: 1
     },
     {
         id: 19,
@@ -208,7 +244,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: 'Ciência todo dia',
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 0,
+        seguindo: 10000
     },
     {
         id: 20,
@@ -219,7 +257,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: 'Química do mal',
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 603,
+        seguindo: 99
     },
     {
         id: 21,
@@ -230,7 +270,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: 'Matematica',
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 12,
+        seguindo: 301
     },
     {
         id: 22,
@@ -241,7 +283,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 1945,
+        seguindo: 1981
     },
     {
         id: 23,
@@ -252,7 +296,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 800,
+        seguindo: 979
     },
     {
         id: 24,
@@ -263,7 +309,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 32,
+        seguindo: 5
     },
     {
         id: 25,
@@ -274,7 +322,9 @@ export const users = [
         mostrarSala: 'sim',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 2,
+        seguindo: 2
     },
     {
         id: 26,
@@ -285,7 +335,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 2,
+        seguindo: 2
     },
     {
         id: 27,
@@ -296,7 +348,9 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 2,
+        seguindo: 2
     },
     {
         id: 28,
@@ -307,7 +361,10 @@ export const users = [
         mostrarSala: 'nao',
         sala1: null,
         sala2: null,
-        sala3: null
+        sala3: null,
+        seguidores: 69,
+        seguindo: 9
+        
     },
 
     

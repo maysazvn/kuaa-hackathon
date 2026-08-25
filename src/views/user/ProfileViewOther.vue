@@ -1,8 +1,6 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import { computed } from 'vue';
-import { seguidores } from './Followers';
-import { seguindo } from './Following';
 import { users } from './Users';
 import { ref } from 'vue';
 import { watchEffect } from 'vue';
@@ -33,19 +31,19 @@ const mensagemSeguir = computed(() => (estaseguindo.value ? 'Seguindo' : 'Seguir
 function seguir() {
   if (!usuario.value) return;
 
+  const segui = users.find(usu => usu.id === usuario.value.id)
+
   if (!estaseguindo.value) {
     
     estaseguindo.value = true;
     localStorage.setItem(`seguindo_${usuario.value.id}`, 'true');
-    seguidores.push({ id: 5, nome: 'vc ne kkkk' });
+    segui.seguidores += 1
   } else {
     estaseguindo.value = false;
     localStorage.setItem(`seguindo_${usuario.value.id}`, 'false');
 
-    const indice = seguidores.findIndex((u) => u.id === 5);
-    if (indice > -1) {
-      seguidores.splice(indice, 1);
-    }
+        segui.seguidores -= 1
+
   }
 }
 
@@ -69,10 +67,10 @@ function seguir() {
       <div>
         <ul>
           <li class="seguidores">
-            <span>{{ seguidores.length }}</span> Seguidores
+            <span>{{ usuario.seguidores }}</span> Seguidores
           </li>
           <li class="seguindo">
-            <span>{{ seguindo.length }}</span> Seguindo
+            <span>{{ usuario.seguindo }}</span> Seguindo
           </li>
         </ul>
       </div>
