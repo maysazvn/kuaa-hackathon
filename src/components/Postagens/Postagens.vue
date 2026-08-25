@@ -39,8 +39,6 @@ function pegarBanner(salaId) {
 
 //essa procura la no users.js o banner da sala
 function pegarFotoUsuario(autorID) {
-  console.log('TOTAL de usuários carregados:', users.length)
-  console.log('IDs disponíveis:', users.map(u => u.id))
   const usuarioEncontrado = users.find(usu => usu.id === autorID)
   if (usuarioEncontrado) {
     return usuarioEncontrado.pfp

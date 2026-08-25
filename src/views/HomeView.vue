@@ -1,10 +1,16 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { postagens } from '@/data/postagens'
 import Postagens from '@/components/Postagens/Postagens.vue'
 import { salasUsuario } from '@/data/salasUsuario'
 import { loginOut } from './account/login/Loginout'
 import { userReal } from '@/views/account/login/UserReal'
+
+const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || userReal );
+
+watch(nomeUsuario, (novoNome) => {
+  localStorage.setItem('nomeUsuario', novoNome)
+});
 
 function usuarioEstaNaSala(salaIdDoPost) {
   for (let sala of salasUsuario.value) {
@@ -43,7 +49,7 @@ function criarPostRapido() {
   const novoPost = {
     titulo: '',
     conteudo: conteudoRapido.value,
-    autor: userReal.value,
+    autor: userReal,
     data: new Date().toLocaleDateString('pt-BR'),
     id: maiorId + 1,
     salaId: Number(salaSelecionada.value),
@@ -228,7 +234,7 @@ function criarPostRapido() {
 TIMELINE:
 1. quando clicar na foto/nome da sala/usuario ter como entrar no perfil da sala/usuario
 2. criar post do + bugado na timeline, além de n ter como escolher salas
-3. quando o post é seu n ta mais aparecendo editar/excluir e n ta reconhecendo seu usuario
+3. quando o post é seu n ta mais aparecendo editar/excluir e n ta reconhecendo seu usuario (QUANDO SE CRIA UM USUÁRIO ELE NAO TEM UM ID)
 4. posts em alta sem foto
 5. curtidas!!! e salvos
 

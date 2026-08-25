@@ -1,12 +1,13 @@
 <script setup>
 //imports
 
-import { ref } from 'vue';
-import ButtonChild from '@/components/ButtonChild.vue';
-import { userReal } from './login/UserReal';
-import { emailReal } from './login/EmailReal';
-import { senhaReal } from './login/SenhaReal';
-import { loginOut } from './login/Loginout';
+import { ref, watch } from 'vue'
+import ButtonChild from '@/components/ButtonChild.vue'
+import { userReal } from './login/UserReal'
+import { emailReal } from './login/EmailReal'
+import { senhaReal } from './login/SenhaReal'
+import { loginOut } from './login/Loginout'
+import { users } from '../user/Users'
 
 // lets ////////
 
@@ -15,6 +16,9 @@ let login = ref(false)
 let emailFalso = ref('')
 let userFalso = ref('')
 let senhaFalsa = ref('')
+let maiorId =  Math.max(...users.map(item => item.id))
+const desc = ref(localStorage.getItem('desc') || '')
+const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
 
 // Functions /////
 
@@ -41,6 +45,20 @@ function enviar(email, senha, user) {
       emailFalso.value = ''
       senhaFalsa.value = ''
       userFalso.value = ''
+
+      const novoUsuario = {
+        id: maiorId + 1,
+        nome: userReal,
+        pfp: ref(localStorage.getItem('urlFoto') || '/pfpPlaceholder.png'),
+        banner: ref(localStorage.getItem('urlBanner') || '/bannerPlaceholder.png'),
+        desc: watch(desc, (novaDesc) => {localStorage.setItem('desc', novaDesc)}),
+        mostrarSala: watch(mostrarSala, (novoValor) => {localStorage.setItem('mostrarSala?', novoValor)}),
+        salas: []
+      }
+
+      users.push(novoUsuario);
+
+      console.log(users)
     } else {
       alert('Você já possui cadastro! Faça login!')
     }
@@ -48,8 +66,8 @@ function enviar(email, senha, user) {
     alert('Preencha todos os campos!')
   }
 }
-function logar(email, senha){
-  if(email === emailReal.value && senha === senhaReal.value){
+function logar(email, senha) {
+  if (email === emailReal.value && senha === senhaReal.value) {
     loginOut.value = 'ativo'
     alert('Você logou com sucesso!')
     senhaFalsa.value = ''
@@ -68,38 +86,47 @@ function logar(email, senha){
       <img src="../../../public/kuaa.png" alt="Kuaa Logo" />
       <p v-if="cadastro == true">
         <span>Bem-vindo ao KUAA</span>
-        O KUAA veio para ajudar você, estudante, a ter um desempenho melhor em seus estudos, provas e
-        até mesmo fazer amigos novos!
+        O KUAA veio para ajudar você, estudante, a ter um desempenho melhor em seus estudos, provas
+        e até mesmo fazer amigos novos!
       </p>
       <p v-if="login == true">
         <span>Bem-vindo de volta ao KUAA</span>
-        O KUAA veio para ajudar você, estudante, a ter um desempenho melhor em seus estudos, provas e
-        até mesmo fazer amigos novos!
+        O KUAA veio para ajudar você, estudante, a ter um desempenho melhor em seus estudos, provas
+        e até mesmo fazer amigos novos!
       </p>
     </div>
     <div class="direita">
-    <div class="escolha">
-      <!-- essa ^ tem os botoes para alterar o login e cadastro -->
-      <ButtonChild @clique="selecionarCadastro()" :class="{ inativo: !cadastro }" class="botaoCadastro">Cadastro</ButtonChild>
-      <ButtonChild @clique="selecionarLogin()" :class="{ inativo: !login }" class="botaoLogin">Login</ButtonChild>
-    </div>
+      <div class="escolha">
+        <!-- essa ^ tem os botoes para alterar o login e cadastro -->
+        <ButtonChild
+          @clique="selecionarCadastro()"
+          :class="{ inativo: !cadastro }"
+          class="botaoCadastro"
+          >Cadastro</ButtonChild
+        >
+        <ButtonChild @clique="selecionarLogin()" :class="{ inativo: !login }" class="botaoLogin"
+          >Login</ButtonChild
+        >
+      </div>
 
-    <div class="cadastro" v-show="cadastro == true">
-      <!-- essa ^ é a div que aparece quando você esta fazendo cadastro -->
-      <label for="email"></label>
-      <input type="email" name="email" placeholder="E-mail" required v-model="emailFalso" />
-      <input type="text" required v-model="userFalso" placeholder="Nome de usuário" />
-      <input type="password" required v-model="senhaFalsa" placeholder="Senha" />
-      <ButtonChild @clique="enviar(emailFalso, senhaFalsa, userFalso)" class="botaoLog">Cadastrar</ButtonChild>
-    </div>
-    <div class="login" v-show="login == true">
-      <!-- essa é a div ^ que aparece para fazer login -->
-      <input type="email" name="email" placeholder="E-mail" required v-model="emailFalso" />
-      <input type="password" required v-model="senhaFalsa" placeholder="Senha" />
-      <ButtonChild @clique="logar(emailFalso, senhaFalsa)" class="botaoLog"> Logar </ButtonChild>
+      <div class="cadastro" v-show="cadastro == true">
+        <!-- essa ^ é a div que aparece quando você esta fazendo cadastro -->
+        <label for="email"></label>
+        <input type="email" name="email" placeholder="E-mail" required v-model="emailFalso" />
+        <input type="text" required v-model="userFalso" placeholder="Nome de usuário" />
+        <input type="password" required v-model="senhaFalsa" placeholder="Senha" />
+        <ButtonChild @clique="enviar(emailFalso, senhaFalsa, userFalso)" class="botaoLog"
+          >Cadastrar</ButtonChild
+        >
+      </div>
+      <div class="login" v-show="login == true">
+        <!-- essa é a div ^ que aparece para fazer login -->
+        <input type="email" name="email" placeholder="E-mail" required v-model="emailFalso" />
+        <input type="password" required v-model="senhaFalsa" placeholder="Senha" />
+        <ButtonChild @clique="logar(emailFalso, senhaFalsa)" class="botaoLog"> Logar </ButtonChild>
+      </div>
     </div>
   </div>
-   </div>
 </template>
 
 <style scoped>
@@ -137,7 +164,7 @@ div.container {
   font-size: 1.5rem;
 }
 
-.direita{
+.direita {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,15 +178,15 @@ div.container {
 }
 
 .escolha .botaoCadastro,
-.escolha .botaoLogin{
-font-family: 'Prompt', sans-serif;
-font-weight: bold;
-font-size: 2.5rem;
-color: #F8D76B;
-transition: .5s;
+.escolha .botaoLogin {
+  font-family: 'Prompt', sans-serif;
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #f8d76b;
+  transition: 0.5s;
 }
 
-.escolha .inativo{
+.escolha .inativo {
   color: #f8d76b7e;
 }
 
@@ -185,8 +212,8 @@ input {
   outline: none;
 }
 
-.botaoLog{
-  background-color: #F8D76B;
+.botaoLog {
+  background-color: #f8d76b;
   color: #1e1e1e;
   font-weight: bold;
   font-size: 1rem;
@@ -194,8 +221,8 @@ input {
   border-radius: 25px;
 }
 
-.botaoLog:hover{
-  transition: .2s;
+.botaoLog:hover {
+  transition: 0.2s;
   background-color: #f8d76ba4;
   transform: scale(0.98);
 }
