@@ -31,7 +31,6 @@ let existe = ref(true);
 
 
 
-const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
 
 let mostrar = ref(false)
 
