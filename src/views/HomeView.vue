@@ -246,6 +246,9 @@ SALAS:
 PESQUISA:
 1. poder separar se vc quer pesquisar espeficamente uma sala, um usuario ou uma postagem
 2. ter como pesquisar postagens
+3. Ta dando pŕa criar a sala sem logar
+4. quando loga em uma conta e depois sai da conta, cria uma sala e sai com o nome do criador do login mesmo nao estando logado
+
 
 LOGIN:
 1. precisar ter conta pra comentar
