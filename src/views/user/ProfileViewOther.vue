@@ -4,9 +4,18 @@ import { computed } from 'vue';
 import { users } from './Users';
 import { ref } from 'vue';
 import { watchEffect } from 'vue';
+import { salas } from '@/data/salas';
 
 
 const route = useRoute();
+
+// adicionei buscar salas
+function buscarSalasDoUsuario(idsSalas) {
+  if (!idsSalas) return [];
+
+  const listaDeSalas = salas.value || salas;
+  return listaDeSalas.filter(sala => idsSalas.includes(sala.idSala));
+}
 
 const usuario = computed(() => {
   return users.find(
@@ -75,19 +84,15 @@ function seguir() {
         </ul>
       </div>
 
-        <div class="salas" v-show="mostrarSala === 'sim'">
-          <ul>
-            <li v-show="usuario.sala1 !== null">
-              <p> {{ usuario.sala1 }} </p>
-            </li>
-            <li v-show="usuario.sala2 !== null">
-              <p> {{ usuario.sala2 }} </p>
-            </li>
-            <li v-show="usuario.sala3 !== null">
-              <p> {{ usuario.sala3 }} </p>
-            </li>
-          </ul>
-        </div> 
+        <div class="salas" v-show="usuario.mostrarSala === 'sim'">
+        <ul class="listaSalas">
+          <li v-for="sala in buscarSalasDoUsuario(usuario.salas)" :key="sala.idSala" class="cardSala">
+             <RouterLink :to="`/salas/${sala.idSala}`">
+              <span class="nomesala">{{ sala.nome }}</span>
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
     </div>
 
 
@@ -219,5 +224,42 @@ ul {
 .seguidores span,
 .seguindo span {
   font-weight: bold;
+}
+
+.listaSalas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #444444 #1e1e1e;
+  margin: 5px;
+}
+
+.cardSala {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #313131;
+  padding: 1px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #d9d9d9;
+}
+
+.cardSala:hover {
+  opacity: 0.9;
+  transform: scale(0.95);
+  transition: .2s;
+}
+
+.nomesala {
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 </style>

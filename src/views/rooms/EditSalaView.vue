@@ -18,6 +18,9 @@ function edit() {
     sala.value.banner = banner.value
     router.push(`/salas/${route.params.id}`)
 }
+function cancelar() {
+    router.push(`/salas/${sala.value.idSala}`)
+}
 watch(sala, (novaSala) => {
     if (novaSala) {
         nome.value = novaSala.nome
@@ -27,10 +30,15 @@ watch(sala, (novaSala) => {
 }, { immediate: true })
 </script>
 <template>
-    EDITE
+    <h1>Perfil de Sala</h1>
+    <img class="imagem" :src="banner" alt="https://i.pinimg.com/736x/ed/b6/06/edb606bf10aad2fdfd3a854758ee0042.jpg">
+    <p>Nome da Sala</p>
     <input v-model="nome">
+    <p>Descrição</p>
     <input v-model="descricao">
+    <p>Foto</p>  <!-- p temporario pra sinalizar p banner edita ali -->
     <input v-model="banner">
     <button @click="edit">Salvar alterações</button>
+    <button @click="cancelar">Cancelar</button>
 </template>
 <style scoped></style>
