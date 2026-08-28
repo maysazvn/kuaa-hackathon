@@ -1,4 +1,5 @@
 # KUAA - Rede Social de Estudos
+* Link: kuaa-hackathon.surge.sh
 
 ## Visão geral
 O KUAA é uma rede social voltada para o ambiente acadêmico, com o objetivo de conectar estudantes e professores para discussão, planejamento e colaboração em atividades de estudo.
