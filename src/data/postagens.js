@@ -49,7 +49,7 @@ export const postagens = ref([
   },
   {
     id: 6,
-    titulo: 'Biofilia e Zoofilia',
+    titulo: 'Biologia e Zoologia',
     conteudo: 'Abuguebum bombum deb ubioblobugia. Ubestobum cobum Ubedibuficubldadebus soberebum gebunubeticabum e ubestabumtistibeca',
     autorID: 29,
     data: '11/07/2009',

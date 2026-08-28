@@ -19,7 +19,7 @@ watch(
 const salasFiltradas = computed(() => {
     const lista = Array.isArray(salas) ? salas : salas.value || []; 
 
-    if (!coisaPesquisada.value) return lista ;
+    if (!coisaPesquisada.value) return '' ;
 
     const termo = coisaPesquisada.value.toLowerCase().trim();
     
@@ -33,7 +33,7 @@ const salasFiltradas = computed(() => {
 const usersFiltrados = computed(() => {
     const lista = Array.isArray(users) ? users : users.value || []; 
 
-    if (!coisaPesquisada.value) return lista ;
+    if (!coisaPesquisada.value) return '' ;
 
     const termo = coisaPesquisada.value.toLowerCase().trim();
 
