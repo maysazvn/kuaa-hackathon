@@ -23,10 +23,12 @@ O KUAA é uma rede social voltada para o ambiente acadêmico, com o objetivo de 
 
 * **André:** Sistema de login e autenticação
 * **Pietro:** Gerenciamento de usuários e sistema de busca
-* **Samuel:** Salas - ?
-* **Clara:** Salas - ?
+* **Samuel:** Exploração e visualização de salas
+* **Clara:** Criar, gerenciamento e exclusão salas
 * **Hallana:** Sistema de postagens
 * **Maysa:** Estilização (CSS) e Timeline
+
+obs: no processo, os membros se ajudaram em diversos momentos.
 
 ## Avaliação do projeto
 * **Nota atribuída:** 
