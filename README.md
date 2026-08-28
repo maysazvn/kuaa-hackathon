@@ -16,9 +16,19 @@ O KUAA é uma rede social voltada para o ambiente acadêmico, com o objetivo de 
 
 ## Funcionalidades desenvolvidas
 
+* **Autenticação (Login):** Pode-se considerar majoritariamente pronto: a maior parte já está feita, só falta linkar com outras páginas;
+* **Gerenciamento de usuários:** Está completamente pronto, pode estar só sujeito a algumas alterações;
+* **Salas de estudo:** Está praticamente pronto, mas tem alguns bugs e falta CSS em algumas partes;
+* **Postagens:** Boa parte já está feita, porém falta colocar imagens, curtidas e salvos, além de arrumar alguns bugs;
+* **Timeline (Feed):** Está com bastante bugs, mas as funcionalidades em si estão prontas;
+* **Busca e filtros:** Está quase pronto, ainda falta o filtro por postagem e CSS;
+* **Chat (em avaliação):** Não foi iniciado ainda.
+
 ## Dificuldades encontradas
 * Identificação do próprio usuário às suas postagens;
 * Implementação do localStorage;
+* Emits e props;
+* Algumas coisas específicas com Router.
 
 ## Divisão de tarefas
 
@@ -32,5 +42,5 @@ O KUAA é uma rede social voltada para o ambiente acadêmico, com o objetivo de 
 obs: no processo, os membros se ajudaram em diversos momentos.
 
 ## Avaliação do projeto
-* **Nota atribuída:** 
-* **Justificativa:** 
+* **Nota atribuída:** 9
+* **Justificativa:** Para uma apresentação parcial, foi um resultado bom, mas não perfeito. Temos bastante funcionalidades que já estão prontas, mas ainda faltam algumas e tem bugs. Também fomos realistas quanto aos problemas do site e dificuldades durante a apresentação presencial, cada um apresentou suas funcionalidades e mostrou o que foi feito.
