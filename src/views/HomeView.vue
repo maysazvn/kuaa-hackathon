@@ -241,12 +241,14 @@ TIMELINE:
 SALAS:
 1. quando vc cria uma sala vc nao está nela automaticamente
 2. tem como editar/excluir salas aleatorias q nem sao suas
+3. Ta dando pŕa criar a sala sem logar
+4. quando loga em uma conta e depois sai da conta, cria uma sala e sai com o nome do criador do login mesmo nao estando logado
 
 PESQUISA:
 1. poder separar se vc quer pesquisar espeficamente uma sala, um usuario ou uma postagem
 2. ter como pesquisar postagens
-3. Ta dando pŕa criar a sala sem logar
-4. quando loga em uma conta e depois sai da conta, cria uma sala e sai com o nome do criador do login mesmo nao estando logado
+3. mostrar um numero especifico de resultados (tipo sla, 15) e colocar ver mais pra abrir mais é uma funcionalidade legal
+4. aparecer seu proprio usuario na pesquisa
 
 
 LOGIN:
