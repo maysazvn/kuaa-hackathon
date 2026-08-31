@@ -34,8 +34,8 @@ function enviar(sal) {
       >
       <div class="nav">
         <RouterLink :to="`/salas/${sala.idSala}`" class="visualizar"> Visualizar </RouterLink>
-        <button v-on:click="enviar(sala)" v-if="!estaNaSala(sala.idSala)">Entrar</button>
-        <button v-on:click="sair(sala)" v-else>Sair</button>
+        <button v-on:click="enviar(sala)" v-if="!estaNaSala(sala.idSala)" class="btn-entrar">Entrar</button>
+        <button v-on:click="sair(sala)" v-else class="btn-sair">Sair</button>
         </div>
       </CartSala>
     </section>
@@ -43,13 +43,9 @@ function enviar(sal) {
 </template>
 
 <style scoped>
-.salas {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2vw;
-  margin: 0px auto;
-  padding: 40px;
-  font-size: 1.2rem;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 a.voltar{
@@ -64,6 +60,15 @@ a.voltar{
   align-items: center;
 }
 
+.salas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2vw;
+  margin: 0px auto;
+  padding: 40px;
+  font-size: 1.2rem;
+}
+
 .nav{
   display: flex;
   justify-content: center;
@@ -74,8 +79,39 @@ a.voltar{
 a.visualizar{
   background: #F8D76B;
   font-weight: bold;
+  color: #1e1e1e;
+}
+
+.btn-entrar {
+  background: #F8D76B;
+  color: #1e1e1e;
+}
+
+.btn-sair {
+  background-color: #3c3c3c;
+  color: #d9d9d9;
+}
+
+.btn-sair:hover {
+  background-color: #e53935;
+  color: #ffffff;
+  border-color: #e53935;
+}
+
+a.visualizar,
+.btn-entrar,
+.btn-sair {
+  font-weight: bold;
+  font-size: 0.95rem;
   padding: 5px 15px;
-  border-radius: 10px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button{
