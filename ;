@@ -1,0 +1,64 @@
+[33mec6afa4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mpostagens[m[33m, [m[1;31morigin/postagens[m[33m)[m FEAT: local storage comentarios
+[33mfc94f48[m FEAT: dialog das postagens
+[33m99fa055[m Merge remote-tracking branch 'origin/DEV' into postagens
+[33me83497e[m[33m ([m[1;31morigin/DEV[m[33m)[m Merge pull request #19 from maysazvn/explorar-salas
+[33m031ac03[m[33m ([m[1;31morigin/explorar-salas[m[33m)[m Merge branch 'DEV' into explorar-salas
+[33me88c84d[m fix: ajustando os erros do css sidebar
+[33mceabae4[m feat: pequeno ajuste no css geral
+[33m5e941ad[m refactor: icone pagina login
+[33m19e3f91[m Merge pull request #18 from maysazvn/DEV
+[33me9a4c23[m Merge branch 'postagens' into DEV
+[33mc6d2a55[m Merge pull request #17 from maysazvn/perfil-usuário
+[33m7ff9520[m[33m ([m[1;31morigin/perfil-usuário[m[33m)[m Merge branch 'DEV' into perfil-usuário
+[33mcfd2c40[m Merge pull request #16 from maysazvn/LoginPage
+[33mf4c85e2[m Merge branch 'DEV' into LoginPage
+[33mc28fc1a[m Merge pull request #13 from maysazvn/CRIAR-SALAS
+[33mb6f2b58[m[33m ([m[1;31morigin/CRIAR-SALAS[m[33m)[m Merge branch 'DEV' into CRIAR-SALAS
+[33m360c32c[m Merge pull request #11 from maysazvn/css
+[33med15795[m feat: ajustes breves
+[33me3704c0[m Página de vizualizar sala criada
+[33m79870b5[m FEAT: arrumando o carrossel do vuetify
+[33m620fd2f[m STYLE: criar post separado
+[33mfe6a8ca[m FEAT: continuação
+[33m113aeb4[m FEAT: Continuação css
+[33m83db1f8[m TEST: atualização temporaria do explorar
+[33m86bade5[m FEAT (Arrumei a imagem)
+[33m6d7e9a9[m FEAT: Criação de Followers.js e Following.js + Editar Banner + Botão confirmar
+[33m97bc240[m STYLE: novos posts e comentarios
+[33mafc2cbb[m FEAT(Fazendo o adicionar foto)
+[33mb4bd2f2[m REFACTOR: não digita mais o usu
+[33m33b9520[m FEAT:  aba comentarios
+[33mf6e9ab9[m FEAT: Continuação CSS
+[33m780e6ba[m REFACTOR: Finalização páginas de cadastro e login
+[33m27fba7c[m FEAT: Enviar foto do banner + incício de mostrar salas
+[33ma13de9c[m FEAT: css da pagina ajuda + alguns ajustes
+[33md4436e8[m FEAT: comentarios post
+[33mc013a3e[m FEAT: Enviar foto de perfil
+[33mddb92c8[m FEAT: css pagina ajuda
+[33m3b2de52[m FEAT: Página de login feita
+[33m13bc125[m FEAT: função de editar postagens
+[33m3e6c4d9[m FEAT: CartSala.vue
+[33m94d72c2[m FEAT: começo editar post e correção ID
+[33m8152d58[m FEAT: Alterar nome e descrição + começo da foto de perfil
+[33m243b773[m FEAT (continuação de sala)
+[33m50ef49a[m FEAT: PAGINA LOGIN (PARTE DE LOGIN)
+[33m2606a23[m Merge branch 'DEV' into explorar-salas
+[33m9071fc7[m Merge branch 'DEV' into LoginPage
+[33mf7e33e0[m Merge branch 'DEV' into CRIAR-SALAS
+[33m8a152db[m Merge pull request #9 from maysazvn/feature-header-sidebar
+[33ma6b130a[m FEAT: excluir e postar post
+[33m23d7687[m[33m ([m[1;31morigin/feature-header-sidebar[m[33m)[m FEAT: css header e sidebar
+[33m3ba024e[m FEAT CRIAÇÃO DE SALAS (Botão criar funcionando)
+[33mb3f115d[m FEAT:  INÍCIO LOGIN PAGE
+[33m9346360[m FEAT: EditProfileView adicionado + router-link
+[33m25378fe[m TEST: ExploreView.vue
+[33md1da31d[m FEAT CRIANÇÃO DE SALA (botão de cancelar funcionando)
+[33m55652a0[m FEAT:  INÍCIO DO PERFIL (Funcionalidade para seguir, rascunho do perfil)
+[33m97b5d7f[m FEAT: craição obj salas
+[33m64f7935[m FEAT: componente postagens
+[33m2bacbeb[m FEAT INICIO DE CRIAÇÃO DE SALAS: Botão de criar sala funcionando
+[33m6b811c1[m Inicio Login Page
+[33m8ca0380[m DEV
+[33mdba206d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Merge pull request #8 from maysazvn/feature-header-sidebar
+[33m868bb9c[m FEAT: criando as pags no router e o basico da header e sidebar
+[33mc8e5f25[m FEAT: first commit

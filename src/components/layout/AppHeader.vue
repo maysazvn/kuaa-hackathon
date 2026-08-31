@@ -1,4 +1,14 @@
 <script setup>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const busca = ref('');
+const router = useRouter();
+
+function irParaOFiltro() {
+  router.push({path: '/filter', query: {dado: busca.value}})
+}
+
 </script>
 
 <template>
@@ -10,10 +20,14 @@
       <div class="search">
         <font-awesome-icon icon="magnifying-glass" class="lupa"/>
 
-        <input type="search" v-model="busca" placeholder="Buscar..."> <!-- Busca de usuário, sala e postagem -->
+        
+        <form action="/filter" method="GET" @submit.prevent="irParaOFiltro">
+          <input type="search" v-model="busca" placeholder="Buscar..."> <!-- Busca de usuário, sala e postagem -->
+        </form>
+        
       </div>
       <div>
-        <font-awesome-icon icon="bars" class="menu" />
+        <router-link to="/login"><font-awesome-icon icon="right-to-bracket" class="login" /></router-link>
       </div>
     </div>
   </header>
@@ -21,17 +35,25 @@
 
 <style scoped>
 header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
   background: #1E1E1E;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px;
+  padding: 5px 20px;
+  border-bottom: 2px solid #313131;
+  box-sizing: border-box;
+  z-index: 1000;
 }
 
 .search{
   display: flex;
-  background: #F9EAA8;
-  border-radius: 10px;
+  background: #F8D76B;
+  border-radius: 50px;
   padding: 2px;
   align-items: center;
 }
@@ -42,6 +64,13 @@ header{
 
 input{
 font-size: 1.2rem;
+background: transparent;
+  border: none;
+  outline: none;
+}
+
+input::placeholder {
+  color: #584c3a;
 }
 
 .direito{
@@ -50,7 +79,7 @@ font-size: 1.2rem;
   align-items: center;
 }
 
-.menu{
+.login{
   color: #D9D9D9;
   font-size: 1.5rem;
 }

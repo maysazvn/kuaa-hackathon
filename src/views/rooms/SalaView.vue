@@ -1,0 +1,350 @@
+<script setup>
+import { useRoute, useRouter } from 'vue-router'
+import { computed, ref } from 'vue'
+import { salas } from '@/data/salas'
+defineProps(['idSala', 'nome', 'participantes', 'desc', 'usuarioCriador', 'status', 'banner'])
+
+const route = useRoute()
+const router = useRouter()
+const popupExcluir = ref(false)
+const menuAberto = ref(false)
+const entrouOuNao = ref(false)
+
+function alternarMembro() {
+  entrouOuNao.value = !entrouOuNao.value
+}
+
+console.log('ID da rota:', route.params.id)
+console.log('Salas:', salas.value)
+
+const sala = computed(() => salas.value.find((s) => s.idSala == route.params.id))
+function confirmarEx() {
+  const index = salas.value.findIndex((s) => s.idSala == route.params.id)
+  if (index !== -1) {
+    salas.value.splice(index, 1)
+  }
+
+  popupExcluir.value = false
+  router.push('/explore')
+}
+function excluirSala() {
+  popupExcluir.value = true
+}
+function editarSala() {
+  router.push(`/salas/${route.params.id}/editar`)
+}
+
+const statusTexto = computed(() => {
+  if (sala.value?.status == 1) {
+    return 'Ativo'
+  }
+
+  return 'Inativo'
+})
+
+console.log('Sala encontrada:', sala.value)
+</script>
+<template>
+  <div class="container-sala" v-if="sala">
+    <div class="header-pagina">
+      <div class="titulo">
+        <RouterLink to="/" class="voltar">
+          <font-awesome-icon icon="chevron-left"></font-awesome-icon> Perfil de sala</RouterLink
+        >
+      </div>
+    </div>
+
+    <div class="card-sala">
+      <div class="topo-sala">
+        <img :src="sala.banner" class="foto-sala" />
+
+        <div class="info-sala">
+          <h2 class="nome-sala">{{ sala.nome }}</h2>
+          <div class="metadados">
+            <p><span>CRIADOR</span> {{ sala.usuarioCriador }}</p>
+            <p><span>STATUS</span> {{ statusTexto }}</p>
+          </div>
+        </div>
+
+        <div class="acoes-sala">
+          <button class="btn-entrar" :class="{ 'btn-sair': entrouOuNao }" @click="alternarMembro">
+            <span v-if="entrouOuNao">Sair da sala</span>
+            <span v-else>Entrar</span>
+          </button>
+
+          <div class="menu">
+            <button class="menubotao" @click="menuAberto = !menuAberto">...</button>
+            <div class="menuaberto" v-if="menuAberto">
+              <button @click="editarSala">Editar sala</button>
+              <button @click="excluirSala">Apagar sala</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="descricao">{{ sala.desc }}</p>
+
+      <div class="membros">
+        <span>{{ sala.participantes }} membros</span>
+      </div>
+
+      <hr class="divisor" />
+
+      <div class="secao-posts">
+        <h2>Posts</h2>
+      </div>
+    </div>
+
+    <div v-if="popupExcluir" class="telapopup">
+      <div class="popup">
+        <h2>Tem certeza que deseja excluir sua sala?</h2>
+        <p>Esta ação é permanente e todos os seus dados e posts serão perdidos para sempre.</p>
+        <div class="botoes">
+          <button @click="confirmarEx" class="btn-confirmar">Apagar</button>
+          <button @click="popupExcluir = false" class="btn-cancelar">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-sala" v-else>
+    <h1>Sala não encontrada</h1>
+  </div>
+</template>
+<style scoped>
+.container-sala {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #d9d9d9;
+}
+
+.header-pagina {
+  margin-bottom: 25px;
+}
+
+a.voltar {
+  font-size: 2rem;
+  font-family: 'Prompt', sans-serif;
+  font-weight: bold;
+  color: #e0d8c3;
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+}
+
+.topo-sala {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  align-items: center;
+}
+
+.foto-sala {
+  width: 90px;
+  height: 90px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.info-sala {
+  flex: 1;
+}
+
+.nome-sala {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+}
+
+.metadados {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.85rem;
+  font-family: 'Prompt', sans-serif;
+}
+
+.metadados span {
+  color: #888888;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.acoes-sala {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-entrar {
+  background-color: #f8d668;
+  color: #1e1e1e;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-entrar span{
+  font-weight: bold;
+}
+
+.btn-entrar:hover {
+  opacity: 0.9;
+  transform: scale(0.95);
+  transition: 0.2s;
+}
+
+.btn-entrar.btn-sair {
+  background-color: #3c3c3c;
+  color: #d9d9d9;
+}
+
+.btn-entrar.btn-sair:hover {
+  background-color: #e53935;
+  color: #ffffff;
+  border-color: #e53935;
+}
+
+.menu {
+  position: relative;
+}
+
+.menubotao {
+  color: #d9d9d9;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.menuaberto {
+  position: absolute;
+  top: 45x;
+  background-color: #313131;
+  color: #d9d9d9;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.179);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  z-index: 10;
+  width: 110px;
+}
+
+.menuaberto button:hover {
+  color: #f8d668;
+  transform: scale(0.97);
+  transition: 0.3s;
+}
+
+.descricao {
+  margin-top: 20px;
+  line-height: 1.2;
+  max-width: 600px;
+  word-break: break-word;
+}
+
+.membros {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 15px;
+  color: #aaaaaa;
+  font-size: 0.9rem;
+}
+
+.divisor {
+  border-top: 1px solid #333333;
+  margin: 25px 0;
+}
+
+.secao-posts h2 {
+  font-size: 1.4rem;
+  color: #e0d8c3;
+  font-family: 'Prompt', sans-serif;
+  font-weight: bold;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-confirmar,
+.btn-cancelar {
+  padding: 5px 32px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.btn-confirmar:hover,
+.btn-cancelar:hover {
+  opacity: 0.9;
+  transform: scale(0.97);
+  transition: 0.3s;
+}
+
+.btn-confirmar {
+  background-color: #7e7e7e;
+  color: #1e1e1e;
+}
+
+.btn-cancelar {
+  background-color: #f8d668;
+  color: #000000;
+}
+
+.telapopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000065;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup {
+  background-color: #242424;
+  border: 1px solid #333333;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0px 10px 30px #00000037;
+}
+
+.popup h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.popup p {
+  font-size: 0.88rem;
+  color: #a5a5a5;
+  margin-bottom: 24px;
+}
+
+.botoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+</style>
