@@ -232,11 +232,10 @@ function criarPostRapido() {
 /*
 ///////////////////////////////////////////// BUGS/COISAS PRA ARRUMAR /////////////////////////////////////////////
 TIMELINE:
-1. quando clicar na foto/nome da sala/usuario ter como entrar no perfil da sala/usuario
-2. criar post do + bugado na timeline, além de n ter como escolher salas
-3. quando o post é seu n ta mais aparecendo editar/excluir e n ta reconhecendo seu usuario (QUANDO SE CRIA UM USUÁRIO ELE NAO TEM UM ID)
-4. posts em alta sem foto
-5. curtidas!!! e salvos
+1. criar post do + bugado na timeline, além de n ter como escolher salas
+2. quando o post é seu n ta mais aparecendo editar/excluir e n ta reconhecendo seu usuario (QUANDO SE CRIA UM USUÁRIO ELE NAO TEM UM ID)
+3. curtidas!!! e salvos
+4. comentarios tbm tem q identificar o usuário
 
 SALAS:
 1. quando vc cria uma sala vc nao está nela automaticamente
