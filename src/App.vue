@@ -34,9 +34,7 @@ import AppSidebar from './components/layout/AppSidebar.vue';
 main{
   flex-grow: 1;
   padding: 20px;
-  margin-top: 60px;  
-  margin-left: 240px;
-  background: #1E1E1E;
+  background: #F9EAA8;
   min-height: 90vh;
   width: 100%;
 

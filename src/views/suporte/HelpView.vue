@@ -2,6 +2,7 @@
 </script>
 
 <template>
+  <main>
     <h1>Ajuda</h1>
     <div class="p">
           <details>
@@ -45,6 +46,7 @@
     <p>E-mail: kuaacontact@kuaamail.com</p>
 </div>
 
+  </main>
 </template>
 
 <style scoped>
@@ -52,7 +54,7 @@
 h1, h2{
   font-family: "Prompt", sans-serif;
   font-weight: bold;
-  color: #d9d9d9;
+  color: #1E1E1E;
   text-align: center;
 }
 
@@ -69,12 +71,11 @@ div.p{
   justify-content: center;
   flex-direction: column;
   margin: 1vw auto;
-  background: #313131;
+  background: #1E1E1E;
   padding: 15px;
   border-radius: 15px;
   color: #D9D9D9;
   width: 50%;
-  box-shadow: 0px 0px 10px #0000005d;
 }
 
 summary{
@@ -104,10 +105,10 @@ div.contato{
 }
 
 div.contato p {
-color: #d9d9d9;
+color: #1E1E1E;
 text-align: center;
 margin: 15px auto;
-border: 3px solid #d9d9d9;
+border: 4px solid #1E1E1E;
 border-radius: 15px;
 font-weight: bold;
 width: fit-content;
