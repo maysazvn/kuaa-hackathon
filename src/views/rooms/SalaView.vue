@@ -2,6 +2,7 @@
 import { useRoute, useRouter } from 'vue-router'
 import { computed, ref } from 'vue'
 import { salas } from '@/data/salas'
+import { users } from '../user/Users'
 defineProps(['idSala', 'nome', 'participantes', 'desc', 'usuarioCriador', 'status', 'banner'])
 
 const route = useRoute()
@@ -48,7 +49,7 @@ console.log('Sala encontrada:', sala.value)
   <div class="container-sala" v-if="sala">
     <div class="header-pagina">
       <div class="titulo">
-        <RouterLink to="/" class="voltar">
+        <RouterLink to="/explore" class="voltar">
           <font-awesome-icon icon="chevron-left"></font-awesome-icon> Perfil de sala</RouterLink
         >
       </div>
@@ -61,7 +62,7 @@ console.log('Sala encontrada:', sala.value)
         <div class="info-sala">
           <h2 class="nome-sala">{{ sala.nome }}</h2>
           <div class="metadados">
-            <p><span>CRIADOR</span> {{ sala.usuarioCriador }}</p>
+            <RouterLink :to="`/otherProfile/${users.id}`"> <span>CRIADOR</span> {{ sala.usuarioCriador }} </RouterLink>
             <p><span>STATUS</span> {{ statusTexto }}</p>
           </div>
         </div>
