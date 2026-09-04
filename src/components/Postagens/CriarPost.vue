@@ -4,26 +4,38 @@ const emit = defineEmits(['fechar', 'adicionar'])
 import { postagens } from '@/data/postagens.js';
  import { shallowRef } from 'vue'
  import { salas } from '@/data/salas.js'
+ import { userReal } from '@/views/account/login/UserReal';
+ import { salasUsuario } from '@/data/salasUsuario';
 
 const props = defineProps(['post'])
  const dialog = shallowRef(false)
 const postagensTituloNovo = ref('');
 const postagensConteudoNovo = ref('');
-const usuLogado = ref('cofeeBarney');
-const storage = `postagens_${postagens.id}`
 
 
 const salaSelecionada = ref(null)
 const salaFinal = computed(() => salaSelecionada.value)
 
 
-onMounted(() => {
-  const salvos = localStorage.getItem(storage)
+const usuLogado = ref(localStorage.getItem('nomeUsuario') || 'cofeeBarney');
+const storage = 'postagens'
 
-  if (salvos) {
-    postagens.value = JSON.parse(salvos)
+function usuarioEstaNaSala(salaIdDoPost) {
+
+   if (!Array.isArray(salasUsuario.value)) return false
+
+     console.log("Testando sala do sistema:", salaIdDoPost, "Lista do usuário:", JSON.parse(JSON.stringify(salasUsuario.value)))
+
+  for (let sala of salasUsuario.value) {
+    const idUsuario = sala.idSala || sala.id
+
+    if (Number(idUsuario) === Number(salaIdDoPost)) {
+      return true
+    }
   }
-})
+  return false
+}
+
 
 function adicionar() {
   if (!postagensTituloNovo.value.trim() || !postagensConteudoNovo.value.trim()) {
@@ -33,17 +45,19 @@ function adicionar() {
     const novoPost = {
         titulo: postagensTituloNovo.value,
      conteudo: postagensConteudoNovo.value,
-        autor: usuLogado.value,
+        autor: 1,
         data:  new Date().toLocaleDateString('pt-BR'),
         id: maiorId + 1,
         salaId: Number(salaFinal.value),
-
-    
     }
+
   console.log(`sala selecionada: ${salaFinal.value}`)
     postagens.value.unshift(novoPost)
      postagensTituloNovo.value =''
  postagensConteudoNovo.value = '';
+console.log("Post atualizado:", JSON.parse(JSON.stringify(postagens.value)));
+
+
   localStorage.setItem(storage, JSON.stringify(postagens.value))
   emit('fechar') }
    
@@ -86,7 +100,9 @@ function adicionar() {
           <v-col cols="12">
             <v-autocomplete
               v-model="salaSelecionada"
-              :items="salas"
+              :items="(salas.value || salas).filter(sala => usuarioEstaNaSala(sala.idSala))"
+              item-title="nome"
+              item-value="idSala"
               label="Sala *"
               required
               auto-select-first

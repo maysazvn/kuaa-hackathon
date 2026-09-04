@@ -76,3 +76,4 @@ export const postagens = ref([
     curtidas: 500
   },
 ])
+

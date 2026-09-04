@@ -25,10 +25,11 @@ function usuarioEstaNaSala(salaIdDoPost) {
 
 const postsTimeline = computed(() => {
   return postagens.value.filter((post) => {
-    const inscrito = usuarioEstaNaSala(post.salaId)
-    const viral = post.curtidas >= 150
+    const inscrito = usuarioEstaNaSala(post.salaId);
+    const viral = post.curtidas >= 150;
+    const meuPost = post.autor === nomeUsuario.value || post.autor === userReal;
 
-    return inscrito || viral
+    return inscrito || viral || meuPost
   })
 })
 
