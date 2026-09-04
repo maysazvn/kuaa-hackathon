@@ -5,6 +5,7 @@ import { users } from './Users';
 import { ref } from 'vue';
 import { watchEffect } from 'vue';
 import { salas } from '@/data/salas';
+import { loginOut } from '../account/login/Loginout';
 
 
 const route = useRoute();
@@ -59,15 +60,23 @@ function seguir() {
 </script>
 
 <template>
+  
   <div class="container">
     <div v-if="usuario" class="cartaoPerfil">
       <img v-if="usuario.banner" :src="usuario.banner" class="banner" />
       <img v-if="usuario.pfp" :src="usuario.pfp" class="foto" />
 
+      <span v-if="loginOut === 'ativo'">
+
+      
       <div class="acoesPerfil">
         <button class="seguirUsuario" v-on:click="seguir()">{{ mensagemSeguir }}</button>
       </div>
 
+      </span>
+      <span v-else class="acoesPerfil">
+        <button class="seguirUsuario">Faça login para seguir!</button>
+      </span>
       <div class="info">
         <h1>{{ usuario.nome }}</h1>
         <p>{{ usuario.desc }}</p>
@@ -100,6 +109,8 @@ function seguir() {
       <p>Usuário não encontrado.</p>
     </div>
   </div>
+  
+   
 </template>
 
 <style scoped>

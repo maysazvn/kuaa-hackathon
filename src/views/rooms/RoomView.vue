@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import { salas } from '@/data/salas'
 import { ref } from 'vue'
 import { userReal } from '../account/login/UserReal'
+import { loginOut } from '../account/login/Loginout'
 const router = useRouter()
 const nome = ref('')
 const descricao = ref('')
@@ -45,6 +46,9 @@ function criar() {
 </script>
 
 <template>
+  <span v-if="loginOut === 'ativo'">
+
+  
   <div class="container">
     <h1 class="tituloCriarSala"><font-awesome-icon icon="chevron-left" /> Criar Sala</h1>
 
@@ -96,6 +100,12 @@ function criar() {
       </div>
     </div>
   </div>
+  </span>
+   <span v-else-if="loginOut === 'inativo'" class="mensagemSemLogin">
+    <p>
+      Faça Login para criar salas!
+    </p>
+   </span>
 </template>
 
 <style scoped>

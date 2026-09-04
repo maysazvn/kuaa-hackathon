@@ -4,6 +4,7 @@ const emit = defineEmits(['fechar', 'adicionar'])
 import { postagens } from '@/data/postagens.js';
  import { shallowRef } from 'vue'
  import { salas } from '@/data/salas.js'
+ import { loginOut } from '@/views/account/login/Loginout';
 
 const props = defineProps(['post'])
  const dialog = shallowRef(false)
@@ -52,6 +53,9 @@ function adicionar() {
 
 </script>
 <template>
+  <span v-if="loginOut === 'ativo'">
+    
+  
     <section class="sessaoPostar">
     <v-card theme="dark" class="caixa">
       <h2 class="titulo-postar">Postar</h2>
@@ -112,6 +116,10 @@ function adicionar() {
       </v-card-actions>
     </v-card>
   </section>
+  </span>
+  <span v-else-if="loginOut === 'inativo'" class="mensagemSemLogin">
+      <p>Faça Login para criar posts!</p>
+    </span>
 </template>
 
 <style scoped>

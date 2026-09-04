@@ -138,7 +138,7 @@ function salaDoPost(salaId) {
                   <button @click="editar(post)" class="editar">Editar</button>
                   <button @click="excluir(post.id)" class="deletar">Excluir</button>
                 </div>
-
+<!-- aquiiiiiiiiiiiiiiiiiii -->
                 <div v-else>
                   <button @click="denunciar(post)" class="denunciar">Denunciar</button>
                 </div>
