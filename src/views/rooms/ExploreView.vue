@@ -6,7 +6,10 @@ function estaNaSala(idSala) {
   return salasUsuario.value.some((i) => i.idSala === idSala)
 }
 function sair(saal) {
-  salasUsuario.value = salasUsuario.value.filter((i) => i != saal)
+  console.log(salasUsuario.value, saal)
+  salasUsuario.value = salasUsuario.value.filter((i) => i.idSala != saal.idSala)
+  console.log(salasUsuario.value, saal)
+  
 }
 function enviar(sal) {
   if (!estaNaSala(sal.idSala)) {
