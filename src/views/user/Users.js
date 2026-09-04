@@ -314,8 +314,8 @@ export const users = [
     {
         id: 29,
         nome: 'ubeube',
-        pfp: 'https://i.pinimg.com/736x/27/13/22/271322c8cb72615663562377abed3767.jpg',
-        banner: 'https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/02/harry-potter-severus-snape-tim-roth.jpg?q=50&fit=crop&w=1232&h=693&dpr=1.5',
+        pfp: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY_v99qaq63QSkt-soqEcd19AHembyglgPG5_Z4ZdwQ5MkSAIkQWlDn2A&s=10',
+        banner: 'https://pbs.twimg.com/media/G8J-2bpaUAAd79j.jpg',
         desc: 'ubebubabum',
         mostrarSala: 'nao',
         seguidores: 300032142185,
@@ -325,8 +325,8 @@ export const users = [
     {
         id: 30,
         nome: 'rita',
-        pfp: 'https://i.pinimg.com/736x/27/13/22/271322c8cb72615663562377abed3767.jpg',
-        banner: 'https://static0.colliderimages.com/wordpress/wp-content/uploads/2023/02/harry-potter-severus-snape-tim-roth.jpg?q=50&fit=crop&w=1232&h=693&dpr=1.5',
+        pfp: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCUdrMc2wb1tiGguh4T1hUySDvmGGMPa7LdVUZbHXY3A&s=10',
+        banner: 'https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2024/03/cartomante.jpg?w=1024-0',
         desc: 'Quem é camilo?',
         mostrarSala: 'nao',
         seguidores: 2,

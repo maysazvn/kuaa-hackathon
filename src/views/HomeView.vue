@@ -106,7 +106,6 @@ function criarPostRapido() {
   </div>
 </template>
 
-<<<<<<< Updated upstream
 <style scoped>
 .container {
   margin: 3vw 5vw auto;
@@ -269,5 +268,3 @@ CSS:
 
 */
 </style>
-=======
->>>>>>> Stashed changes

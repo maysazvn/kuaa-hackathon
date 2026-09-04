@@ -25,7 +25,7 @@ const usuario = computed(() => {
 
 // const suarios = JSON.parse(localStorage.getItem('salasEntradas')) || [];
 
-const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
+// const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
 let estaseguindo = ref(false);
 
 watchEffect(() => {

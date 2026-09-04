@@ -4,6 +4,8 @@ import { ref, watch, computed } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { salas } from '@/data/salas';
 import { users } from '@/views/user/Users';
+import { postagens } from '@/data/postagens';
+import Postagens from '../Postagens/Postagens.vue';
 
 const route = useRoute();
 
@@ -42,6 +44,18 @@ const usersFiltrados = computed(() => {
     );
 });
 
+const postsFiltrados = computed(() => {
+    const lista = Array.isArray(postagens) ? postagens : postagens.value || []; 
+
+    if (!coisaPesquisada.value) return '' ;
+
+    const termo = coisaPesquisada.value.toLowerCase().trim();
+
+    return lista.filter(postagens => 
+        postagens.conteudo && postagens.conteudo.toLowerCase().includes(termo)
+    );
+});
+
 </script>
 
 <template>
@@ -70,6 +84,15 @@ const usersFiltrados = computed(() => {
             </div>
             <div v-else>
                 <p>Nenhum usuário encontrado para "{{ coisaPesquisada }}"</p>
+            </div>
+        </div>
+
+        <div>
+            <div v-if="postsFiltrados.length > 0">
+                    <Postagens :posts="postsFiltrados" />
+            </div>
+            <div v-else>
+                <p>Nenhuma postagem encontrada para "{{ coisaPesquisada }}"</p>
             </div>
         </div>
 

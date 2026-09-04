@@ -5,33 +5,29 @@ import { ref } from 'vue'
 import { seguidores } from './Followers'
 import { seguindo } from './Following'
 import { userReal } from '../account/login/UserReal'
-import { urlFoto } from './urlFoto';
-import { salas } from '@/data/salas';
+import { urlFoto } from './urlFoto'
+import { salas } from '@/data/salas'
 
 const suarios = JSON.parse(localStorage.getItem('salasEntradas')) || []
 const nomeUsuario = ref(localStorage.getItem('nomeUsuario') || userReal)
 const desc = ref(localStorage.getItem('desc') || '')
 const urlBanner = ref(localStorage.getItem('urlBanner') || '/bannerPlaceholder.png')
 const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
+const popupExcluir = ref(false)
 
 function buscarSalas() {
-  return salas.value.filter(sala => {
+  return salas.value.filter((sala) => {
     for (const item of suarios) {
       if (item.idSala === sala.idSala) {
-        return true;
+        return true
       }
     }
-    return false;
-  });
+    return false
+  })
 }
 
-let existe = ref(true);
+let existe = ref(true)
 // const urlFoto = ref(localStorage.getItem('urlFoto') || '');
-
-
-
-
-const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
 
 let mostrar = ref(false)
 
@@ -47,6 +43,11 @@ function editar() {
 function excluir() {
   localStorage.clear()
   existe.value = false
+  popupExcluir.value = true
+}
+
+function excluirUser() {
+  popupExcluir.value = true
 }
 </script>
 
@@ -57,7 +58,6 @@ function excluir() {
       <img v-if="urlFoto" :src="urlFoto" class="foto" />
 
       <div class="acoesPerfil">
-
         <div class="menu">
           <button class="editarDeletar" v-on:click="mostrarItens()">•••</button>
 
@@ -65,14 +65,26 @@ function excluir() {
             <router-link to="/edit">
               <button v-on:click="editar" class="btn-menu">Editar</button>
             </router-link>
-            <button v-on:click="excluir" class="btn-menu">Deletar</button>
+            <button v-on:click="excluirUser" class="btn-menu">Deletar</button>
+          </div>
+
+          <div v-if="popupExcluir" class="telapopup">
+            <h2>Tem certeza que deseja excluir seu usuário?</h2>
+            <p>
+              Esta ação é permanente e todos os seus dados, salas e posts serão perdidos para
+              sempre.
+            </p>
+            <div class="botoes">
+              <button @click="excluir">Sim</button>
+              <button @click="popupExcluir = false">Não</button>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="info">
         <h1>{{ nomeUsuario }}</h1>
-        <p>{{ desc }} </p>
+        <p>{{ desc }}</p>
       </div>
 
       <div>
@@ -91,8 +103,8 @@ function excluir() {
       <ul class="listaSalas">
         <li v-for="sala in buscarSalas()" :key="sala.idSala" :nome="sala.nome" class="cardSala">
           <RouterLink :to="`/salas/${sala.idSala}`">
-              <span class="nomesala">{{ sala.nome }}</span>
-            </RouterLink>
+            <span class="nomesala">{{ sala.nome }}</span>
+          </RouterLink>
         </li>
       </ul>
     </div>
@@ -168,9 +180,9 @@ div.editEdelete {
 }
 
 :deep(.btn-menu:hover) {
-color: #f8d668;
+  color: #f8d668;
   transform: scale(0.97);
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 ul {
@@ -181,17 +193,17 @@ ul {
 }
 
 .info h1,
-.info p{
+.info p {
   color: #d9d9d9;
   margin: 15px 30px;
 }
 
-.info h1{
+.info h1 {
   font-weight: bold;
   font-size: 1.8rem;
 }
 
-.info p{
+.info p {
   max-width: 500px;
   word-break: break-word;
 }
@@ -235,7 +247,7 @@ ul {
 .cardSala:hover {
   opacity: 0.9;
   transform: scale(0.95);
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .nomesala {
