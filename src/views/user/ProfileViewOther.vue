@@ -1,13 +1,21 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import { computed } from 'vue';
-import { seguidores } from './Followers';
-import { seguindo } from './Following';
 import { users } from './Users';
 import { ref } from 'vue';
+import { watchEffect } from 'vue';
+import { salas } from '@/data/salas';
 
 
 const route = useRoute();
+
+// adicionei buscar salas
+function buscarSalasDoUsuario(idsSalas) {
+  if (!idsSalas) return [];
+
+  const listaDeSalas = salas.value || salas;
+  return listaDeSalas.filter(sala => idsSalas.includes(sala.idSala));
+}
 
 const usuario = computed(() => {
   return users.find(
@@ -15,29 +23,37 @@ const usuario = computed(() => {
   )
 })
 
-const suarios = JSON.parse(localStorage.getItem('salasEntradas')) || []
+// const suarios = JSON.parse(localStorage.getItem('salasEntradas')) || [];
 
 const mostrarSala = ref(localStorage.getItem('mostrarSala?') || 'sim')
+let estaseguindo = ref(false);
 
-let mensagemSeguir = ref('Seguir')
-
-let estaseguindo = false
-function seguir() {
-  if (estaseguindo == false) {
-    estaseguindo = true
-    mensagemSeguir.value = 'Seguindo'
-    seguidores.push({ id: 5, nome: 'vc ne kkkk' })
-  } else {
-    estaseguindo = false
-    mensagemSeguir.value = 'Seguir'
-
-    const indice = seguidores.findIndex((usuario) => usuario.id == 5)
-    if (indice > -1) {
-      seguidores.splice(indice, 1)
-    }
+watchEffect(() => {
+  if (usuario.value) {
+    const salvo = localStorage.getItem(`seguindo_${usuario.value.id}`);
+    estaseguindo.value = salvo === 'true';
   }
-  console.log(estaseguindo)
-  console.log(mensagemSeguir)
+});
+
+const mensagemSeguir = computed(() => (estaseguindo.value ? 'Seguindo' : 'Seguir'));
+
+function seguir() {
+  if (!usuario.value) return;
+
+  const segui = users.find(usu => usu.id === usuario.value.id)
+
+  if (!estaseguindo.value) {
+    
+    estaseguindo.value = true;
+    localStorage.setItem(`seguindo_${usuario.value.id}`, 'true');
+    segui.seguidores += 1
+  } else {
+    estaseguindo.value = false;
+    localStorage.setItem(`seguindo_${usuario.value.id}`, 'false');
+
+        segui.seguidores -= 1
+
+  }
 }
 
 </script>
@@ -60,21 +76,23 @@ function seguir() {
       <div>
         <ul>
           <li class="seguidores">
-            <span>{{ seguidores.length }}</span> Seguidores
+            <span>{{ usuario.seguidores }}</span> Seguidores
           </li>
           <li class="seguindo">
-            <span>{{ seguindo.length }}</span> Seguindo
+            <span>{{ usuario.seguindo }}</span> Seguindo
           </li>
         </ul>
       </div>
 
-        <div class="salas" v-show="mostrarSala === 'sim'">
-          <ul>
-            <li v-for="sala in suarios" :key="sala.id" :nome="sala.nome">
-              <p>{{ sala.nome }}</p>
-            </li>
-          </ul>
-        </div> 
+        <div class="salas" v-show="usuario.mostrarSala === 'sim'">
+        <ul class="listaSalas">
+          <li v-for="sala in buscarSalasDoUsuario(usuario.salas)" :key="sala.idSala" class="cardSala">
+             <RouterLink :to="`/salas/${sala.idSala}`">
+              <span class="nomesala">{{ sala.nome }}</span>
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
     </div>
 
 
@@ -206,5 +224,42 @@ ul {
 .seguidores span,
 .seguindo span {
   font-weight: bold;
+}
+
+.listaSalas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #444444 #1e1e1e;
+  margin: 5px;
+}
+
+.cardSala {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #313131;
+  padding: 1px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #d9d9d9;
+}
+
+.cardSala:hover {
+  opacity: 0.9;
+  transform: scale(0.95);
+  transition: .2s;
+}
+
+.nomesala {
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 </style>

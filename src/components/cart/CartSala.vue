@@ -2,39 +2,59 @@
 defineProps(['idSala', 'nome', 'participantes', 'desc', 'usuarioCriador', 'status', 'banner'])
 </script>
 <template>
-  <div class="lasa">
-    <div class="aa">
-      <div class="aqFt">
-         <img :src="banner" :alt="nome">
+  <div class="cardSala">
+      <div class="info">
+        <div class="foto">
+          <img :alt="nome" :src="banner" class="imgSala">
+          <h2 class="sala">{{ nome }}</h2>
 
-        <!-- só pra representar a foto que ainda não tá pronta -->
-        
+          <!-- só pra representar a foto que ainda não tá pronta -->
+        </div>
       </div>
-      <h2>{{ nome }}</h2>
-    </div>
-    <p>{{ desc }}</p>
-    <slot/>
+      <p class="desc">{{ desc }}</p>
+    <slot />
   </div>
-  
 </template>
 
 <style>
-p {
-  margin: 25px;
+.cardSala {
+  border-radius: 20px;
+  background-color: #2a2a2a;
+  padding: 15px;
 }
-.aa {
-  display: flex;
-  gap: 3vw;
-  align-items: center;
+
+img.imgSala{
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 10px auto;
+  display: block;
 }
-.lasa {
-  background-color: rgb(35, 142, 236);
-  height: 15vw;
+
+h2.sala,
+p.desc {
+  color: #d9d9d9;
+  padding: 5px;
 }
-.aqFt {
-  margin: 10px 0 0 30px;
-  background-color: rgb(255, 255, 255);
-  width: 6vw;
-  height: 4vw;
+
+h2.sala {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
+
+p.desc{
+  font-size: 0.90rem;
+  color: #9f9f9f;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 2.7em;
+  line-height: 1.3em;
+  margin: 10px 0;
+  word-break: break-word;
+}
+
 </style>

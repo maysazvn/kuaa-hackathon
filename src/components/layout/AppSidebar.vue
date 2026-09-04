@@ -1,7 +1,25 @@
 <script setup>
+
+// imports //////////////////
+
+import { loginOut } from '@/views/account/login/Loginout'
+
 import { RouterLink } from 'vue-router'
 import { salasUsuario } from '@/data/salasUsuario'
+
 import { salas } from '@/data/salas'
+import { userReal } from '@/views/account/login/UserReal'
+import { emailReal } from '@/views/account/login/EmailReal'
+import { urlFoto } from '@/views/user/urlFoto'
+
+// functions /////////////////
+function validarLoginout() {
+  if (loginOut.value == 'ativo') {
+    loginOut.value = 'inativo'
+  } else {
+    alert('Faça login primeiro!')
+  }
+}
 </script>
 
 <template>
@@ -57,6 +75,28 @@ import { salas } from '@/data/salas'
         </li>
       </ul>
     </nav>
+
+    <div class="dadosUser" v-if="loginOut == 'ativo'">
+      <div>
+        <img :src="urlFoto" alt="Foto de perfil do usuário" class="imgSidebar" />
+      </div>
+
+      <div>
+        <p class="usuarioSidebar">{{ userReal }}</p>
+        <p class="emailSidebar">{{ emailReal }}</p>
+      </div>
+    </div>
+
+    <div class="sairUsuario" v-if="loginOut == 'ativo'">
+      <span @click="validarLoginout()" class="sair"><font-awesome-icon icon="arrow-right-from-bracket" class="sair" /> Sair</span
+      >
+    </div>
+
+    <div class="entrarUsuario" v-else>
+      <span>
+        <router-link to="/login" class="entrar"><font-awesome-icon icon="arrow-right-from-bracket" class="sair" />Entrar</router-link>
+      </span>
+    </div>
   </aside>
 </template>
 
@@ -66,15 +106,13 @@ aside.sidebar {
   top: 60px;
   left: 0;
   bottom: 0;
-  width: 240px;
-  height: calc(100vh - 60px);
   z-index: 999;
   background: #313131;
   display: flex;
   flex-direction: column;
   width: 250px;
-  height: 100vh;
   padding: 10px 5px;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -136,5 +174,49 @@ hr {
 
 .icone-grupo {
   right: 0% !important;
+}
+
+.dadosUser {
+  display: flex;
+  color: #d9d9d9;
+  justify-content: baseline;
+  align-items: center;
+}
+
+.usuarioSidebar, .emailSidebar{
+  margin: 1px 10px;
+}
+
+.usuarioSidebar{
+  font-weight: bold;
+}
+
+.imgSidebar{
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+}
+
+.sair, .entrar{
+  color: #d9d9d9;
+  font-size: 1.2rem;
+  font-weight: 500;
+  gap: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sair:hover, .entrar:hover{
+  opacity: 0.8;
+  transition: .2s;
+}
+
+.entrarUsuario, .dadosUser{
+  margin-top: auto;
+}
+
+.entrarUsuario, .sairUsuario, .dadosUser{
+  padding: 2px 10px;
 }
 </style>
