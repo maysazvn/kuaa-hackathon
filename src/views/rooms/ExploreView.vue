@@ -2,6 +2,7 @@
 import CartSala from '@/components/cart/CartSala.vue'
 import { salas } from '@/data/salas'
 import { salasUsuario } from '@/data/salasUsuario'
+import { loginOut } from '../account/login/Loginout'
 function estaNaSala(idSala) {
   return salasUsuario.value.some((i) => i.idSala === idSala)
 }
@@ -34,8 +35,13 @@ function enviar(sal) {
       >
       <div class="nav">
         <RouterLink :to="`/salas/${sala.idSala}`" class="visualizar"> Visualizar </RouterLink>
+        <span v-if="loginOut === 'ativo'">
         <button v-on:click="enviar(sala)" v-if="!estaNaSala(sala.idSala)" class="btn-entrar">Entrar</button>
         <button v-on:click="sair(sala)" v-else class="btn-sair">Sair</button>
+      </span>
+      <span v-else>
+       <button class="btn-entrar">Faça Login para entrar!</button>
+      </span>
         </div>
       </CartSala>
     </section>

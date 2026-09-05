@@ -7,6 +7,7 @@ import { salasUsuario } from '@/data/salasUsuario.js'
 import { shallowRef } from 'vue'
 import { salas } from '@/data/salas.js'
 import { users } from '@/views/user/Users.js'
+import { loginOut } from '@/views/account/login/Loginout.js'
 
 const props = defineProps({
   posts: {
@@ -140,7 +141,10 @@ function salaDoPost(salaId) {
                 </div>
 <!-- aquiiiiiiiiiiiiiiiiiii -->
                 <div v-else>
+                 <span v-if="loginOut === 'ativo'">
                   <button @click="denunciar(post)" class="denunciar">Denunciar</button>
+                </span> 
+                <span v-else> <button class="denunciar">Faça Login para denunciar!</button></span>
                 </div>
               </div>
             </div>

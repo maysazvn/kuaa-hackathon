@@ -2,6 +2,7 @@
 import { useRoute, useRouter } from 'vue-router'
 import { computed, ref } from 'vue'
 import { salas } from '@/data/salas'
+import { loginOut } from '../account/login/Loginout'
 defineProps(['idSala', 'nome', 'participantes', 'desc', 'usuarioCriador', 'status', 'banner'])
 
 const route = useRoute()
@@ -65,13 +66,19 @@ console.log('Sala encontrada:', sala.value)
             <p><span>STATUS</span> {{ statusTexto }}</p>
           </div>
         </div>
-
+        
         <div class="acoes-sala">
+          <span v-if="loginOut === 'ativo'">
+
           <button class="btn-entrar" :class="{ 'btn-sair': entrouOuNao }" @click="alternarMembro">
             <span v-if="entrouOuNao">Sair da sala</span>
             <span v-else>Entrar</span>
           </button>
 
+          </span>
+          <span v-else>
+            <button class="btn-entrar">Faça Login para entrar!</button>
+          </span>
           <div class="menu">
             <button class="menubotao" @click="menuAberto = !menuAberto">...</button>
             <div class="menuaberto" v-if="menuAberto">
