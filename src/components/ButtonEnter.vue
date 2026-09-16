@@ -1,6 +1,6 @@
 <script setup>
 import { salasUsuario } from '@/data/salasUsuario'
-// import { salas } from '@/data/salas'
+import { salas } from '@/data/salas'
 import { loginOut } from '@/views/account/login/Loginout'
 
 
